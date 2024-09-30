@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game City</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header-btn-left">
+            <div class="menu-toggle first">
+                <i></i>
+            </div>
+            <div class="logo">
+                <img src="./images/Game Shop.png" alt="Logo">
+            </div>
+        </div>
+        <div class="buscador">
+            <form onsubmit="event.preventDefault();" role="search">
+                <img src="./images/lupa.png" alt="lupa">
+                <input id="search" type="search" placeholder="¿A qué jugamos hoy?" required />
+            </form>
+        </div>
+        <div class="header-right">
+            <div class="carrito">
+                <div class="circulo">0</div>
+            </div>
+            <div class="perfil">
+                <img src="./images/perfil.png" alt="perfil">
+            </div>
+        </div>
+    </header>
+    <section class="nav">
+        <div class="categoria">
+            <img src="./images/icono-accion.png" alt="accion">
+        </div>
+        <div class="categoria">
+            <img src="./images/icono-multiplayer.png" alt="multiplayer">
+        </div>
+        <div class="categoria">
+            <img src="./images/icono-carreras.png" alt="carreras">
+        </div>
+        <div class="categoria">
+            <img src="./images/icono-clasicos.png" alt="clasicos">
+        </div>
+        <div class="categoria">
+            <img src="./images/icono-estrategia.png" alt="estrategia">
+        </div>
+    </section>
+    <main>
+        <div class="tendencias">
+            <div class="cartel-tendencias">
+                <img src="./images/icono-trending.png" alt="tendencias">
+                <p>Tendencias</p>
+            </div>
+            <div class="slides-tendencias">
+
+            </div>
+        </div>
+        <div class="carruseles-juegos" id="fondo">
+            <div class="carrusel">
+                <div class="header-carrusel">
+                    <div class="etiqueta-carrusel">
+                        <div class="img-carrusel">
+                            <img src="/images/icono-accion.png" alt="accion">
+                        </div>
+                        <p>Juegos de acción</p>
+                    </div>
+                    <input type="button" class="btn-ver-todos" value="Ver todos">
+                </div>
+                <div class="tarjeta-juego">
+                    <div class="header-juego">
+                        <img src="./images/juego-jetpack.jpeg" alt="Juego Jetpack">
+                        <p class="etiqueta-gratis">Gratis</p>
+                    </div>
+                    <div class="footer-juego">
+                        <p>Jetpack Joyride</p>
+                        <div class="btn-juego">
+                            <input type="button" class="btn-jugar" value="Jugar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carrusel">
+
+            </div>
+            <div class="carrusel">
+
+            </div>
+            <div class="carrusel">
+
+            </div>
+            <div class="carrusel">
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        
+    </footer>
+    <script src="./js/btn-hamburguesa.js"></script>
+</body>
+</html>

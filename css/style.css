@@ -1,0 +1,382 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/************** HEADER  **************/
+
+header {
+    display: flex;
+    background-color: #3E285B;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+}
+
+.header-right {
+    display: flex;
+    width: 33%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-right img{
+    height: 45px;
+    width: 45px;
+}
+
+
+.header-btn-left{
+    width: 33%;
+    display: flex;
+    align-items: center;
+}
+
+.carrito{
+    width: 45px;
+    height: 45px;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    background-image: url(../images/carrito-de-compras.png);
+    background-size: cover;
+}
+
+.perfil{
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.circulo{
+    width: 20px;
+    height: 20px;
+    background-color: #EB3B3B;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.logo{
+    margin-left: 20px;
+}
+
+.logo img{
+    width: 170px;
+}
+
+
+
+/************** Menu Hamburguesa  **************/
+
+
+.menu-toggle {
+    width: 38px;
+    height: 50px;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    margin-right: 24px;
+}
+
+.menu-toggle:hover {
+    color: #999;
+}
+
+.menu-toggle i,
+.menu-toggle i:after,
+.menu-toggle i:before {
+    display: block;
+    position: absolute;
+    height: 6px;
+    width: 35px;
+    right: 0;
+    background: #30C07F;
+    border-radius: 2px;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.menu-toggle i:after,
+.menu-toggle i:before {
+    content: '';
+}
+
+.menu-toggle i:after {
+    top: -24px;
+}
+
+.menu-toggle i:before {
+    top: -12px;
+}
+
+.menu-toggle i {
+    top: 34px;
+}
+
+.menu-toggle.open i:after {
+    transform: rotate(45deg);
+    top: -22px;
+}
+
+.menu-toggle.open i:before {
+    transform: rotate(-45deg);
+    top: -22px;
+}
+
+
+
+/**************  Buscador  **************/
+
+.buscador{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 250px;
+    border-radius: 100px;
+    background-color: #F5F5DC;
+    display: flex;
+
+}
+
+form img{
+    height: 20px;
+    padding: 10px;
+}
+
+input,
+button {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    border: 0;
+    color: #F5F5DC;
+}
+
+input[type=search] {
+    outline: none;
+    text-align: left;
+    width: 100%;
+    background: #F5F5DC;
+    border-radius: 100px;
+    appearance: none;
+    transition: all var(1);
+    z-index: 1;
+    position: relative;
+}
+
+button {
+    display: none;
+    position: absolute;
+    top: 0;
+    font-weight: bold;
+}
+
+label {
+    position: absolute;
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+
+/**************  Nav  **************/
+
+.nav{
+    height: 100rem;
+    width: 80px;
+    background-color: #3E285B;
+    padding-top: 20px;
+    position: absolute;
+}
+
+.nav img{
+    width: 40px;
+}
+
+.categoria{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+
+/**************  Tendencias  **************/
+
+.tendencias{
+    background-color: #19082F;
+    margin-left: 80px;
+    width: 100% - 80px;
+    height: 250px;
+    padding-top: 20px;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.cartel-tendencias{
+    display: flex;
+    color: white;
+    background-color: #2D1748;
+    margin-left: 20px;
+    width: 120px;
+    height: 25px;
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    align-items: center;
+    justify-content: space-around;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.slides-tendencias{
+    width: 100%;
+    height: 160px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.cartel-tendencias img{
+    height: 100%;
+}
+
+
+/**************  Carruseles juegos  **************/
+
+
+/*** FONDO GUIA **/
+/*#fondo{
+    background-image: url(../images/fondo-seguir.png);
+    background-size: contain;
+}*/
+
+.carruseles-juegos{
+    margin-left: 80px;
+    width: 100% - 80px;
+    background-color: #F5F5DC;
+    height: 100rem;
+    padding: 40px
+}
+
+.carrusel{
+    height: 200px;
+}
+
+.carrusel img{
+    height: 25px;
+}
+
+.header-carrusel{
+    display: flex;
+    justify-content: space-between;
+}
+
+.etiqueta-carrusel{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 140px;
+}
+
+.img-carrusel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3E285B;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.btn-ver-todos{
+    width: 80px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #3E285B;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+.btn-ver-todos:hover{
+    background-color: #2D1748;
+}
+
+
+/**************  Tarjeta juegos  **************/
+
+
+.tarjeta-juego{
+    margin: 10px;
+    margin-top: 15px;
+    width: 180px;
+    height: 200px;
+}
+
+.header-juego{
+    width: 165px;
+    height: 110px;
+    position: relative;
+}
+
+.header-juego img{
+    object-fit: content;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.etiqueta-gratis{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    top: 20px;
+    background: #E0B200;
+    width: 60px;
+    height: 25px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.footer-juego{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 50px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn-jugar{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    background-color: #30C07F;
+    margin-top: 6%;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.btn-jugar:hover{
+    background-color: #007E45;
+}
