@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game City</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -53,57 +53,31 @@
             <img src="./images/icono-estrategia.png" alt="estrategia">
         </div>
     </section>
-    <main>
-        <div class="tendencias">
-            <div class="cartel-tendencias">
-                <img src="./images/icono-trending.png" alt="tendencias">
-                <p>Tendencias</p>
-            </div>
-            <div class="slides-tendencias">
-
-            </div>
-        </div>
-        <div class="carruseles-juegos" id="fondo">
-            <div class="carrusel">
-                <div class="header-carrusel">
-                    <div class="etiqueta-carrusel">
-                        <div class="img-carrusel">
-                            <img src="/images/icono-accion.png" alt="accion">
-                        </div>
-                        <p>Juegos de acción</p>
-                    </div>
-                    <input type="button" class="btn-ver-todos" value="Ver todos">
+    <div class="contenedorPagina">
+        <!-- Seccion superior-->
+        <section class="seccionSuperior">
+            <div class="contenedorIZQ">
+                <div class="contenedorJuego">
+                    <h1>JUEGO</h1>
                 </div>
-                <div class="tarjeta-juego">
-                    <div class="header-juego">
-                        <img src="./images/juego-jetpack.jpeg" alt="Juego Jetpack">
-                        <p class="etiqueta-gratis">Gratis</p>
-                    </div>
-                    <div class="footer-juego">
-                        <p>Jetpack Joyride</p>
-                        <div class="btn-juego">
-                            <input type="button" class="btn-jugar" value="Jugar">
-                        </div>
-                    </div>
+                <div class="contenedorInfoJuego">
+    
                 </div>
             </div>
-            <div class="carrusel">
-
+            <div class="contenedorDER">
+                <div class="valoracionJuego"></div>
+                <div class="contenedorAyuda"></div>
             </div>
-            <div class="carrusel">
 
-            </div>
-            <div class="carrusel">
-
-            </div>
-            <div class="carrusel">
-
-            </div>
-        </div>
-    </main>
+        </section>
+        <!-- Seccion comentarios-->
+        <section class="seccionComentarios">
+            <div class="contenedorComentarios"></div>
+            <div class="contenedorJuegosComentarios"></div>
+        </section>
+    </div>
     <footer>
         
     </footer>
-    <script src="./js/btn-hamburguesa.js"></script>
 </body>
 </html>
