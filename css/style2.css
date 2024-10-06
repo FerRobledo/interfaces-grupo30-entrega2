@@ -1,6 +1,12 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+input:hover{
+    cursor: pointer;
 }
 
 /************** HEADER  **************/
@@ -201,7 +207,7 @@ label {
 
 
 .nav{
-    height: calc(100vh - 100px);
+    height: 100%;
     width: 80px;
     background-color: #3E285B;
     padding-top: 20px;
@@ -217,6 +223,72 @@ label {
     display: flex;
     justify-content: center;
     margin-bottom: 25px;
+}
+
+/**************  Tarjeta juegos  **************/
+
+
+.tarjeta-juego{
+    margin: 10px;
+    margin-top: 15px;
+    width: 180px;
+    height: 200px;
+}
+
+.header-juego{
+    width: 165px;
+    height: 110px;
+    position: relative;
+}
+
+.header-juego img{
+    object-fit: cover;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.etiqueta-gratis{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    top: 20px;
+    background: #E0B200;
+    width: 60px;
+    height: 25px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.footer-juego{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 50px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    background-color: #30C07F;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#btn-jugar{
+    margin-top: 6%;
+}
+
+.btn:hover{
+    background-color: #007E45;
 }
 
 /**************  PAG JUEGO  **************/
@@ -257,6 +329,8 @@ label {
 
 .contenedorDER{
     grid-area: contenedorDER;
+    max-width: 386px;
+    height: 100%;
 }
 
 .valoracionJuego{
@@ -287,7 +361,7 @@ label {
 .seccionComentarios{
     display: grid;
     grid-template-areas: 
-    "contenedorComentarios contenedorJuegosComentarios"
+    "contenedorComentarios contenedorDER"
     ;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -296,14 +370,270 @@ label {
     min-height: 880px;
     height: 100%;
     margin: 0px -30px -30px -30px;
+    padding: 30px;
+    align-items: center;
 }
 
 .contenedorComentarios{
     grid-area: contenedorComentarios;
     width: 800px;
-    height: 100px;
+    height: 100%;
 }
 
-.contenedorJuegosComentarios{
-    grid-area: contenedorJuegosComentarios;
+.contenedorJuegosComentarios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 16px;
+    background-color: #2D1748;
+    justify-items: center;
+    padding-bottom: 20px;
+}
+
+.contenedorJuegosComentarios .tarjeta-juego{
+    margin: 0;
+    scale: 0.9;
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+}
+
+.contenedorJuegosComentarios .tarjeta-juego .footer-juego p{
+    color: white !important;
+    font-weight: 500;
+}
+
+/**************  Cartel  **************/
+
+.tendencias{
+    background-color: #19082F;
+    margin-left: 80px;
+    width: 100% - 80px;
+    height: 250px;
+    padding-top: 20px;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.cartel{
+    display: inline-flex;
+    color: white;
+    background-color: #2D1748;
+    gap: 5px;
+    height: 40px;
+    padding: 15px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.slides-tendencias{
+    width: 100%;
+    height: 160px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.cartel img{
+    width: 25px;
+    height: 25px;
+
+}
+
+.cartel:hover{
+    background-color: rgba(85, 61, 114, 1);
+    cursor: pointer;
+}
+
+.cartelJuegos{
+    position: relative;
+    left: 15px;
+}
+
+
+
+/**************  Comentarios  **************/
+
+.contenedorComentarios{
+    min-width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.headerCajaComentarios{
+    color: white;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+    align-self: flex-start;
+    align-items: center;
+}
+
+.cajaComentario{
+    width: 100%;
+    background-color: white;
+    border-radius: 16px;
+}
+
+.headerComentario{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: solid 1px rgba(25, 8, 47, 1);
+    padding: 10px;
+}
+
+.headerComentario .perfilUsuario img{
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+}
+
+.headerComentario .perfilUsuario img:hover{
+    cursor: pointer;
+}
+
+.headerComentario .perfilUsuario p {
+    font-weight: 600;
+}
+
+.headerComentario > p {
+    font-weight: 400;
+    color: gray;
+}
+
+.cuerpoCajaComentario{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "p ."
+    ". input"
+    ;
+    padding: 10px;
+    height: 90px;
+}
+
+
+.cuerpoCajaComentario p{
+    color: gray;
+}
+
+.comentarioUsuario .cuerpoCajaComentario p{
+    grid-area: p;
+    color: rgb(66, 66, 66);
+
+}
+
+.cuerpoCajaComentario input{
+    grid-area: input;
+    justify-self: end;
+    align-self: end;
+    width: 70px;
+}
+
+.filtroComentarios{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 3px;
+    margin-top: 50px;
+    border-bottom: 1px solid rgba(85, 61, 114, 1);
+}
+
+.comentarioUsuario{
+    margin-top: 35px;
+    scale: 0.9;
+}
+
+.perfilUsuario{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.perfilUsuario p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.comentarioUsuario .cuerpoCajaComentario{
+    display: flex;
+    padding: 20px;
+}
+
+.comentarioUsuario .footerCajaComentario{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: 1px solid rgba(45, 23, 72, 1);
+}
+
+.comentarioUsuario .footerCajaComentario p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.comentarioUsuario .footerCajaComentario img:hover{
+    cursor: pointer;
+}
+
+.comentarioUsuario .footerCajaComentario #responder{
+    gap: 5px;
+}
+
+.footerCajaComentario i{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+i:hover{
+    scale: 1.1;
+}
+
+.fa-heart:hover{
+    color: red;
+}
+
+.footerCajaComentario div{
+    display: flex;
+    gap: 10px;
+}
+
+#cargarMas{
+    width: 100px;
+    scale: 1.2;
+    margin-top: 20px;
+}
+
+/**************  Footer  **************/
+
+footer{
+    margin-left: 80px;
+    padding: 30px;
+    background-color: rgba(62, 40, 91, 1);
+}
+
+.headerFooter{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "footerIZQ contenedorDER";
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footerIZQ{
+    grid-area: footerIZQ;
+    width: 800px;
+}
+
+.headerFooter div{
+    text-align: center;
 }
