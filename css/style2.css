@@ -75,7 +75,11 @@ header {
 }
 
 .logo img{
-    width: 170px;
+    width: 180px;
+}
+
+.logo:hover{
+    cursor: pointer;
 }
 
 
@@ -215,7 +219,7 @@ label {
     top: 80px;
 }
 
-.nav img{
+.categoria img{
     width: 40px;
 }
 
@@ -303,6 +307,7 @@ label {
 .seccionSuperior{
     display: grid;
     grid-template-areas: 
+    "breadCrumb ."
     "contenedorIZQ contenedorDER"
     "contenedorIZQ ."
     ;
@@ -312,13 +317,42 @@ label {
     margin-bottom: 30px;
 }
 
+.breadCrumb{
+    display: flex;
+    grid-area: breadCrumb;
+    gap: 7px;
+    position: absolute;
+}
+
+.breadCrumb p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .contenedorJuego{
-    width: 100%;
+    position: relative;
     height: 612px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: black;
     grid-area: contenedorJuego;
     border-radius: 16px;
     margin-bottom: 30px;
+}
+
+.contenedorJuego img{
+    max-width: 100%;
+    border-radius: 16px;
+}
+
+#btn-juego{
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 50px;
+    bottom: 60px;
 }
 
 .contenedorIZQ{
@@ -329,9 +363,34 @@ label {
 
 .contenedorDER{
     grid-area: contenedorDER;
+    display: flex;
+    flex-direction: column;
     max-width: 386px;
     height: 100%;
+    
 }
+
+.valoracionJuego{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    padding: 0px 30px 0px 30px;
+}
+
+.valoracionJuego svg:hover{
+    cursor: pointer;
+}
+
+#manitoBien:hover path{
+    fill: rgb(46, 165, 46);
+}
+
+#manitoMal:hover path{
+    fill: rgba(235, 59, 59, 1);
+}
+
 
 .valoracionJuego{
     background-color: rgba(45, 23, 72, 1);
@@ -346,16 +405,115 @@ label {
     width: 100%;
     height: 552px;
     border-radius: 16px;
+    color: white;
+    padding: 30px;
+}
 
+.contenedorAyuda p{
+    font-size: 13px;
+}
+
+.contenedorAyuda h4{
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.infoAyuda{
+    margin-bottom: 30px;
+}
+
+.controles p{
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .contenedorInfoJuego{
     grid-area: contenedorInfoJuego;
-    width: 100%;
-    height: 560px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     background-color: rgba(45, 23, 72, 1);
     border-radius: 16px;
+    color: white;
+    padding: 30px;
+}
 
+.headerInfoJuego{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(51, 29, 78, 1);
+    border-radius: 16px 16px 0px 0px;
+    margin: -30px -30px 0px -30px;
+    padding: 0px 30px 0px 30px;
+    height: 70px;
+}
+
+.btn-compartir{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 600;
+    background-color: rgba(25, 8, 47, 1);
+    border-radius: 50px;
+    padding: 10px 15px 10px 15px;
+}
+
+.btn-compartir:hover{
+    cursor: pointer;
+}
+
+.btn-compartir i{
+    font-size: 30px;
+}
+
+.infoJuego p{
+   line-height: 30px;
+   margin-top: 30px;
+   font-weight: 300;
+}
+
+.categoriasInfoJuego{
+    align-self: flex-start;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categoriaIndividualInfoJuego{
+    background-color: rgba(85, 61, 114, 1);
+    width: 150px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.categoriaIndividualInfoJuego:hover{
+    cursor: pointer;
+    background-color: rgba(51, 29, 78, 1);
+}
+
+.categoriaIndividualInfoJuego img{
+    width: 30px;
+}
+
+.multimediaInfoJuego{
+    background-color: rgba(51, 29, 78, 1);
+    border-radius: 16px;
+    width: 100%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.multimediaInfoJuego img{
+    width: 100%;
+    border-radius: 16px;
 }
 
 .seccionComentarios{
@@ -443,14 +601,23 @@ label {
 
 }
 
-.cartel:hover{
+#cartel-similares{
     background-color: rgba(85, 61, 114, 1);
-    cursor: pointer;
 }
 
-.cartelJuegos{
-    position: relative;
-    left: 15px;
+#cartel-similares:hover{
+    background-color: #2D1748;
+    cursor: pointer;
+
+}
+
+#cartel-ultimos-comentarios{
+    background-color: rgba(85, 61, 114, 1);
+}
+
+#cartel-comentarios-destacados:hover{
+    cursor: pointer;
+    background-color: rgba(85, 61, 114, 1);
 }
 
 
@@ -594,17 +761,19 @@ label {
     cursor: pointer;
 }
 
-i:hover{
-    scale: 1.1;
-}
-
-.fa-heart:hover{
-    color: red;
-}
-
 .footerCajaComentario div{
     display: flex;
     gap: 10px;
+}
+
+.footerCajaComentario svg:hover{
+    scale: 1.2;
+    cursor: pointer;
+}
+
+#likeIcon:hover path {
+    fill: rgba(235, 59, 59, 1); /* Cambia el color de relleno a rojo al hacer hover */
+    stroke: rgba(235, 59, 59, 1);
 }
 
 #cargarMas{
@@ -636,4 +805,84 @@ footer{
 
 .headerFooter div{
     text-align: center;
+}
+
+.social{
+    width: 65px;
+    height: 65px;
+    background-color: #007E45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 30px;
+    color: white;
+}
+
+.social:hover{
+    cursor: pointer;
+}
+
+.facebook{
+    background-color: rgba(24, 119, 242, 1);
+}
+
+.instagram{
+    background-color: rgba(228, 64, 95, 1);
+}
+
+.twitter{
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.facebook:hover{
+    background-color: rgb(19, 74, 146);
+}
+
+.instagram:hover{
+    background-color: rgb(141, 24, 45);
+}
+
+.twitter:hover{
+    background-color: rgb(10, 10, 10);
+}
+
+.footerDER{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footerFooter{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    color: white;
+}
+
+.NavFooter{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.NavFooter p{
+    color: rgba(48, 192, 127, 1);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.NavFooter li{
+    font-weight: 300;
+}
+
+.NavFooter li:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.NavFooter ul{
+    list-style-type: none;
 }

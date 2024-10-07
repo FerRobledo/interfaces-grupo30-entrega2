@@ -63,17 +63,158 @@
     <div class="contenedorPagina">
         <!-- Seccion superior-->
         <section class="seccionSuperior">
+            <div class="breadCrumb">
+                <p>Juegos</p>
+                <span>/</span>
+                <p>Juegos de Estrategia</p>
+                <span>/</span>
+                <p>Rick and Morty 4 en línea</p>
+            </div>
             <div class="contenedorIZQ">
                 <div class="contenedorJuego">
-                    <h1>JUEGO</h1>
+                    <img src="./images/Juego.png" alt="">
+                    <input type="button" class="btn" id="btn-juego" value="JUGAR">
                 </div>
                 <div class="contenedorInfoJuego">
-
+                    <div class="headerInfoJuego">
+                        <h1>Rick and Morty 4 en línea</h1>
+                        <div class="btn-compartir">
+                            <svg width="24" height="20" viewBox="0 0 21 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.09 12.51L13.92 16.49M13.91 5.51L7.09 9.49M19.5 4C19.5 5.65685 18.1569 7 16.5 7C14.8431 7 13.5 5.65685 13.5 4C13.5 2.34315 14.8431 1 16.5 1C18.1569 1 19.5 2.34315 19.5 4ZM7.5 11C7.5 12.6569 6.15685 14 4.5 14C2.84315 14 1.5 12.6569 1.5 11C1.5 9.34315 2.84315 8 4.5 8C6.15685 8 7.5 9.34315 7.5 11ZM19.5 18C19.5 19.6569 18.1569 21 16.5 21C14.8431 21 13.5 19.6569 13.5 18C13.5 16.3431 14.8431 15 16.5 15C18.1569 15 19.5 16.3431 19.5 18Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <p>Compartir</p>
+                        </div>
+                    </div>
+                    <div class="infoJuego">
+                        <p>
+                            <b>Valoración:</b> 8.6 (27.615 de votos) <br>
+                            <b>Desarrollador:</b> Giaco Games <br>
+                            <b>Publicado en:</b> agosto de 2024 <br>
+                            <b>Última actualización:</b> septiembre de 2024 <br>
+                            <b>Tecnología:</b> HTML5 (Unity WebGL) <br>
+                            <b> Plataforma:</b> Browser (desktop, mobile, tablet) <br>
+                        </p>
+                    </div>
+                    <div class="categoriasInfoJuego">
+                        <h3>Categorias</h3>
+                        <div class="categoria categoriaIndividualInfoJuego">
+                            <img src="./images/icono-estrategia.png" alt="estrategia">
+                            <p>Estrategia</p>
+                        </div>
+                    </div>
+                    <h3>Imágenes y videos</h3>
+                    <div class="multimediaInfoJuego">
+                        <img src="./images/4enlinea.jpg" alt="">
+                    </div>
                 </div>
             </div>
             <div class="contenedorDER">
-                <div class="valoracionJuego"></div>
-                <div class="contenedorAyuda"></div>
+                <div class="valoracionJuego">
+                    <p>¿Te gusta el juego?</p>
+                    <div style="display: flex; gap: 7px; align-items: center;">
+                        <svg id="manitoBien" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6 10L10 1C10.7956 1 11.5587 1.31607 12.1213 1.87868C12.6839 2.44129 13 3.20435 13 4V8H18.66C18.9499 7.99672 19.2371 8.0565 19.5016 8.17522C19.7661 8.29393 20.0016 8.46873 20.1919 8.68751C20.3821 8.90629 20.5225 9.16382 20.6033 9.44225C20.6842 9.72068 20.7035 10.0134 20.66 10.3L19.28 19.3C19.2077 19.7769 18.9654 20.2116 18.5979 20.524C18.2304 20.8364 17.7623 21.0055 17.28 21H6M6 10V21M6 10H3C2.46957 10 1.96086 10.2107 1.58579 10.5858C1.21071 10.9609 1 11.4696 1 12V19C1 19.5304 1.21071 20.0391 1.58579 20.4142C1.96086 20.7893 2.46957 21 3 21H6"
+                                stroke="#F3F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg id="manitoMal" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16 11.9999L12 20.9999C11.2044 20.9999 10.4413 20.6838 9.87871 20.1212C9.3161 19.5586 9.00003 18.7955 9.00003 17.9999V13.9999H3.34003C3.05012 14.0032 2.76297 13.9434 2.49846 13.8247C2.23395 13.7059 1.99842 13.5311 1.80817 13.3124C1.61793 13.0936 1.47753 12.8361 1.39669 12.5576C1.31586 12.2792 1.29652 11.9865 1.34003 11.6999L2.72003 2.69987C2.79235 2.22297 3.0346 1.78827 3.40212 1.47587C3.76965 1.16347 4.2377 0.99442 4.72003 0.999873H16M16 11.9999V0.999873M16 11.9999H18.67C19.236 12.0099 19.7859 11.8117 20.2154 11.4431C20.645 11.0744 20.9242 10.5608 21 9.99987V2.99987C20.9242 2.43893 20.645 1.92538 20.2154 1.55669C19.7859 1.18801 19.236 0.989864 18.67 0.999873H16"
+                                stroke="#F3F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="contenedorAyuda">
+                    <div class="infoAyuda">
+                        <h4>¿Cómo jugar?</h4>
+
+                        <p>Objetivo: Conecta 4 fichas del mismo personaje en línea, ya sea de forma horizontal, vertical
+                            o
+                            diagonal, antes que tu oponente.</p> <br>
+
+                        <p>Turnos: El juego es por turnos. Comienza el jugador con las de Rick. Luego, el siguiente
+                            turno
+                            es para el jugador con las fichas de Morty.</p> <br>
+
+                        <p>Coloca tu ficha: Haz clic en una columna del tablero para dejar caer tu ficha. La ficha caerá
+                            automáticamente hasta la posición más baja disponible en esa columna.
+                        </p> <br>
+                        <p>Ganar: El primer jugador que logre conectar 4 fichas de su personaje en una línea
+                            (horizontal,
+                            vertical o diagonal) gana la partida.
+                        </p> <br>
+                        <p>Empate: Si el tablero se llena completamente y nadie logra hacer una línea de 4, la partida
+                            termina en empate.
+                        </p>
+
+                    </div>
+                    <div class="controles">
+
+                        <div style="display: flex; gap: 7px; align-items: center; border-bottom: 1px solid rgba(62, 40, 91, 1); padding: 10px;">
+                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.62 5.51C18.4933 5.38334 15.7067 5.32 13.5533 5.32C13.5533 3.16667 13.49 0.253333 13.3633 0.19C13.11 -0.0633333 5.76333 -0.0633333 5.44666 0.19C5.32 0.316667 5.25667 3.10334 5.25667 5.32C3.10333 5.32 0.253333 5.38334 0.19 5.51C-0.0633333 5.76334 -0.0633333 13.11 0.19 13.49C0.316667 13.6167 3.10333 13.68 5.25667 13.68C5.25667 15.8333 5.32 18.7467 5.44666 18.81C5.7 19.0633 13.0467 19.0633 13.3633 18.81C13.49 18.6833 13.5533 15.8967 13.5533 13.68C15.7067 13.68 18.5567 13.6167 18.62 13.49C18.9367 13.1733 18.9367 5.76334 18.62 5.51Z"
+                                    fill="#C6C6C6" />
+                                <path
+                                    d="M11.843 3.73632C11.083 2.72299 10.1964 1.83631 9.3097 1.13965C8.42303 1.89965 7.53637 2.78632 6.77637 3.73632C8.48637 3.79965 10.133 3.79965 11.843 3.73632Z"
+                                    fill="#969FA3" />
+                                <path
+                                    d="M6.77637 15.1998C7.53637 16.2132 8.42303 17.0998 9.3097 17.7965C10.1964 17.0365 11.083 16.1498 11.843 15.1998C10.133 15.1365 8.5497 15.1365 6.77637 15.1998Z"
+                                    fill="#969FA3" />
+                                <path
+                                    d="M15.0099 11.97C16.0232 11.21 16.9099 10.3233 17.6066 9.43665C16.8466 8.54999 15.9599 7.66332 15.0099 6.90332C14.9466 8.67665 14.9466 10.26 15.0099 11.97Z"
+                                    fill="#969FA3" />
+                                <path
+                                    d="M3.60985 6.9668C2.59652 7.7268 1.70985 8.61346 1.01318 9.50013C1.77318 10.3868 2.65985 11.2735 3.60985 12.0335C3.67318 10.2601 3.67318 8.6768 3.60985 6.9668Z"
+                                    fill="#969FA3" />
+                                <path
+                                    d="M12.0968 9.43705C12.0968 7.85372 10.8301 6.65039 9.3101 6.65039C7.72677 6.65039 6.52344 7.91705 6.52344 9.43705C6.52344 10.9571 7.7901 12.2237 9.3101 12.2237C10.8934 12.287 12.0968 11.0204 12.0968 9.43705Z"
+                                    fill="#969FA3" />
+                            </svg>
+
+                            <p>Controles</p>
+                        </div>
+                        <div style="padding: 10px;">
+                            <svg width="30" height="42" viewBox="0 0 30 42" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.0385 41.1799C16.6789 41.1799 16.1312 41.1707 15.5717 41.1279C12.7978 40.9212 10.4566 39.8829 8.61429 38.0398C7.50036 36.9242 6.07729 34.9836 5.64045 32.0854C5.58417 31.7149 5.54637 31.3327 5.5178 30.9135C5.4758 30.2524 5.47412 25.3564 5.47412 25.2741C5.47412 25.0019 5.4758 17.4976 5.5178 16.8398C5.54553 16.4257 5.58333 16.0426 5.63877 15.6747C6.07477 12.7722 7.49868 10.8308 8.61429 9.71439C10.4566 7.87128 12.7978 6.83212 15.5717 6.62462C16.1312 6.58178 16.6789 6.57422 17.0385 6.57422C17.4006 6.57422 17.9474 6.58178 18.5094 6.62462C21.2808 6.83212 23.6204 7.87128 25.4644 9.71439C26.5817 10.8308 28.0014 12.7722 28.4382 15.673C28.4936 16.0409 28.534 16.4257 28.5609 16.8432C28.6029 17.4934 28.6045 24.9977 28.6045 25.2691C28.6045 25.3497 28.6045 30.2423 28.5609 30.9068C28.534 31.3302 28.4945 31.7141 28.4382 32.0812C28.0039 34.9777 26.5817 36.9183 25.4644 38.0356C23.6204 39.8778 21.2808 40.917 18.5094 41.1237C17.9474 41.1673 17.4006 41.1766 17.0385 41.1766"
+                                    fill="#E3E3E3" />
+                                <path
+                                    d="M17.0385 39.2913C16.6789 39.2913 16.1312 39.282 15.5717 39.2392C12.7978 39.0325 10.4566 37.9934 8.61429 36.1503C7.50036 35.0347 6.07729 33.0949 5.64045 30.1959C5.58417 29.8254 5.54637 29.444 5.5178 29.0248C5.4758 28.3628 5.47412 23.4669 5.47412 23.3863C5.47412 23.1149 5.4758 15.6098 5.5178 14.952C5.54553 14.5379 5.58333 14.1539 5.63877 13.786C6.07477 10.8852 7.49868 8.94385 8.61429 7.82656C10.4566 5.98429 12.7978 4.94345 15.5717 4.73679C16.1312 4.69395 16.6789 4.68555 17.0385 4.68555C17.4006 4.68555 17.9474 4.69395 18.5094 4.73679C21.2808 4.94345 23.6204 5.98345 25.4644 7.82656C26.5817 8.94385 28.0014 10.8852 28.4382 13.7843C28.4936 14.1531 28.534 14.5362 28.5609 14.9554C28.6029 15.6064 28.6045 23.1116 28.6045 23.3812C28.6045 23.4619 28.6045 28.3544 28.5609 29.0198C28.534 29.444 28.4945 29.8262 28.4382 30.1933C28.0039 33.0907 26.5817 35.0321 25.4644 36.1477C23.6204 37.99 21.2808 39.03 18.5094 39.2367C17.9474 39.2812 17.4006 39.2896 17.0385 39.2896"
+                                    fill="white" />
+                                <path
+                                    d="M17.0382 4.69102C17.4002 4.69102 17.9471 4.69942 18.5091 4.74226C21.2805 4.94892 23.6201 5.98892 25.464 7.83203C26.5813 8.94932 28.001 10.8907 28.4379 13.7898C28.4933 14.1586 28.5336 14.5416 28.5605 14.9608C28.6025 15.6119 28.6042 23.1171 28.6042 23.3867C28.6042 23.4052 28.6042 23.7017 28.6042 24.1428C28.6042 24.7762 28.6042 25.2139 28.6042 25.2752C28.6042 25.3558 28.6042 30.2484 28.5605 30.9129C28.5336 31.3363 28.4942 31.7202 28.4379 32.0873C28.0036 34.9838 26.5813 36.9244 25.464 38.0417C23.6184 39.884 21.2805 40.9231 18.5091 41.1298C17.9471 41.1726 17.4002 41.1819 17.0398 41.1819C16.6794 41.1819 16.1309 41.1726 15.5714 41.1298C12.7975 40.9231 10.4562 39.8848 8.61396 38.0417C7.50003 36.9261 6.07696 34.9855 5.64013 32.0873C5.58552 31.7168 5.54604 31.3346 5.51748 30.9154C5.47547 30.2543 5.47379 25.3584 5.47379 25.276C5.47379 25.2155 5.47379 24.7686 5.47547 24.1277C5.47379 23.6959 5.47379 23.4086 5.47379 23.3892C5.47379 23.1179 5.47547 15.6127 5.51748 14.955C5.5452 14.5408 5.583 14.1569 5.63845 13.7889C6.07444 10.8882 7.49835 8.9468 8.61396 7.82951C10.4562 5.98724 12.7975 4.9464 15.5697 4.73974C16.1309 4.69774 16.6786 4.68934 17.0382 4.68934M17.0382 3.86523C16.4862 3.86523 15.9704 3.88288 15.5067 3.91816C12.5329 4.13994 10.0169 5.25975 8.0318 7.2465C6.82714 8.45284 5.29318 10.5446 4.82526 13.6671C4.76898 14.046 4.72613 14.4501 4.69673 14.8995C4.65137 15.6001 4.65137 23.0675 4.65137 23.3842L4.65305 24.126L4.65137 25.271C4.65137 25.3206 4.65137 30.2585 4.69673 30.9616C4.72613 31.4102 4.76898 31.816 4.82694 32.2032C5.2957 35.3224 6.82882 37.4125 8.0318 38.618C10.0169 40.6039 12.5329 41.7229 15.5101 41.9455C16.0931 41.99 16.6635 41.9992 17.0398 41.9992C17.4145 41.9992 17.9849 41.99 18.5713 41.9455C21.5426 41.7229 24.0569 40.6047 26.0462 38.6188C27.2509 37.4142 28.7848 35.3224 29.2519 32.2032C29.309 31.8193 29.3527 31.4136 29.3813 30.9608C29.4249 30.2904 29.4266 25.7809 29.4266 25.2701V24.1377V23.3817C29.4266 23.065 29.4266 15.5993 29.3813 14.9054C29.3544 14.4677 29.3107 14.0653 29.2519 13.6663C28.784 10.5438 27.25 8.452 26.0462 7.24735C24.0586 5.26059 21.5443 4.14078 18.5696 3.919C18.1084 3.88372 17.5918 3.86523 17.0382 3.86523Z"
+                                    fill="#D1D1D1" />
+                                <path opacity="0.5"
+                                    d="M17.6583 4.69742C17.4525 4.69406 17.2441 4.69238 17.0341 4.69238C16.8249 4.69238 16.6166 4.69406 16.4116 4.69742V17.3236H17.6583V4.69742Z"
+                                    fill="#A0A0A0" />
+                                <path
+                                    d="M17.0383 20.6242C16.835 20.6242 16.635 20.6175 16.478 20.6074C16.2385 20.589 15.7925 20.5537 15.4329 20.1958C15.1229 19.885 15.0675 19.5162 15.0507 19.3961C15.0372 19.3121 15.0263 19.2146 15.0196 19.0978C15.0078 18.9231 15.002 17.9083 15.002 17.6773C15.002 17.4454 15.0087 13.7861 15.0196 13.6122C15.0263 13.4946 15.0372 13.3963 15.0507 13.314C15.0683 13.1922 15.1229 12.8234 15.4329 12.5142C15.7925 12.1538 16.2385 12.1194 16.478 12.1034C16.635 12.09 16.8333 12.085 17.0383 12.085C17.2433 12.085 17.4423 12.0908 17.6003 12.1034C17.8397 12.1202 18.2858 12.1547 18.6453 12.5142C18.9553 12.8234 19.0116 13.193 19.0276 13.314C19.0427 13.3971 19.0511 13.4954 19.0586 13.6122C19.0704 13.7861 19.0763 17.4446 19.0763 17.6773C19.0763 17.9083 19.0696 18.9231 19.0586 19.0978C19.0511 19.2155 19.0418 19.3129 19.0276 19.3961C19.0108 19.517 18.9553 19.885 18.6453 20.1958C18.2858 20.5537 17.8397 20.589 17.6003 20.6074C17.4432 20.6175 17.2441 20.6242 17.0383 20.6242Z"
+                                    fill="#A0A0A0" />
+                                <path
+                                    d="M11.0049 13.8398C9.44401 13.8398 8.17383 12.5713 8.17383 11.0096C8.17383 9.4496 9.44401 8.17773 11.0049 8.17773C12.5665 8.17773 13.8359 9.4496 13.8359 11.0096C13.8359 12.5713 12.5665 13.8398 11.0049 13.8398ZM11.0049 9.43616C10.1387 9.43616 9.43309 10.141 9.43309 11.0088C9.43309 11.8766 10.1387 12.5805 11.0049 12.5805C11.8718 12.5805 12.5775 11.8766 12.5775 11.0088C12.5775 10.141 11.8718 9.43616 11.0049 9.43616Z"
+                                    fill="#71C3EA" />
+                                <path opacity="0.5"
+                                    d="M11.005 16.6718C7.88411 16.6718 5.34375 14.1348 5.34375 11.0097C5.34375 7.88718 7.88075 5.34766 11.005 5.34766C14.1275 5.34766 16.667 7.88466 16.667 11.0097C16.667 14.1322 14.13 16.6718 11.005 16.6718ZM11.005 6.60608C8.57801 6.60608 6.60301 8.58108 6.60301 11.0089C6.60301 13.4367 8.57885 15.4125 11.005 15.4125C13.4344 15.4125 15.4086 13.4367 15.4086 11.0089C15.4086 8.58108 13.4336 6.60608 11.005 6.60608Z"
+                                    fill="#71C3EA" />
+                                <path opacity="0.3"
+                                    d="M11.0049 19.3459C6.40885 19.3459 2.67139 15.6076 2.67139 11.01C2.67139 6.41394 6.40885 2.6748 11.0049 2.6748C15.6025 2.6748 19.3408 6.41394 19.3408 11.01C19.34 15.6076 15.6017 19.3459 11.0049 19.3459ZM11.0049 3.93239C7.10274 3.93239 3.92645 7.107 3.92645 11.0108C3.92645 14.9146 7.10274 18.0884 11.0049 18.0884C14.9078 18.0884 18.0833 14.9146 18.0833 11.0108C18.0833 7.107 14.907 3.93239 11.0049 3.93239Z"
+                                    fill="#71C3EA" />
+                                <path opacity="0.1"
+                                    d="M11.0049 22.0182C4.93456 22.0182 0 17.0802 0 11.0049C0 4.93372 4.93792 0 11.0049 0C17.0752 0 22.0182 4.93792 22.0182 11.0049C22.0182 17.0752 17.0786 22.0182 11.0049 22.0182ZM11.0049 1.25926C5.62929 1.25926 1.2559 5.63265 1.2559 11.0091C1.2559 16.3855 5.62929 20.7597 11.0049 20.7597C16.3822 20.7597 20.7555 16.3855 20.7555 11.0091C20.7555 5.63265 16.3822 1.25926 11.0049 1.25926Z"
+                                    fill="#71C3EA" />
+                            </svg>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
         </section>
@@ -97,12 +238,10 @@
                     </div>
                 </div>
                 <div class="filtroComentarios">
-                    <div class="cartel">
-                        <img src="./images/icono-trending.png" alt="tendencias">
+                    <div class="cartel" id="cartel-ultimos-comentarios">
                         <p>Últimos comentarios</p>
                     </div>
-                    <div class="cartel">
-                        <img src="./images/icono-trending.png" alt="tendencias">
+                    <div class="cartel" id="cartel-comentarios-destacados">
                         <p>Comentarios destacados</p>
                     </div>
                 </div>
@@ -120,8 +259,21 @@
                     </div>
                     <div class="footerCajaComentario">
                         <div>
-                            <i class="fa-regular fa-heart"></i>
-                            <i class="fa-solid fa-share-nodes"></i>
+                            <svg id="likeIcon" width="24" height="20" viewBox="0 0 24 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.8401 2.60987C20.3294 2.09888 19.7229 1.69352 19.0555 1.41696C18.388 1.14039 17.6726 0.998047 16.9501 0.998047C16.2276 0.998047 15.5122 1.14039 14.8448 1.41696C14.1773 1.69352 13.5709 2.09888 13.0601 2.60987L12.0001 3.66987L10.9401 2.60987C9.90843 1.57818 8.50915 0.998582 7.05012 0.998582C5.59109 0.998582 4.19181 1.57818 3.16012 2.60987C2.12843 3.64156 1.54883 5.04084 1.54883 6.49987C1.54883 7.95891 2.12843 9.35818 3.16012 10.3899L12.0001 19.2299L20.8401 10.3899C21.3511 9.87912 21.7565 9.27269 22.033 8.60523C22.3096 7.93777 22.4519 7.22236 22.4519 6.49987C22.4519 5.77738 22.3096 5.06198 22.033 4.39452C21.7565 3.72706 21.3511 3.12063 20.8401 2.60987Z"
+                                    stroke="#1E1E1E" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            <svg width="24" height="20" viewBox="0 0 21 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.09 12.51L13.92 16.49M13.91 5.51L7.09 9.49M19.5 4C19.5 5.65685 18.1569 7 16.5 7C14.8431 7 13.5 5.65685 13.5 4C13.5 2.34315 14.8431 1 16.5 1C18.1569 1 19.5 2.34315 19.5 4ZM7.5 11C7.5 12.6569 6.15685 14 4.5 14C2.84315 14 1.5 12.6569 1.5 11C1.5 9.34315 2.84315 8 4.5 8C6.15685 8 7.5 9.34315 7.5 11ZM19.5 18C19.5 19.6569 18.1569 21 16.5 21C14.8431 21 13.5 19.6569 13.5 18C13.5 16.3431 14.8431 15 16.5 15C18.1569 15 19.5 16.3431 19.5 18Z"
+                                    stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
                             <p>Ver respuestas</p>
                         </div>
                         <div id="responder">
@@ -143,8 +295,20 @@
                     </div>
                     <div class="footerCajaComentario">
                         <div>
-                            <i class="fa-regular fa-heart"></i>
-                            <i class="fa-solid fa-share-nodes"></i>
+                            <svg id="likeIcon" width="24" height="20" viewBox="0 0 24 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.8401 2.60987C20.3294 2.09888 19.7229 1.69352 19.0555 1.41696C18.388 1.14039 17.6726 0.998047 16.9501 0.998047C16.2276 0.998047 15.5122 1.14039 14.8448 1.41696C14.1773 1.69352 13.5709 2.09888 13.0601 2.60987L12.0001 3.66987L10.9401 2.60987C9.90843 1.57818 8.50915 0.998582 7.05012 0.998582C5.59109 0.998582 4.19181 1.57818 3.16012 2.60987C2.12843 3.64156 1.54883 5.04084 1.54883 6.49987C1.54883 7.95891 2.12843 9.35818 3.16012 10.3899L12.0001 19.2299L20.8401 10.3899C21.3511 9.87912 21.7565 9.27269 22.033 8.60523C22.3096 7.93777 22.4519 7.22236 22.4519 6.49987C22.4519 5.77738 22.3096 5.06198 22.033 4.39452C21.7565 3.72706 21.3511 3.12063 20.8401 2.60987Z"
+                                    stroke="#1E1E1E" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <svg width="24" height="20" viewBox="0 0 21 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.09 12.51L13.92 16.49M13.91 5.51L7.09 9.49M19.5 4C19.5 5.65685 18.1569 7 16.5 7C14.8431 7 13.5 5.65685 13.5 4C13.5 2.34315 14.8431 1 16.5 1C18.1569 1 19.5 2.34315 19.5 4ZM7.5 11C7.5 12.6569 6.15685 14 4.5 14C2.84315 14 1.5 12.6569 1.5 11C1.5 9.34315 2.84315 8 4.5 8C6.15685 8 7.5 9.34315 7.5 11ZM19.5 18C19.5 19.6569 18.1569 21 16.5 21C14.8431 21 13.5 19.6569 13.5 18C13.5 16.3431 14.8431 15 16.5 15C18.1569 15 19.5 16.3431 19.5 18Z"
+                                    stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
                             <p>Ver respuestas</p>
                         </div>
                         <div id="responder">
@@ -156,13 +320,15 @@
                 <input type="button" class="btn" id="cargarMas" value="Cargar más">
             </div>
             <div class="contenedorDER">
-                <div class="cartel cartelJuegos" id="cartel-mismoAutor">
-                    <img src="./images/icono-trending.png" alt="juegos del mismo autor">
-                    <p>Del mismo autor</p>
-                </div>
-                <div class="cartel cartelJuegos" id="cartel-similares" itemid="similares">
-                    <img src="./images/icono-trending.png" alt="juegos similares">
-                    <p>Similares</p>
+                <div style="display: flex; justify-content: center; gap: 5px;">
+                    <div class="cartel cartelJuegos" id="cartel-mismoAutor">
+                        <img src="./images/autorIcon.png" alt="juegos del mismo autor">
+                        <p>Del mismo autor</p>
+                    </div>
+                    <div class="cartel cartelJuegos" id="cartel-similares" itemid="similares">
+                        <img src="./images/similarIcon.png" alt="juegos similares">
+                        <p>Similares</p>
+                    </div>
                 </div>
                 <div class="contenedorJuegosComentarios">
                     <div class="tarjeta-juego">
@@ -267,47 +433,58 @@
         </section>
     </div>
     <footer>
-        <div class="headerFooter" >
+        <div class="headerFooter">
             <div class="footerIZQ">
                 <h2 style="font-size: 55px; color: rgba(48, 192, 127, 1); margin-bottom: 10px;">Acerca de GameCity</h2>
-            <p style="font-size: 20px; color: white; font-weight: 300;">En <span style="font-weight: 600;">Game City</span>, siempre estamos en la búsqueda de nuevas experiencias para ofrecerte, 
-                trabajando para mejorar nuestra plataforma y expandir nuestro catálogo de juegos. 
-                Nuestro objetivo es convertirnos en tu lugar favorito para jugar, competir y disfrutar.</p>
-            <p style="font-size: 20px; color: rgba(48, 192, 127, 1); font-weight: 600; margin-top: 10px;">¡Únete a la aventura y forma parte de la comunidad Game City!</p>
+                <p style="font-size: 20px; color: white; font-weight: 300;">En <span style="font-weight: 600;">Game
+                        City</span>, siempre estamos en la búsqueda de nuevas experiencias para ofrecerte,
+                    trabajando para mejorar nuestra plataforma y expandir nuestro catálogo de juegos.
+                    Nuestro objetivo es convertirnos en tu lugar favorito para jugar, competir y disfrutar.</p>
+                <p style="font-size: 20px; color: rgba(48, 192, 127, 1); font-weight: 600; margin-top: 10px;">¡Únete a
+                    la aventura y forma parte de la comunidad Game City!</p>
             </div>
-            <div class="contenedorDER">
-                <img src="./images/GameCity.png" alt="" style="width: 250px; height: auto;">
+            <div class="contenedorDER footerDER">
+                <img src="./images/GameCity.png" alt="" class="logo"
+                    style="width: 250px; height: auto; margin-left: 0;">
+                <div style="display: flex; gap: 15px;">
+                    <div class="social facebook"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="social instagram"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="social twitter"><i class="fa-brands fa-x-twitter"></i></div>
+                </div>
             </div>
         </div>
-        <div class="footerFooter" style="background-color: rgba(45, 23, 72, 1); margin-left: -30px; margin-right: -30px; padding: 50px;">
-             <div class="NavFooter">
+        <div class="footerFooter"
+            style="background-color: rgba(45, 23, 72, 1); margin-left: -30px; margin-right: -30px; padding: 50px;">
+            <div class="NavFooter">
                 <p>Contacto</p>
                 <ul>
                     <li>contacto@gamecity.com</li>
                     <li>+54 11 4567-1234</li>
                 </ul>
-             </div>
-             <div class="NavFooter">
-                <p>Contacto</p>
+            </div>
+            <div class="NavFooter">
+                <p>Links Útiles</p>
                 <ul>
-                    <li>contacto@gamecity.com</li>
-                    <li>+54 11 4567-1234</li>
+                    <li>Términos y servicios</li>
+                    <li>Política de privacidad</li>
+                    <li>Trabaja con nosotros</li>
+
                 </ul>
-             </div>
-             <div class="NavFooter">
-                <p>Contacto</p>
+            </div>
+            <div class="NavFooter">
+                <p>Ayuda</p>
                 <ul>
-                    <li>contacto@gamecity.com</li>
-                    <li>+54 11 4567-1234</li>
+                    <li>Centro de soporte</li>
                 </ul>
-             </div>
-             <div class="NavFooter">
-                <p>Contacto</p>
+            </div>
+            <div class="NavFooter">
+                <p>Más jugados</p>
                 <ul>
-                    <li>contacto@gamecity.com</li>
-                    <li>+54 11 4567-1234</li>
+                    <li>Juegos de acción</li>
+                    <li>Juegos de estrategia</li>
+                    <li>Juegos clásicos</li>
                 </ul>
-             </div>
+            </div>
         </div>
     </footer>
 </body>
