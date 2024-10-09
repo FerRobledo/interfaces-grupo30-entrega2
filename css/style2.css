@@ -1,0 +1,888 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+input:hover{
+    cursor: pointer;
+}
+
+/************** HEADER  **************/
+
+header {
+    display: flex;
+    background-color: #3E285B;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    min-height: 80px;
+    max-height: 80px;
+    position: sticky; /* Esto hará que el header sea sticky */
+    top: 0; /* Se pegará al top de la ventana al hacer scroll */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.header-right {
+    display: flex;
+    width: 33%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-right img{
+    height: 45px;
+    width: 45px;
+}
+
+
+.header-btn-left{
+    width: 33%;
+    display: flex;
+    align-items: center;
+}
+
+.carrito{
+    width: 45px;
+    height: 45px;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    background-image: url(../images/carrito-de-compras.png);
+    background-size: cover;
+}
+
+.perfil{
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.circulo{
+    width: 20px;
+    height: 20px;
+    background-color: #EB3B3B;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.logo{
+    margin-left: 20px;
+}
+
+.logo img{
+    width: 180px;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+
+
+/************** Menu Hamburguesa  **************/
+
+
+.menu-toggle {
+    width: 38px;
+    height: 50px;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    margin-right: 24px;
+}
+
+.menu-toggle:hover {
+    color: #999;
+}
+
+.menu-toggle i,
+.menu-toggle i:after,
+.menu-toggle i:before {
+    display: block;
+    position: absolute;
+    height: 6px;
+    width: 35px;
+    right: 0;
+    background: #30C07F;
+    border-radius: 2px;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.menu-toggle i:after,
+.menu-toggle i:before {
+    content: '';
+}
+
+.menu-toggle i:after {
+    top: -24px;
+}
+
+.menu-toggle i:before {
+    top: -12px;
+}
+
+.menu-toggle i {
+    top: 34px;
+}
+
+.menu-toggle.open i:after {
+    transform: rotate(45deg);
+    top: -22px;
+}
+
+.menu-toggle.open i:before {
+    transform: rotate(-45deg);
+    top: -22px;
+}
+
+
+
+/**************  Buscador  **************/
+
+.buscador{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 250px;
+    border-radius: 100px;
+    background-color: #F5F5DC;
+    display: flex;
+
+}
+
+form img{
+    height: 20px;
+    padding: 10px;
+}
+
+input,
+button {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    border: 0;
+    color: #F5F5DC;
+}
+
+input[type=search] {
+    outline: none;
+    text-align: left;
+    width: 100%;
+    background: #F5F5DC;
+    border-radius: 100px;
+    appearance: none;
+    transition: all var(1);
+    z-index: 1;
+    position: relative;
+}
+
+button {
+    display: none;
+    position: absolute;
+    top: 0;
+    font-weight: bold;
+}
+
+label {
+    position: absolute;
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+
+/**************  Nav  **************/
+
+
+
+.nav{
+    height: 100%;
+    width: 80px;
+    background-color: #3E285B;
+    padding-top: 20px;
+    position: fixed;
+    top: 80px;
+}
+
+.categoria img{
+    width: 40px;
+}
+
+.categoria{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/**************  Tarjeta juegos  **************/
+
+
+.tarjeta-juego{
+    margin: 10px;
+    margin-top: 15px;
+    width: 180px;
+    height: 200px;
+}
+
+.header-juego{
+    width: 165px;
+    height: 110px;
+    position: relative;
+}
+
+.header-juego img{
+    object-fit: cover;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.etiqueta-gratis{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    top: 20px;
+    background: #E0B200;
+    width: 60px;
+    height: 25px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.footer-juego{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 50px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    background-color: #30C07F;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#btn-jugar{
+    margin-top: 6%;
+}
+
+.btn:hover{
+    background-color: #007E45;
+}
+
+/**************  PAG JUEGO  **************/
+
+.contenedorPagina{
+    margin-left: 80px;
+    padding: 30px;
+}
+
+/**************  Sección superior  **************/
+
+.seccionSuperior{
+    display: grid;
+    grid-template-areas: 
+    "breadCrumb ."
+    "contenedorIZQ contenedorDER"
+    "contenedorIZQ ."
+    ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.breadCrumb{
+    display: flex;
+    grid-area: breadCrumb;
+    gap: 7px;
+    position: absolute;
+}
+
+.breadCrumb p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.contenedorJuego{
+    position: relative;
+    height: 612px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    grid-area: contenedorJuego;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.contenedorJuego img{
+    max-width: 100%;
+    border-radius: 16px;
+}
+
+#btn-juego{
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 50px;
+    bottom: 60px;
+}
+
+.contenedorIZQ{
+    grid-area: contenedorIZQ;
+    min-width: 800px;
+    width: 100%;
+}
+
+.contenedorDER{
+    grid-area: contenedorDER;
+    display: flex;
+    flex-direction: column;
+    max-width: 386px;
+    height: 100%;
+    
+}
+
+.valoracionJuego{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    padding: 0px 30px 0px 30px;
+}
+
+.valoracionJuego svg:hover{
+    cursor: pointer;
+}
+
+#manitoBien:hover path{
+    fill: rgb(46, 165, 46);
+}
+
+#manitoMal:hover path{
+    fill: rgba(235, 59, 59, 1);
+}
+
+
+.valoracionJuego{
+    background-color: rgba(45, 23, 72, 1);
+    width: 100%;
+    height: 50px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+}
+
+.contenedorAyuda{
+    background-color: rgba(45, 23, 72, 1);
+    width: 100%;
+    height: 552px;
+    border-radius: 16px;
+    color: white;
+    padding: 30px;
+}
+
+.contenedorAyuda p{
+    font-size: 13px;
+}
+
+.contenedorAyuda h4{
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.infoAyuda{
+    margin-bottom: 30px;
+}
+
+.controles p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contenedorInfoJuego{
+    grid-area: contenedorInfoJuego;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    background-color: rgba(45, 23, 72, 1);
+    border-radius: 16px;
+    color: white;
+    padding: 30px;
+}
+
+.headerInfoJuego{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(51, 29, 78, 1);
+    border-radius: 16px 16px 0px 0px;
+    margin: -30px -30px 0px -30px;
+    padding: 0px 30px 0px 30px;
+    height: 70px;
+}
+
+.btn-compartir{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 600;
+    background-color: rgba(25, 8, 47, 1);
+    border-radius: 50px;
+    padding: 10px 15px 10px 15px;
+}
+
+.btn-compartir:hover{
+    cursor: pointer;
+}
+
+.btn-compartir i{
+    font-size: 30px;
+}
+
+.infoJuego p{
+   line-height: 30px;
+   margin-top: 30px;
+   font-weight: 300;
+}
+
+.categoriasInfoJuego{
+    align-self: flex-start;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categoriaIndividualInfoJuego{
+    background-color: rgba(85, 61, 114, 1);
+    width: 150px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.categoriaIndividualInfoJuego:hover{
+    cursor: pointer;
+    background-color: rgba(51, 29, 78, 1);
+}
+
+.categoriaIndividualInfoJuego img{
+    width: 30px;
+}
+
+.multimediaInfoJuego{
+    background-color: rgba(51, 29, 78, 1);
+    border-radius: 16px;
+    width: 100%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.multimediaInfoJuego img{
+    width: 100%;
+    border-radius: 16px;
+}
+
+.seccionComentarios{
+    display: grid;
+    grid-template-areas: 
+    "contenedorComentarios contenedorDER"
+    ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 30px;
+    background-color: rgba(25, 8, 47, 1);
+    min-height: 880px;
+    height: 100%;
+    margin: 0px -30px -30px -30px;
+    padding: 30px;
+    align-items: center;
+}
+
+.contenedorComentarios{
+    grid-area: contenedorComentarios;
+    width: 800px;
+    height: 100%;
+}
+
+.contenedorJuegosComentarios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 16px;
+    background-color: #2D1748;
+    justify-items: center;
+    padding-bottom: 20px;
+}
+
+.contenedorJuegosComentarios .tarjeta-juego{
+    margin: 0;
+    scale: 0.9;
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+}
+
+.contenedorJuegosComentarios .tarjeta-juego .footer-juego p{
+    color: white !important;
+    font-weight: 500;
+}
+
+/**************  Cartel  **************/
+
+.tendencias{
+    background-color: #19082F;
+    margin-left: 80px;
+    width: 100% - 80px;
+    height: 250px;
+    padding-top: 20px;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.cartel{
+    display: inline-flex;
+    color: white;
+    background-color: #2D1748;
+    gap: 5px;
+    height: 40px;
+    padding: 15px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.slides-tendencias{
+    width: 100%;
+    height: 160px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.cartel img{
+    width: 25px;
+    height: 25px;
+
+}
+
+#cartel-similares{
+    background-color: rgba(85, 61, 114, 1);
+}
+
+#cartel-similares:hover{
+    background-color: #2D1748;
+    cursor: pointer;
+
+}
+
+#cartel-ultimos-comentarios{
+    background-color: rgba(85, 61, 114, 1);
+}
+
+#cartel-comentarios-destacados:hover{
+    cursor: pointer;
+    background-color: rgba(85, 61, 114, 1);
+}
+
+
+
+/**************  Comentarios  **************/
+
+.contenedorComentarios{
+    min-width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.headerCajaComentarios{
+    color: white;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+    align-self: flex-start;
+    align-items: center;
+}
+
+.cajaComentario{
+    width: 100%;
+    background-color: white;
+    border-radius: 16px;
+}
+
+.headerComentario{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: solid 1px rgba(25, 8, 47, 1);
+    padding: 10px;
+}
+
+.headerComentario .perfilUsuario img{
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+}
+
+.headerComentario .perfilUsuario img:hover{
+    cursor: pointer;
+}
+
+.headerComentario .perfilUsuario p {
+    font-weight: 600;
+}
+
+.headerComentario > p {
+    font-weight: 400;
+    color: gray;
+}
+
+.cuerpoCajaComentario{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "p ."
+    ". input"
+    ;
+    padding: 10px;
+    height: 90px;
+}
+
+
+.cuerpoCajaComentario p{
+    color: gray;
+}
+
+.comentarioUsuario .cuerpoCajaComentario p{
+    grid-area: p;
+    color: rgb(66, 66, 66);
+
+}
+
+.cuerpoCajaComentario input{
+    grid-area: input;
+    justify-self: end;
+    align-self: end;
+    width: 70px;
+}
+
+.filtroComentarios{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 3px;
+    margin-top: 50px;
+    border-bottom: 1px solid rgba(85, 61, 114, 1);
+}
+
+.comentarioUsuario{
+    margin-top: 35px;
+    scale: 0.9;
+}
+
+.perfilUsuario{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.perfilUsuario p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.comentarioUsuario .cuerpoCajaComentario{
+    display: flex;
+    padding: 20px;
+}
+
+.comentarioUsuario .footerCajaComentario{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: 1px solid rgba(45, 23, 72, 1);
+}
+
+.comentarioUsuario .footerCajaComentario p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.comentarioUsuario .footerCajaComentario img:hover{
+    cursor: pointer;
+}
+
+.comentarioUsuario .footerCajaComentario #responder{
+    gap: 5px;
+}
+
+.footerCajaComentario i{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.footerCajaComentario div{
+    display: flex;
+    gap: 10px;
+}
+
+.footerCajaComentario svg:hover{
+    scale: 1.2;
+    cursor: pointer;
+}
+
+#likeIcon:hover path {
+    fill: rgba(235, 59, 59, 1); /* Cambia el color de relleno a rojo al hacer hover */
+    stroke: rgba(235, 59, 59, 1);
+}
+
+#cargarMas{
+    width: 100px;
+    scale: 1.2;
+    margin-top: 20px;
+}
+
+/**************  Footer  **************/
+
+footer{
+    margin-left: 80px;
+    padding: 30px;
+    background-color: rgba(62, 40, 91, 1);
+}
+
+.headerFooter{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "footerIZQ contenedorDER";
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footerIZQ{
+    grid-area: footerIZQ;
+    width: 800px;
+}
+
+.headerFooter div{
+    text-align: center;
+}
+
+.social{
+    width: 65px;
+    height: 65px;
+    background-color: #007E45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 30px;
+    color: white;
+}
+
+.social:hover{
+    cursor: pointer;
+}
+
+.facebook{
+    background-color: rgba(24, 119, 242, 1);
+}
+
+.instagram{
+    background-color: rgba(228, 64, 95, 1);
+}
+
+.twitter{
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.facebook:hover{
+    background-color: rgb(19, 74, 146);
+}
+
+.instagram:hover{
+    background-color: rgb(141, 24, 45);
+}
+
+.twitter:hover{
+    background-color: rgb(10, 10, 10);
+}
+
+.footerDER{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footerFooter{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    color: white;
+}
+
+.NavFooter{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.NavFooter p{
+    color: rgba(48, 192, 127, 1);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.NavFooter li{
+    font-weight: 300;
+}
+
+.NavFooter li:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.NavFooter ul{
+    list-style-type: none;
+}
