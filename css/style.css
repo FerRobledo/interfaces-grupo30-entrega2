@@ -9,14 +9,21 @@ header {
     display: flex;
     background-color: #3E285B;
     align-items: center;
+    min-height: 80px;
+    max-height: 80px;
     padding-left: 20px;
     padding-right: 20px;
+    width: 100%;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 10;
 }
 
 .header-right {
     display: flex;
     width: 33%;
+    padding-right: 30px;
     justify-content: flex-end;
     align-items: center;
 }
@@ -39,8 +46,7 @@ header {
     margin-right: 30px;
     margin-left: 30px;
     color: white;
-    display: flex;
-    flex-direction: row-reverse;
+    position: relative;
     background-image: url(../images/carrito-de-compras.png);
     background-size: cover;
 }
@@ -52,11 +58,13 @@ header {
 }
 
 .circulo{
+    position: absolute;
     width: 20px;
     height: 20px;
     background-color: #EB3B3B;
     border-radius: 50%;
     text-align: center;
+    right: -10px;
 }
 
 .logo{
@@ -73,7 +81,7 @@ header {
 
 
 .menu-toggle {
-    width: 38px;
+    width: 40px;
     height: 50px;
     transform: rotate(0deg);
     transition: .5s ease-in-out;
@@ -92,7 +100,7 @@ header {
     display: block;
     position: absolute;
     height: 6px;
-    width: 35px;
+    width: 40px;
     right: 0;
     background: #30C07F;
     border-radius: 2px;
@@ -198,7 +206,8 @@ label {
     width: 80px;
     background-color: #3E285B;
     padding-top: 20px;
-    position: absolute;
+    top: 80px;
+    position: fixed;
 }
 
 .nav img{
@@ -217,6 +226,7 @@ label {
 .tendencias{
     background-color: #19082F;
     margin-left: 80px;
+    margin-top: 80px;
     width: 100% - 80px;
     height: 250px;
     padding-top: 20px;
@@ -255,27 +265,19 @@ label {
 
 /**************  Carruseles juegos  **************/
 
-
-/*** FONDO GUIA **/
-/*#fondo{
-    background-image: url(../images/fondo-seguir.png);
-    background-size: contain;
-}*/
-
 .carruseles-juegos{
-    margin-left: 80px;
-    width: 100% - 80px;
+    padding-left: 80px;
     background-color: #F5F5DC;
     height: 100rem;
-    padding: 40px
 }
 
 .carrusel{
     height: 200px;
+    padding: 40px;
 }
 
-.carrusel img{
-    height: 25px;
+.carrusel-img{
+    height: 30px;
 }
 
 .header-carrusel{
@@ -290,7 +292,6 @@ label {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 140px;
 }
 
 .img-carrusel{
@@ -298,9 +299,10 @@ label {
     align-items: center;
     justify-content: center;
     background-color: #3E285B;
-    height: 40px;
-    width: 40px;
+    height: 48px;
+    width: 48px;
     border-radius: 50%;
+    margin-right: 8px;
 }
 
 .btn-ver-todos{
@@ -311,6 +313,7 @@ label {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 10px;
+    cursor: pointer;
 }
 
 .btn-ver-todos:hover{
@@ -320,25 +323,108 @@ label {
 
 /**************  Tarjeta juegos  **************/
 
-
-.tarjeta-juego{
-    margin: 10px;
-    margin-top: 15px;
-    width: 180px;
+.tarjetas{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 14px;
+    width: 100%;
     height: 200px;
 }
 
-.header-juego{
-    width: 165px;
-    height: 110px;
-    position: relative;
+
+.tarjeta-juego{
+    width: 170px;
 }
 
-.header-juego img{
-    object-fit: content;
+.header-juego::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%; /* Ajusta la altura del sombreado */
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+
+.header-juego::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%; /* Ajusta la altura del sombreado */
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba(45, 23, 72, 0.852) 17%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Transición más lenta y suave */
+}
+   
+.gradient::after {
+    opacity: 1;
+}
+
+
+.header-juego{
+    height: 110px;
+    position: relative;
+    border-radius: 15px;
+}
+
+.carrito-ok{
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: matrix(0,0,0,0,-20,20);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-color: #1EB470;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.rotate {
+    animation: spin 1s linear forwards;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: matrix(0.2,0,0,0.2,-20,12);
+    }
+    25% { 
+        transform: matrix(-0.4,0,0,0.4,-20,4);
+    }
+    50% {  
+        transform: matrix(0.6,0,0,0.6,-20,-4);
+    }
+    75% { 
+        transform: matrix(-0.8,0,0,0.8,-20,-12);
+    }
+    100% {  
+        transform: matrix(1,0,0,1,-20,-20);
+    }
+}
+
+.carrito-ok img{
+    width: 25px;
+    height: 25px;
+}
+
+.imagen-juego{
     border-radius: 15px;
     width: 100%;
     height: 100%;
+    display: block;
 }
 
 .etiqueta-gratis{
@@ -355,6 +441,25 @@ label {
     border-bottom-right-radius: 5px;
 }
 
+.etiqueta-precio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    right: 0;
+    background: #007E45;
+    width: 40px;
+    height: 25px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 1;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+
 .footer-juego{
     margin-top: 5px;
     display: flex;
@@ -366,15 +471,41 @@ label {
     font-size: 14px;
 }
 
+.btn-juego{
+    display: flex;
+    margin-top: 6%;
+}
+
 .btn-jugar{
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 12px;
     background-color: #30C07F;
-    margin-top: 6%;
-    width: 50px;
+    width: 45px;
     height: 30px;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-carrito{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3E285B;
+    width: 45px;
+    height: 30px;
+    margin-left: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-carrito img{
+    width: 18px;
+    height: 16px;
+}
+
+.btn-carrito:hover{
+    background-color: #19082F;
 }
 
 .btn-jugar:hover{
