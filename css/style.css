@@ -1,6 +1,8 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
 }
 
 /************** HEADER  **************/
@@ -9,23 +11,24 @@ header {
     display: flex;
     background-color: #3E285B;
     align-items: center;
-    min-height: 80px;
-    max-height: 80px;
     padding-left: 20px;
     padding-right: 20px;
-    width: 100%;
     justify-content: space-between;
-    position: fixed;
+    width: 100%;
+    min-height: 80px;
+    max-height: 80px;
+    position: sticky; 
     top: 0;
-    z-index: 2;
+    z-index: 1000; 
 }
+
 
 .header-right {
     display: flex;
     width: 33%;
-    padding-right: 30px;
     justify-content: flex-end;
     align-items: center;
+    gap: 20px;
 }
 
 .header-right img{
@@ -41,20 +44,24 @@ header {
 }
 
 .carrito{
-    width: 45px;
+    width: 50px;
     height: 45px;
-    margin-right: 30px;
-    margin-left: 30px;
     color: white;
     position: relative;
-    background-image: url(../images/carrito-de-compras.png);
-    background-size: cover;
+    padding-right: 5px;
 }
 
 .perfil{
-    display: flex;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
+}
+
+.carrito:hover{
+    cursor: pointer;
+}
+
+.perfil:hover{
+    cursor: pointer;
 }
 
 .circulo{
@@ -64,15 +71,22 @@ header {
     background-color: #EB3B3B;
     border-radius: 50%;
     text-align: center;
-    right: -10px;
+    top: 0;
+    right: 0;
 }
 
 .logo{
     margin-left: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .logo img{
     width: 170px;
+}
+
+.logo img:hover{
+    cursor: pointer;
 }
 
 
@@ -87,7 +101,7 @@ header {
     transition: .5s ease-in-out;
     cursor: pointer;
     display: flex;
-    margin-right: 24px;
+    margin-right: 20px;
 }
 
 .menu-toggle:hover {
@@ -139,29 +153,27 @@ header {
 
 /**************  Buscador  **************/
 
-.buscador{
+.header-buscador{
     width: 33%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-form {
-    width: 250px;
-    border-radius: 100px;
-    background-color: #F5F5DC;
+.header-buscador img{
+    width: 20px;
+    z-index: 2;
+}
+
+.buscador{
     display: flex;
-
+    align-items: center;
+    background-color: #F5F5DC;
+    border-radius: 100px;
+    padding: 0px 5px 0px 5px;
 }
 
-form img{
-    height: 20px;
-    padding: 10px;
-}
-
-input,
-button {
-    font-family: "Inter", sans-serif;
+input{
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
@@ -172,30 +184,12 @@ button {
 
 input[type=search] {
     outline: none;
-    text-align: left;
     width: 100%;
+    padding: 10px 5px 10px 5px;
     background: #F5F5DC;
     border-radius: 100px;
     appearance: none;
-    transition: all var(1);
     z-index: 1;
-    position: relative;
-}
-
-button {
-    display: none;
-    position: absolute;
-    top: 0;
-    font-weight: bold;
-}
-
-label {
-    position: absolute;
-    padding: 0;
-    border: 0;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
 }
 
 
@@ -208,6 +202,9 @@ label {
     padding-top: 20px;
     top: 80px;
     position: fixed;
+    z-index: 1;
+    transition: width 0.5s ease;
+    
 }
 
 .nav img{
@@ -216,8 +213,36 @@ label {
 
 .categoria{
     display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
+    justify-content: flex-start;
+    padding: 15px 0px 15px 20px;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    gap: 10px;
+    
+}
+
+.categoria:hover{
+    background-color: rgba(45, 23, 72, 1);
+    cursor: pointer;
+}
+
+.navExtendido{
+    width: 300px;
+}
+
+.categoria p{
+    display: none;
+    transition: opacity 0.5s ease;
+}
+
+.categoriaExtendida{
+    justify-content: start;
+    padding: 15px 15px 15px 20px;
+}
+
+.nombreExtendido{
+    display: block !important;
 }
 
 
@@ -226,7 +251,6 @@ label {
 .tendencias{
     background-color: #19082F;
     margin-left: 80px;
-    margin-top: 80px;
     width: 100% - 80px;
     height: 250px;
     padding-top: 20px;
