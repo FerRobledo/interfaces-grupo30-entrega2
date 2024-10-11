@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
 }
 
 /************** HEADER  **************/
@@ -15,7 +17,7 @@ header {
     padding-right: 20px;
     width: 100%;
     justify-content: space-between;
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 2;
 }
@@ -137,58 +139,45 @@ header {
 
 /**************  Buscador  **************/
 
-.buscador {
-    width: 250px;
+.header-buscador{
+    width: 33%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #F5F5DC;
-    padding: 10px;
-    border-radius: 20px;
-
 }
 
-#lupa {
+.header-buscador img{
     width: 20px;
+    z-index: 2;
 }
 
-input,
-button {
-    font-family: "Inter", sans-serif;
+.buscador{
+    display: flex;
+    align-items: center;
+    background-color: #F5F5DC;
+    border-radius: 100px;
+    padding: 0px 5px 0px 5px;
+}
+
+input{
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
     font-size: 16px;
     border: 0;
+    color: #F5F5DC;
 }
 
 input[type=search] {
     outline: none;
-    text-align: left;
     width: 100%;
-    margin-left: 6px;
-    appearance: none;
-    transition: all var(1);
-    z-index: 1;
-    position: relative;
+    padding: 10px 5px 10px 5px;
     background: #F5F5DC;
+    border-radius: 100px;
+    appearance: none;
+    z-index: 1;
 }
 
-button {
-    display: none;
-    position: absolute;
-    top: 0;
-    font-weight: bold;
-}
-
-label {
-    position: absolute;
-    padding: 0;
-    border: 0;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-}
 
 
 /**************  Nav  **************/
@@ -244,44 +233,6 @@ label {
 }
 
 
-/**************  Tendencias  **************/
-
-.tendencias {
-    position: relative;
-    background-color: #19082F;
-    margin-left: 80px;
-    margin-top: 80px;
-    height: 250px;
-    padding-top: 50px;
-    padding-left: 120px;
-    padding-right: 120px;
-}
-
-.cartel-tendencias {
-    display: flex;
-    position: absolute;
-    color: white;
-    background-color: #2D1748;
-    margin-left: 20px;
-    width: 120px;
-    height: 25px;
-    padding: 10px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    align-items: center;
-    justify-content: space-around;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    top: 0;
-    left: 0;
-}
-
-
-.cartel-tendencias img {
-    height: 100%;
-}
-
 /**************  Carrusel tendencias  **************/
 
 
@@ -310,9 +261,7 @@ label {
     transition: all 0.3s ease;
     position: absolute;
     display: inline-block;
-    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-        7px 7px 20px 0px rgba(0, 0, 0, .1),
-        4px 4px 5px 0px rgba(0, 0, 0, .1);
+
     outline: none;
 }
 
@@ -362,6 +311,10 @@ label {
 }
 
 .btn-3:hover:after {
+    width: 100%;
+}
+
+.btn-3 span{
     width: 100%;
 }
 
@@ -475,12 +428,11 @@ label {
 .carruseles-juegos {
     padding-left: 80px;
     background-color: #F5F5DC;
-    height: 100rem;
 }
 
 .carrusel {
-    height: 200px;
-    padding: 40px;
+    padding: 20px 40px 20px 40px;
+
 }
 
 .carrusel img {
@@ -490,6 +442,7 @@ label {
 .header-carrusel {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .etiqueta-carrusel {
@@ -533,7 +486,6 @@ label {
 
 .tarjetas {
     display: flex;
-    flex-wrap: wrap;
     padding-top: 14px;
     width: 100%;
 
@@ -599,8 +551,8 @@ label {
     background: #007E45;
     width: 40px;
     height: 25px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     z-index: 1;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -622,7 +574,7 @@ label {
     margin-top: 6%;
 }
 
-.btn-jugar {
+.btn {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 12px;
@@ -646,16 +598,505 @@ label {
 }
 
 .btn-carrito img {
-    width: 18px;
-    height: 16px;
+    width: 24px;
+    height: 22px;
 }
 
 .btn-carrito:hover {
     background-color: #19082F;
 }
 
-.btn-jugar:hover {
+.btn:hover {
     background-color: #007E45;
+}
+
+/**************  PAG JUEGO  **************/
+
+.contenedorPagina{
+    margin-left: 80px;
+    padding: 30px;
+}
+
+/**************  Sección superior  **************/
+
+.seccionSuperior{
+    display: grid;
+    grid-template-areas: 
+    "breadCrumb ."
+    "contenedorIZQ contenedorDER"
+    "contenedorIZQ ."
+    ;
+    grid-template-columns: 7fr 3fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.breadCrumb{
+    display: flex;
+    grid-area: breadCrumb;
+    gap: 7px;
+    position: absolute;
+}
+
+.breadCrumb p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.contenedorJuego{
+    position: relative;
+    height: 612px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    grid-area: contenedorJuego;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.contenedorJuego img{
+    border-radius: 16px;
+}
+
+
+#btn-juego{
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 50px;
+    bottom: 60px;
+}
+
+.contenedorIZQ{
+    grid-area: contenedorIZQ;
+    min-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedorDER{
+    grid-area: contenedorDER;
+    display: flex;
+    flex-direction: column;
+    height: 100%;    
+}
+
+.valoracionJuego{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    padding: 0px 30px 0px 30px;
+}
+
+.valoracionJuego svg:hover{
+    cursor: pointer;
+}
+
+#manitoBien:hover path{
+    fill: rgb(46, 165, 46);
+}
+
+#manitoMal:hover path{
+    fill: rgba(235, 59, 59, 1);
+}
+
+
+.valoracionJuego{
+    background-color: rgba(45, 23, 72, 1);
+    width: 100%;
+    height: 50px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+}
+
+.contenedorAyuda{
+    background-color: rgba(45, 23, 72, 1);
+    width: 100%;
+    height: 552px;
+    border-radius: 16px;
+    color: white;
+    padding: 30px;
+}
+
+.contenedorAyuda p{
+    font-size: 13px;
+}
+
+.contenedorAyuda h4{
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.infoAyuda{
+    margin-bottom: 30px;
+}
+
+.controles p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contenedorInfoJuego{
+    grid-area: contenedorInfoJuego;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    background-color: rgba(45, 23, 72, 1);
+    border-radius: 16px;
+    color: white;
+    padding: 30px;
+}
+
+.headerInfoJuego{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(51, 29, 78, 1);
+    border-radius: 16px 16px 0px 0px;
+    margin: -30px -30px 0px -30px;
+    padding: 0px 30px 0px 30px;
+    height: 70px;
+}
+
+.btn-compartir{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 600;
+    background-color: rgba(25, 8, 47, 1);
+    border-radius: 50px;
+    padding: 10px 15px 10px 15px;
+}
+
+.btn-compartir:hover{
+    cursor: pointer;
+}
+
+.btn-compartir i{
+    font-size: 30px;
+}
+
+.infoJuego p{
+   line-height: 30px;
+   margin-top: 30px;
+   font-weight: 300;
+}
+
+.categoriasInfoJuego{
+    align-self: flex-start;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categoriaIndividualInfoJuego{
+    background-color: rgba(85, 61, 114, 1);
+    width: 150px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.categoriaIndividualInfoJuego:hover{
+    cursor: pointer;
+    background-color: rgba(51, 29, 78, 1);
+}
+
+.categoriaIndividualInfoJuego img{
+    width: 30px;
+}
+
+.categoriaIndividualInfoJuego p{
+    display: block;
+}
+
+.multimediaInfoJuego{
+    background-color: rgba(51, 29, 78, 1);
+    border-radius: 16px;
+    width: 100%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.multimediaInfoJuego img{
+    width: 100%;
+    border-radius: 16px;
+}
+
+.seccionComentarios{
+    display: grid;
+    grid-template-areas: 
+    "contenedorIZQ contenedorDER"
+    ;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: auto;
+    gap: 30px;
+    background-color: rgba(25, 8, 47, 1);
+    min-height: 880px;
+    height: 100%;
+    margin: 0px -30px -30px -30px;
+    padding: 30px;
+    align-items: center;
+}
+
+
+.contenedorJuegosComentarios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 16px;
+    background-color: #2D1748;
+    justify-items: center;
+    padding-bottom: 20px;
+}
+
+.contenedorJuegosComentarios .tarjeta-juego{
+    margin: 0;
+    scale: 0.9;
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+}
+
+.contenedorJuegosComentarios .tarjeta-juego .footer-juego p{
+    color: white !important;
+    font-weight: 500;
+}
+
+/**************  Cartel  **************/
+
+
+.tendencias {
+    position: relative;
+    background-color: #19082F;
+    margin-left: 80px;
+    height: 300px;
+    padding-top: 50px;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.cartel{
+    display: inline-flex;
+    color: white;
+    background-color: #2D1748;
+    gap: 5px;
+    height: 40px;
+    padding: 15px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.slides-tendencias{
+    width: 100%;
+    height: 160px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.cartel img{
+    width: 25px;
+    height: 25px;
+
+}
+
+#cartel-tendencias{
+    position: absolute;
+    left: 40px;
+    top: 0;
+    border-radius: 0px 0px 20px 20px;
+
+}
+
+#cartel-similares{
+    background-color: rgba(85, 61, 114, 1);
+}
+
+#cartel-similares:hover{
+    background-color: #2D1748;
+    cursor: pointer;
+
+}
+
+#cartel-ultimos-comentarios{
+    background-color: rgba(85, 61, 114, 1);
+}
+
+#cartel-comentarios-destacados:hover{
+    cursor: pointer;
+    background-color: rgba(85, 61, 114, 1);
+}
+
+
+
+/**************  Comentarios  **************/
+
+
+
+.headerCajaComentarios{
+    color: white;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+    align-self: flex-start;
+    align-items: center;
+}
+
+.cajaComentario{
+    width: 100%;
+    background-color: white;
+    border-radius: 16px;
+    scale: 0.9;
+}
+
+.headerComentario{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: solid 1px rgba(25, 8, 47, 1);
+    padding: 10px;
+}
+
+.headerComentario .perfilUsuario img{
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+}
+
+.headerComentario .perfilUsuario img:hover{
+    cursor: pointer;
+}
+
+.headerComentario .perfilUsuario p {
+    font-weight: 600;
+}
+
+.headerComentario > p {
+    font-weight: 400;
+    color: gray;
+}
+
+.cuerpoCajaComentario{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "p ."
+    ". input"
+    ;
+    padding: 10px;
+    height: 90px;
+}
+
+
+.cuerpoCajaComentario p{
+    color: gray;
+}
+
+.comentarioUsuario .cuerpoCajaComentario p{
+    grid-area: p;
+    color: rgb(66, 66, 66);
+
+}
+
+.cuerpoCajaComentario input{
+    grid-area: input;
+    justify-self: end;
+    align-self: end;
+    width: 70px;
+}
+
+.filtroComentarios{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 3px;
+    margin-top: 50px;
+    border-bottom: 1px solid rgba(85, 61, 114, 1);
+}
+
+.comentarioUsuario{
+    margin-top: 35px;
+    scale: 0.9;
+}
+
+.perfilUsuario{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.perfilUsuario p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.comentarioUsuario .cuerpoCajaComentario{
+    display: flex;
+    padding: 20px;
+}
+
+.comentarioUsuario .footerCajaComentario{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: 1px solid rgba(45, 23, 72, 1);
+}
+
+.comentarioUsuario .footerCajaComentario p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.comentarioUsuario .footerCajaComentario img:hover{
+    cursor: pointer;
+}
+
+.comentarioUsuario .footerCajaComentario #responder{
+    gap: 5px;
+}
+
+.footerCajaComentario i{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.footerCajaComentario div{
+    display: flex;
+    gap: 10px;
+}
+
+.footerCajaComentario svg:hover{
+    scale: 1.2;
+    cursor: pointer;
+}
+
+#likeIcon:hover path {
+    fill: rgba(235, 59, 59, 1); /* Cambia el color de relleno a rojo al hacer hover */
+    stroke: rgba(235, 59, 59, 1);
+}
+
+#cargarMas{
+    width: 100px;
+    scale: 1.2;
+    margin-top: 20px;
+    align-self: center;
 }
 
 /**************  Footer  **************/

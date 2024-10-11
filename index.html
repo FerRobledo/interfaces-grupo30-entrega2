@@ -14,6 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3f0864db6c.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -27,9 +28,11 @@
                 <a href="index.html"><img src="./images/GameCity.png" alt="Logo"></a>
             </div>
         </div>
-        <div class="buscador">
-            <img id="lupa" src="./images/lupa.png" alt="lupa">
-            <input id="search" type="search" placeholder="¿A qué jugamos hoy?" required />
+        <div class="header-buscador">
+            <div class="buscador">
+                <img src="./images/lupa.png" alt="lupa">
+                <input id="search" type="search" placeholder="¿A qué jugamos hoy?" required />
+            </div>
         </div>
         <div class="header-right">
             <div class="carrito">
@@ -65,9 +68,9 @@
     </section>
     <main>
         <div class="tendencias">
-            <div class="cartel-tendencias">
-                <img src="./images/icono-trending.png" alt="tendencias">
-                <p id="textTendencias">Tendencias</p>
+            <div class="cartel" id="cartel-tendencias">
+                <img src="./images/icono-trending.png" alt="juegos en tendencia">
+                <p>Tendencias</p>
             </div>
             <figure class="icon-cards mt-3">
                 <div class="icon-cards__content" id="carousel-content">
@@ -85,14 +88,14 @@
                     </div>
                 </div>
             </figure>
-            
+
             <!-- Botones para desplazarse entre los slides -->
             <div class="carousel-controls">
                 <div id="btn1" class="carousel-btn"></div>
                 <div id="btn2" class="carousel-btn"></div>
                 <div id="btn3" class="carousel-btn"></div>
             </div>
-            
+
         </div>
         <div class="carruseles-juegos">
             <div class="carrusel">
@@ -115,7 +118,7 @@
                         <div class="footer-juego">
                             <p>Cuphead</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
+                                <input type="button" class="btn" value="Jugar">
                             </div>
                         </div>
                     </div>
@@ -127,9 +130,9 @@
                         <div class="footer-juego">
                             <p>Jetpack Joyride</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -142,9 +145,9 @@
                         <div class="footer-juego">
                             <p>Strike Force</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -157,7 +160,7 @@
                         <div class="footer-juego">
                             <p>Stick war</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
+                                <input type="button" class="btn" value="Jugar">
                             </div>
                         </div>
                     </div>
@@ -169,9 +172,9 @@
                         <div class="footer-juego">
                             <p>Brawl Stars</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -184,211 +187,16 @@
                         <div class="footer-juego">
                             <p>Strike Force</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carrusel">
-                <div class="header-carrusel">
-                    <div class="etiqueta-carrusel">
-                        <div class="img-carrusel">
-                            <img src="./images/icono-clasicos.png" alt="clasicos">
-                        </div>
-                        <p>Juegos clasicos</p>
-                    </div>
-                    <input type="button" class="btn-ver-todos" value="Ver todos">
-                </div>
-                <div class="tarjetas">
 
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/fuegoyagua.png" alt="Fuego y Agua">
-                            <p class="etiqueta-gratis">Gratis</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Fuego y Agua</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/pacman.png" alt="Pac Man">
-                            <p class="etiqueta-precio">$45</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Pac Man</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
-                                <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/mariobros.png" alt="Super Mario Bros">
-                            <p class="etiqueta-precio">$5</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Super Mario Bros</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
-                                <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/metalslug.png" alt="Metal Slug">
-                            <p class="etiqueta-gratis">Gratis</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Metal Slug</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/sonic.png" alt="Sonic">
-                            <p class="etiqueta-precio">$20</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Sonic</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
-                                <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/tekken.png" alt="Tekken 3">
-                            <p class="etiqueta-precio">$60</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Tekken 3</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
-                                <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carrusel">
-                <div class="header-carrusel">
-                    <div class="etiqueta-carrusel">
-                        <div class="img-carrusel">
-                            <img src="./images/icono-carreras.png" alt="carreras">
-                        </div>
-                        <p>Juegos de carreras</p>
-                    </div>
-                    <input type="button" class="btn-ver-todos" value="Ver todos">
-                </div>
-                <div class="tarjetas">
-
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/mariokart.png" alt="Mario Kart 8">
-                            <p class="etiqueta-gratis">Gratis</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Mario Kart 8</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/crashracing.png" alt="Crash Racing Game">
-                            <p class="etiqueta-precio">$25</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Crash Racing Game</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
-                                <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/mcqueen.png" alt="McQueen Race">
-                            <p class="etiqueta-precio">$30</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>McQueen Race</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
-                                <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/turbocar.png" alt="Turbo Car">
-                            <p class="etiqueta-gratis">Gratis</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Turbo Car</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/traficrider.png" alt="Trafic Rider">
-                            <p class="etiqueta-precio">$15</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Trafic Rider</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
-                                <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarjeta-juego">
-                        <div class="header-juego">
-                            <img src="./images/rallyracer.png" alt="Rally Racer Dirt">
-                            <p class="etiqueta-precio">$30</p>
-                        </div>
-                        <div class="footer-juego">
-                            <p>Rally Racer Dirt</p>
-                            <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
-                                <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="carrusel">
                 <div class="header-carrusel">
                     <div class="etiqueta-carrusel">
@@ -409,7 +217,7 @@
                         <div class="footer-juego">
                             <p>Cuphead</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
+                                <input type="button" class="btn" value="Jugar">
                             </div>
                         </div>
                     </div>
@@ -421,9 +229,9 @@
                         <div class="footer-juego">
                             <p>Jetpack Joyride</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -436,9 +244,9 @@
                         <div class="footer-juego">
                             <p>Strike Force</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -451,7 +259,7 @@
                         <div class="footer-juego">
                             <p>Stick war</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
+                                <input type="button" class="btn" value="Jugar">
                             </div>
                         </div>
                     </div>
@@ -463,9 +271,9 @@
                         <div class="footer-juego">
                             <p>Brawl Stars</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -478,15 +286,16 @@
                         <div class="footer-juego">
                             <p>Strike Force</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="carrusel">
                 <div class="header-carrusel">
                     <div class="etiqueta-carrusel">
@@ -507,7 +316,7 @@
                         <div class="footer-juego">
                             <p>Cuphead</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
+                                <input type="button" class="btn" value="Jugar">
                             </div>
                         </div>
                     </div>
@@ -519,9 +328,9 @@
                         <div class="footer-juego">
                             <p>Jetpack Joyride</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -534,9 +343,9 @@
                         <div class="footer-juego">
                             <p>Strike Force</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -549,7 +358,7 @@
                         <div class="footer-juego">
                             <p>Stick war</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Jugar">
+                                <input type="button" class="btn" value="Jugar">
                             </div>
                         </div>
                     </div>
@@ -561,9 +370,9 @@
                         <div class="footer-juego">
                             <p>Brawl Stars</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
@@ -576,15 +385,214 @@
                         <div class="footer-juego">
                             <p>Strike Force</p>
                             <div class="btn-juego">
-                                <input type="button" class="btn-jugar" value="Ver">
+                                <input type="button" class="btn" value="Ver">
                                 <div class="btn-carrito">
-                                    <img src="./images/carrito-de-compra-anadir.png" alt="carrito-añadir">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="carrusel">
+                <div class="header-carrusel">
+                    <div class="etiqueta-carrusel">
+                        <div class="img-carrusel">
+                            <img src="./images/icono-accion.png" alt="accion">
+                        </div>
+                        <p>Juegos de acción</p>
+                    </div>
+                    <input type="button" class="btn-ver-todos" value="Ver todos">
+                </div>
+                <div class="tarjetas">
+
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/cuphead.png" alt="Juego Jetpack">
+                            <p class="etiqueta-gratis">Gratis</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Cuphead</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Jugar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/jetpack.png" alt="Juego Jetpack">
+                            <p class="etiqueta-precio">$30</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Jetpack Joyride</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Ver">
+                                <div class="btn-carrito">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/maxresdefault.jpg" alt="Strike Force">
+                            <p class="etiqueta-precio">$30</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Strike Force</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Ver">
+                                <div class="btn-carrito">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/stickwar.png" alt="Stick War">
+                            <p class="etiqueta-gratis">Gratis</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Stick war</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Jugar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/brawl.png" alt="Brawl Stars">
+                            <p class="etiqueta-precio">$150</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Brawl Stars</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Ver">
+                                <div class="btn-carrito">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/happy-wheels.png" alt="happy-wheels">
+                            <p class="etiqueta-precio">$30</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Strike Force</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Ver">
+                                <div class="btn-carrito">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carrusel">
+                <div class="header-carrusel">
+                    <div class="etiqueta-carrusel">
+                        <div class="img-carrusel">
+                            <img src="./images/icono-accion.png" alt="accion">
+                        </div>
+                        <p>Juegos de acción</p>
+                    </div>
+                    <input type="button" class="btn-ver-todos" value="Ver todos">
+                </div>
+                <div class="tarjetas">
+
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/cuphead.png" alt="Juego Jetpack">
+                            <p class="etiqueta-gratis">Gratis</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Cuphead</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Jugar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/jetpack.png" alt="Juego Jetpack">
+                            <p class="etiqueta-precio">$30</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Jetpack Joyride</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Ver">
+                                <div class="btn-carrito">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/maxresdefault.jpg" alt="Strike Force">
+                            <p class="etiqueta-precio">$30</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Strike Force</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Ver">
+                                <div class="btn-carrito">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/stickwar.png" alt="Stick War">
+                            <p class="etiqueta-gratis">Gratis</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Stick war</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Jugar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/brawl.png" alt="Brawl Stars">
+                            <p class="etiqueta-precio">$150</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Brawl Stars</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Ver">
+                                <div class="btn-carrito">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta-juego">
+                        <div class="header-juego">
+                            <img src="./images/happy-wheels.png" alt="happy-wheels">
+                            <p class="etiqueta-precio">$30</p>
+                        </div>
+                        <div class="footer-juego">
+                            <p>Strike Force</p>
+                            <div class="btn-juego">
+                                <input type="button" class="btn" value="Ver">
+                                <div class="btn-carrito">
+                                    <img src="./images/Botones-tarjeta.png" alt="carrito-añadir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </main>
     <footer>
@@ -592,7 +600,9 @@
             <div class="footerIZQ">
                 <h2 id="aboutGameCity">Acerca de GameCity</h2>
                 <p id="textAbout">En <span id="boldAbout">Game
-                        City</span>, siempre estamos en la búsqueda de nuevas experiencias para ofrecerte, trabajando para mejorar nuestra plataforma y expandir nuestro catálogo de juegos. Nuestro objetivo es convertirnos en tu lugar favorito para jugar, competir y disfrutar.</p>
+                        City</span>, siempre estamos en la búsqueda de nuevas experiencias para ofrecerte, trabajando
+                    para mejorar nuestra plataforma y expandir nuestro catálogo de juegos. Nuestro objetivo es
+                    convertirnos en tu lugar favorito para jugar, competir y disfrutar.</p>
                 <p id="footerAbout">¡Únete a la aventura y forma parte de la comunidad Game City!</p>
             </div>
             <div class="contenedorDER footerDER">
