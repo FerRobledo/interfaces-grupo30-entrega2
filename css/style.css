@@ -242,6 +242,7 @@ input[type=search] {
 
 main{
     display: none;
+    overflow: hidden;
 }
 
 /* Estilo para la pantalla de carga */
@@ -805,7 +806,7 @@ main{
     color: #19082F;
 }
 
-.form-container input:not([type="date"]){
+.form-container input{
     width: 274px;
     height: 42px;
     border: 1px solid #3E285B;
@@ -910,7 +911,7 @@ main{
     flex-direction: column;
 }
 
-.registro input:not([type="date"]){
+.registro input{
     width: 180px;
     height: 35px;
     margin-bottom: 19px;
@@ -925,12 +926,23 @@ main{
 
 .fecha-nac{
     width: 195px;
+    height: 37px;
     margin-bottom: 95px;
+    display: flex;
+    flex-direction: row;
 }
 
-.fecha-nac input {
-    height: 35px;
-    margin-top: 9px;
+.fecha-nac .day-input, .fecha-nac .month-input, .fecha-nac .year-input{
+    text-align: center;
+    padding: 0%;
+    width: 34px;
+    height: 36px;
+    margin-right: 7px;
+    font-size: 12px;
+}
+
+.fecha-nac input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
 }
 
 .pass{
@@ -938,8 +950,8 @@ main{
     align-items: center;
 }
 
-.pass img{
-    transform: translate(-26px, -2px);
+.eye{
+    transform: translate(-26px, -8px);
     cursor: pointer;
 }
 
