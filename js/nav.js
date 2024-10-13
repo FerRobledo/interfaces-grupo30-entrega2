@@ -6,7 +6,9 @@ document.querySelector(".menu-toggle.first").addEventListener("click", function(
     categorias.forEach(element => {
         var nombre = element.querySelector("p");
         console.log(nombre);
-        nombre.classList.toggle("nombreExtendido");
+        setTimeout(function() {
+            nombre.classList.toggle('nombreExtendido');
+        }, 70);
         element.classList.toggle("categoriaExtendida");
     });
 })

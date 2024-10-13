@@ -21,7 +21,6 @@ form.addEventListener("submit", e=> {
 })
 
 openForm.addEventListener("click", e =>{
-    document.body.style.overflow = "hidden"
     form.style.display = "flex"
     closeForm.style.display = "flex"
 })
