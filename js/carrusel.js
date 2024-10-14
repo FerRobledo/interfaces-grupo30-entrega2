@@ -1,20 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
     const carouselContent = document.getElementById('carousel-content');
-    const step = 120;  // Grados de rotación entre cada slide
+    const step = 120;
     let angle = 0;
     let btn1 = document.getElementById('btn1');
     let btn2 = document.getElementById('btn2');
     let btn3 = document.getElementById('btn3');
     const buttons = [btn1, btn2, btn3];  // Agrupamos los botones en un array
 
-    // Función para ir al slide especificado
     function goToSlide(slideIndex) {
-        angle = -slideIndex * step;  // Calcula el ángulo correcto en base al índice del slide
+        angle = -slideIndex * step;
         updateCarousel();
         updateActiveButton(slideIndex);  // Actualiza los botones activos
     }
 
-    // Actualiza la transformación del carrusel
     function updateCarousel() {
         carouselContent.style.transform = `translateZ(-35vw) rotateY(${angle}deg)`;
     }

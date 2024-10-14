@@ -1,4 +1,4 @@
-let contenedor = document.querySelector(".closed");
+let contenedor = document.querySelector(".closed-compartir");
 let btnCompartir = document.querySelector(".btn-compartir");
 
 btnCompartir.addEventListener("click", function () {
