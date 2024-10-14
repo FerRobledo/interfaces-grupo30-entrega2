@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const carouselContent = document.getElementById('carousel-content');
-    const step = 120;  // Grados de rotación entre cada slide
+    const step = 120;
     let angle = 0;
-    let currentSlideIndex = 0; // Índice de la diapositiva actual
+    let currentSlideIndex = 0;
     const totalSlides = document.querySelectorAll('.icon-cards__item').length;
 
     function goToSlide(slideIndex) {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         item.addEventListener('click', () => goToSlide(index));
     });
 
-    // Navegación con flechas
+
     document.getElementById('prevBtn').addEventListener('click', () => {
         const newIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
         goToSlide(newIndex);
@@ -39,6 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         goToSlide(newIndex);
     });
 
-    // Inicializa el cursor al cargar la página
+
     updateCursorStyles();
 });
