@@ -92,7 +92,8 @@
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M7.09 12.51L13.92 16.49M13.91 5.51L7.09 9.49M19.5 4C19.5 5.65685 18.1569 7 16.5 7C14.8431 7 13.5 5.65685 13.5 4C13.5 2.34315 14.8431 1 16.5 1C18.1569 1 19.5 2.34315 19.5 4ZM7.5 11C7.5 12.6569 6.15685 14 4.5 14C2.84315 14 1.5 12.6569 1.5 11C1.5 9.34315 2.84315 8 4.5 8C6.15685 8 7.5 9.34315 7.5 11ZM19.5 18C19.5 19.6569 18.1569 21 16.5 21C14.8431 21 13.5 19.6569 13.5 18C13.5 16.3431 14.8431 15 16.5 15C18.1569 15 19.5 16.3431 19.5 18Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                 </svg>
                                 <p>Compartir</p>
                             </div>
@@ -101,10 +102,11 @@
                                 <div class="social-compartir"><i class="fa-brands fa-facebook-f"></i></div>
                                 <div class="social-compartir"><i class="fa-regular fa-envelope"></i></div>
                                 <div class="social-compartir"><i class="fa-brands fa-x-twitter"></i></div>
-                                <div class="social-compartir"><i class="fa-brands fa-whatsapp" style="color: #63E6BE;"></i></div>
+                                <div class="social-compartir"><i class="fa-brands fa-whatsapp"
+                                        style="color: #63E6BE;"></i></div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="infoJuego">
                         <p>
@@ -125,7 +127,12 @@
                     </div>
                     <h3>Imágenes y videos</h3>
                     <div class="multimediaInfoJuego">
-                        <img src="./images/4enlinea.jpg" alt="">
+                        <div class="contenedor-imagen-infojuego">
+                            <img src="./images/4enlinea.jpg" alt="">
+                            <div class="overlayMultimediaInfoJuego">
+                                <img src="./images/maximizeIcon.svg" id="icono-fulscreen" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -508,11 +515,11 @@
                 <input type="text" id="usuario" placeholder="Usuario">
                 <input type="password" id="contraseña" placeholder="Contraseña">
                 <a href="#">¿Olvidaste tu contraseña?</a>
-                <button class="btn-iniciarsesion" type="submit">Iniciar Sesión</button>
+                <button class="btn-form" id="btn-iniciarsesion" type="submit">Iniciar Sesión</button>
             </div>
             <div class="registrate">
                 <p>¿Aún no tienes cuenta?</p>
-                <button class="btn-registrarse" type="submit">Registrarse</button>
+                <button class="btn-form" id="btn-registrarse" type="submit">Crear cuenta</button>
             </div>
         </div>
         <div class="registro-container">
@@ -552,9 +559,9 @@
                 </div>
             </div>
             <div class="botonera">
-                <button class="btn-registrarse" type="submit">Registrarse</button>
+                <button class="btn-form" id="btn-registrarse" type="submit">Registrarse</button>
                 <div class="separador"></div>
-                <button class="btn-iniciarsesion" type="submit">Iniciar Sesión</button>
+                <button class="btn-form" id="btn-iniciarsesion" type="submit">Iniciar sesión</button>
             </div>
         </div>
     </form>
@@ -579,7 +586,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footerFooter"
             style="background-color: rgba(45, 23, 72, 1); margin-left: -30px; margin-right: -30px; padding: 50px;">
             <div class="NavFooter">

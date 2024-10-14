@@ -2,28 +2,43 @@ document.addEventListener('DOMContentLoaded', function () {
     const carouselContent = document.getElementById('carousel-content');
     const step = 120;  // Grados de rotación entre cada slide
     let angle = 0;
+    let currentSlideIndex = 0; // Índice de la diapositiva actual
+    const totalSlides = document.querySelectorAll('.icon-cards__item').length;
 
-    // Función para ir al slide especificado
     function goToSlide(slideIndex) {
-        angle = -slideIndex * step;  // Calcula el ángulo correcto en base al índice del slide
+        angle = -slideIndex * step;
         updateCarousel();
+        currentSlideIndex = slideIndex;
+        updateCursorStyles();
     }
 
-    // Actualiza la transformación del carrusel
     function updateCarousel() {
         carouselContent.style.transform = `translateZ(-35vw) rotateY(${angle}deg)`;
     }
 
-    // Eventos para los botones
-    document.getElementById('btn1').addEventListener('click', function () {
-        goToSlide(0);  // Primer slide (índice 0)
+    function updateCursorStyles() {
+        const items = document.querySelectorAll('.icon-cards__item');
+        items.forEach((item, index) => {
+            item.style.cursor = index === currentSlideIndex ? 'default' : 'pointer';
+        });
+    }
+
+    const items = document.querySelectorAll('.icon-cards__item');
+    items.forEach((item, index) => {
+        item.addEventListener('click', () => goToSlide(index));
     });
 
-    document.getElementById('btn2').addEventListener('click', function () {
-        goToSlide(1);  // Segundo slide (índice 1)
+    // Navegación con flechas
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        const newIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+        goToSlide(newIndex);
     });
 
-    document.getElementById('btn3').addEventListener('click', function () {
-        goToSlide(2);  // Tercer slide (índice 2)
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        const newIndex = (currentSlideIndex + 1) % totalSlides;
+        goToSlide(newIndex);
     });
+
+    // Inicializa el cursor al cargar la página
+    updateCursorStyles();
 });

@@ -444,6 +444,28 @@ main {
     color: white;
     perspective: 1500px;
     transform-origin: center;
+    position: relative;
+}
+
+
+#prevBtn, #nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0);
+    color: white;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    z-index: 10; /* Asegúrate de que estén por encima del carrusel */
+}
+
+#prevBtn {
+    left: -50px;
+}
+
+#nextBtn {
+    right: -50px;
 }
 
 .icon-cards__item {
@@ -684,6 +706,8 @@ main {
 }
 
 .btn-carrito img {
+    min-width: 1.5em;
+    min-height: 1.5em;
     width: 25px;
     height: 20px;
 }
@@ -845,11 +869,24 @@ main {
     color: #000000;
     margin-bottom: 19px;
     background-color: #D9D9D9;
+    transition: transform 0.3s ease;
+
 }
 
 #login-facebook {
     color: #FFFFFF;
     background-color: #3B579D;
+    transition: transform 0.3s ease;
+}
+
+
+#login-facebook:hover {
+    transform: translateY(-5px); /* Mover hacia arriba */
+}
+
+/* Efecto hover */
+#login-google:hover {
+    transform: translateY(-5px); /* Mover hacia arriba */
 }
 
 .separador {
@@ -894,7 +931,18 @@ main {
     margin: 22px 0px 11px 0px;
 }
 
-.btn-iniciarsesion {
+#btn-iniciarsesion{
+    background-color: #30C07F;
+    margin-top: 10px;
+   
+}
+
+#btn-registrarse{
+    background-color: #3E285B;
+    margin-bottom: 10px;
+}
+
+.btn-form {
     width: 111px;
     height: 36px;
     font-family: "Roboto", sans-serif;
@@ -903,10 +951,14 @@ main {
     background-color: #30C07F;
     border: none;
     color: #FFFFFF;
-    width: 111px;
-    height: 36px;
     border-radius: 20px;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover */
+.btn-form:hover {
+    transform: translateY(-5px); /* Mover hacia arriba */
 }
 
 .registrate {
@@ -925,20 +977,7 @@ main {
     margin-bottom: 13px;
 }
 
-.btn-registrarse {
-    width: 111px;
-    height: 36px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    background-color: #3E285B;
-    color: #FFFFFF;
-    border: none;
-    width: 111px;
-    height: 36px;
-    border-radius: 20px;
-    cursor: pointer;
-}
+
 
 .registro-container {
     background-color: white;
@@ -1348,6 +1387,36 @@ main {
     opacity: 1;
 }
 
+.overlayMultimediaInfoJuego {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Ajusta el color y la opacidad */
+    border-radius: 16px;
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.1s linear; /* Animación suave */
+    z-index: 1; /* Asegura que esté por encima de la imagen */
+}
+
+.contenedor-imagen-infojuego:hover .overlayMultimediaInfoJuego {
+    opacity: 1; /* Al hacer hover, el overlay aparece */
+}
+
+.overlayMultimediaInfoJuego #icono-fulscreen{
+    position: initial;
+
+}
+
+.contenedor-imagen-infojuego{
+    position: relative;
+    border-radius: 16px;
+}
+
 .multimediaInfoJuego {
     background-color: rgba(51, 29, 78, 1);
     border-radius: 16px;
@@ -1360,6 +1429,7 @@ main {
 
 .multimediaInfoJuego img {
     width: 100%;
+    height: 100%;
     border-radius: 16px;
 }
 
@@ -1376,7 +1446,7 @@ main {
     height: 100%;
     margin: 0px -30px -30px -30px;
     padding: 30px;
-    align-items: center;
+
 }
 
 
@@ -1396,6 +1466,14 @@ main {
     height: auto;
     margin-top: 20px;
     padding: 0;
+}
+
+.contenedorJuegosComentarios .tarjeta-juego .btn{
+    scale: 1;
+}
+
+.contenedorJuegosComentarios .tarjeta-juego .btn-carrito{
+    scale: 1;
 }
 
 .contenedorJuegosComentarios .tarjeta-juego .footer-juego p {
@@ -1817,8 +1895,9 @@ footer {
     
     .btn-3 {
         width: 25vw;
-        height: 30%;
-
+        height: 4vh;
+        margin-top: 1vh;
+        top: 75%;
     }
     
     
@@ -1842,6 +1921,7 @@ footer {
     .icon-cards{
         padding-top: 20px;
     }
+    
     
     #pantalla-carga{
         width: 100%;
@@ -1925,10 +2005,12 @@ footer {
 
     .nav{
         opacity: 0;
+        z-index: 0;
     }
 
     .navExtendido{
         opacity: 1;
+        z-index: 60;
     }
     
 }
