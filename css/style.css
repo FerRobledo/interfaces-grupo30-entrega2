@@ -937,18 +937,7 @@ main {
     margin: 22px 0px 11px 0px;
 }
 
-#btn-iniciarsesion{
-    background-color: #30C07F;
-    margin-top: 10px;
-   
-}
-
-#btn-registrarse{
-    background-color: #3E285B;
-    margin-bottom: 10px;
-}
-
-.btn-form {
+.btn-iniciarsesion {
     width: 111px;
     height: 36px;
     font-family: "Roboto", sans-serif;
@@ -963,12 +952,27 @@ main {
 }
 
 /* Efecto hover */
-.btn-form:hover {
+.btn-iniciarsesion:hover {
     transform: translateY(-5px); /* Mover hacia arriba */
 }
 
-.btn-iniciarsesion:hover{
-    background-color: #007E45;
+.btn-registrar {
+    width: 111px;
+    height: 36px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    background-color: #3E285B;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover */
+.btn-registrar:hover {
+    transform: translateY(-5px); /* Mover hacia arriba */
 }
 
 .registrate {
@@ -979,9 +983,6 @@ main {
     margin-top: 58px;
 }
 
-.btn-registrarse:hover {
-    background-color: #19082F;
-}
 
 .registrate p {
     font-family: "Roboto", sans-serif;
@@ -1109,23 +1110,21 @@ main {
 }
 
 .botonera {
-    margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
 }
 
-.botonera .btn-registrarse {
+.botonera button {
+    margin-top: 10px;
     margin-bottom: 10px;
     width: 107px;
     height: 33px;
 }
 
-.botonera .btn-iniciarsesion {
-    margin-top: 10px;
-    width: 107px;
-    height: 33px;
+#enviar-registro{
+    background-color: #3E285B;
 }
 
 .success{
@@ -1168,8 +1167,14 @@ main {
     font-size: 15px;
 }
 
-.success button{
+#volverinicio{
     transform: translateY(130px);
+    animation: none;
+}
+
+#volverinicio:hover{
+    transform: translateY(125px);
+    animation: none;
 }
 
 /**************  PAG JUEGO  **************/
@@ -2080,5 +2085,4 @@ footer {
         opacity: 1;
         z-index: 60;
     }
-    
 }
