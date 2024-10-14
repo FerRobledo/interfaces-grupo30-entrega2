@@ -5,10 +5,15 @@ document.querySelector(".menu-toggle.first").addEventListener("click", function(
     barralateral.classList.toggle("navExtendido");
     categorias.forEach(element => {
         var nombre = element.querySelector("p");
-        console.log(nombre);
-        setTimeout(function() {
-            nombre.classList.toggle('nombreExtendido');
-        }, 70);
+        
+        if (barralateral.classList.contains("navExtendido")) {
+            setTimeout(function() {
+                nombre.classList.add('nombreExtendido');
+            }, 70);
+        } else {
+            nombre.classList.remove('nombreExtendido');
+        }
+
         element.classList.toggle("categoriaExtendida");
     });
-})
+});
