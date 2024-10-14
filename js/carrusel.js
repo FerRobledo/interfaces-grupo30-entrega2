@@ -28,6 +28,17 @@ document.addEventListener('DOMContentLoaded', function () {
         item.addEventListener('click', () => goToSlide(index));
     });
 
+    document.getElementById('btn1').addEventListener('click', function () {
+        goToSlide(0);
+    });
+
+    document.getElementById('btn2').addEventListener('click', function () {
+        goToSlide(1);
+    });
+
+    document.getElementById('btn3').addEventListener('click', function () {
+        goToSlide(2);
+    });
 
     document.getElementById('prevBtn').addEventListener('click', () => {
         const newIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
