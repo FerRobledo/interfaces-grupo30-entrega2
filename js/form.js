@@ -3,7 +3,7 @@
 var openForm = document.querySelector(".perfil"),
     closeForm = document.getElementById("close-form"),
     form = document.querySelector(".form-container"),
-    btnRegistarse = document.querySelector(".btn-registrarse"),
+    mostrarRegistro = document.getElementById("mostrar-registro"),
     login = document.querySelector(".login-container"),
     register = document.querySelector(".registro-container"),
     btnIniciarSesion = document.querySelectorAll(".btn-iniciarsesion"),
@@ -13,12 +13,10 @@ var openForm = document.querySelector(".perfil"),
     yearInput = document.querySelector('.year-input'),
     email = document.getElementById("email"),
     eyes = document.querySelectorAll(".eye"),
-    pass = document.querySelectorAll(".password");
+    pass = document.querySelectorAll(".password"),
+    success = document.querySelector(".success"),
+    sendRegister = document.querySelector(".registro")
 
-
-form.addEventListener("submit", e=> {
-    e.preventDefault()
-})
 
 openForm.addEventListener("click", e =>{
     form.style.display = "flex"
@@ -31,7 +29,7 @@ closeForm.addEventListener("click", e =>{
     closeForm.style.display = "none"
 })
 
-btnRegistarse.addEventListener("click", e => {
+mostrarRegistro.addEventListener("click", e => {
     e.preventDefault()
     login.style.display = "none"
     register.style.display = "flex"
@@ -41,6 +39,7 @@ btnIniciarSesion.forEach(btn => {
     btn.addEventListener("click", e=> {
         e.preventDefault()
         register.style.display = "none"
+        success.style.display = "none"
         login.style.display = "flex"
     })  
 })
@@ -85,3 +84,9 @@ eyes.forEach(eye => {
         
     })
 })
+
+sendRegister.addEventListener("submit", e=>{
+    e.preventDefault()
+    success.style.display = "flex"
+})
+
