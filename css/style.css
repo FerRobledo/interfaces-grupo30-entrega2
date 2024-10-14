@@ -32,8 +32,10 @@ header {
 }
 
 .header-right img {
-    height: 45px;
-    width: 45px;
+    max-width: 45px;
+    max-height: 45px;
+    height: 7vw;
+    width: 7vw;
 }
 
 
@@ -57,6 +59,7 @@ header {
 
 .perfil {
     display: flex;
+    align-items: center;
     width: 50px;
     height: 50px;
     background-color: #3E285B;
@@ -80,7 +83,8 @@ header {
 }
 
 .logo img {
-    width: 170px;
+    width: 10vw;
+    min-width: 75px;
 }
 
 
@@ -109,6 +113,7 @@ header {
     position: absolute;
     height: 6px;
     width: 40px;
+    max-width: 40px;
     right: 0;
     background: #30C07F;
     border-radius: 2px;
@@ -639,6 +644,13 @@ main {
     font-size: 1em;
 }
 
+.footer-juego p{
+    width: 13vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .btn-juego {
     display: flex;
     margin-top: 6%;
@@ -707,6 +719,7 @@ main {
 .btn:hover {
     background-color: #007E45;
 }
+
 
 /**************  Formulario de Login  **************/
 
@@ -1096,6 +1109,14 @@ main {
     margin-bottom: 30px;
 }
 
+#icono-fulscreen{
+    width: 40px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 0;
+}
+
 .contenedorJuego img {
     border-radius: 16px;
 }
@@ -1227,6 +1248,7 @@ main {
 
 .headerInfoJuego {
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(51, 29, 78, 1);
@@ -1234,6 +1256,37 @@ main {
     margin: -30px -30px 0px -30px;
     padding: 0px 30px 0px 30px;
     height: 70px;
+}
+
+.closed{
+    display: none;
+}
+
+.opciones-compartir{
+    display: flex;
+    position: absolute;
+    background-color: #19082F;
+    border-radius: 50px;
+    right: -30px;
+    top: 65px;
+}
+
+.social-compartir{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+}
+
+.social-compartir img{
+    height: 25px;
+    cursor: pointer;
+}
+
+.social-compartir i{
+    cursor: pointer;
 }
 
 .btn-compartir {
@@ -1715,74 +1768,79 @@ footer {
 @media only screen and (max-width: 768px) {
 
     .tendencias {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 20px;
         height: auto;
     }
 
+    
     .buscador {
         display: none;
     }
-
+    
     #textTendencias {
         display: none;
     }
-
+    
     .cartel-tendencias {
         width: 50px;
         height: 20px;
         font-size: 12px;
         padding: 5px;
     }
-
+    
     .icon-cards {
         height: 60vw;
         width: 80%;
         max-height: 200px;
     }
-
+    
     .icon-cards__item {
         max-height: 200px;
     }
-
+    
     .carousel-btn {
         width: 10px;
         height: 10px;
     }
-
+    
     .custom-btn {
         width: 100px;
         height: 35px;
         font-size: 0.9rem;
     }
-
+    
     .btn-3 {
         width: 20%;
         height: 30%;
     }
-
-
+    
+    
     .headerFooter {
         display: flex;
         flex-direction: column;
     }
-
+    
     .footerDer {
         margin-top: 50px;
     }
 }
 
 @media only screen and (max-width: 480px) {
-
+    
     .tendencias{
         margin-left: 0;
         padding-bottom: 20px;
     }
-
+    
     .icon-cards{
         padding-top: 20px;
     }
-
+    
+    #pantalla-carga{
+        width: 100%;
+    }
     /* CARRUSEL JUEGO */
     
     .carrusel{
