@@ -496,13 +496,13 @@ main {
 .carruseles-juegos {
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 80px;
+    margin-left: 80px;
     background-color: #F5F5DC;
 }
 
 .carrusel {
     padding: 20px 40px 20px 40px;
-
+    width: 100%;
 }
 
 .carrusel img {
@@ -518,7 +518,7 @@ main {
 .etiqueta-carrusel {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -542,7 +542,7 @@ main {
     background-color: #3E285B;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 0.8em;
     cursor: pointer;
     color: white;
 }
@@ -559,13 +559,12 @@ main {
     padding-top: 14px;
     padding-bottom: 5px;
     width: 100%;
-    overflow: auto;
+    justify-content: center;
 }
 
 
 .tarjeta-juego {
-    margin: auto;
-    padding: 5px;
+    padding: 8px;
 }
 
 .header-juego::after {
@@ -575,18 +574,16 @@ main {
     left: 0;
     right: 0;
     height: 50%;
-    /* Ajusta la altura del sombreado */
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
     pointer-events: none;
-    /* Para que no afecte la interacción con la imagen */
 }
 
 
 .header-juego {
-    height: 16vh;
-    width: 12vw;
+    height: 17vh;
+    width: 13vw;
     min-width: 150px;
     position: relative;
     border-radius: 15px;
@@ -607,7 +604,7 @@ main {
     color: white;
     top: 20px;
     background: #E0B200;
-    width: 60px;
+    width: 4vw;
     height: 25px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -638,8 +635,8 @@ main {
     justify-content: space-around;
     flex-direction: column;
     font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 1em;
 }
 
 .btn-juego {
@@ -654,7 +651,7 @@ main {
     color: white;
     border: none;
     background-color: #30C07F;
-    width: 45px;
+    width: 4vw;
     height: 30px;
     border-radius: 10px;
     cursor: pointer;
@@ -665,7 +662,7 @@ main {
     justify-content: center;
     align-items: center;
     background-color: #3E285B;
-    width: 45px;
+    width: 4vw;
     height: 30px;
     margin-left: 5px;
     border-radius: 10px;
@@ -673,9 +670,35 @@ main {
 }
 
 .btn-carrito img {
-    width: 24px;
-    height: 22px;
+    width: 25px;
+    height: 20px;
 }
+
+.overlay-carrito {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex; 
+    justify-content: center;
+    opacity: 0;
+    align-items: center;
+    transition: opacity 0.2s ease; 
+    pointer-events: none;
+    border-radius: 15px;
+}
+
+.overlay-carrito img{
+    width: 45px;
+    height: auto;
+}
+
+.overlay-carrito.show {
+    opacity: 1; 
+}
+
 
 .btn-carrito:hover {
     background-color: #19082F;
@@ -1751,67 +1774,87 @@ footer {
 
 @media only screen and (max-width: 480px) {
 
-    .tendencias {
-        margin-left: 40px;
-    }
-
-    footer {
-        margin-left: 40px;
-    }
-
-    #pantalla-carga {
-        width: calc(100% - 40px);
-        margin-left: 40px;
-    }
-
-    .contenedorPagina {
-        width: calc(100% - 40px);
-        margin-left: 40px;
-    }
-
-    .nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 40px;
-    }
-
-    .header-right img {
-        width: 25px;
-    }
-
-    .carrito {
+    .tendencias{
         margin-left: 0;
+        padding-bottom: 20px;
+    }
+
+    .icon-cards{
+        padding-top: 20px;
+    }
+
+    /* CARRUSEL JUEGO */
+    
+    .carrusel{
+        padding: 20px 10px 20px 10px;
+        overflow: hidden;
+    }
+
+    .tarjetas {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; 
+        padding-right: 30px; 
+        justify-content: start;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+    
+    .header-juego{
+        width: 40vw;
+    }
+
+    .btn{
+        width: 13vw;
+        height: 35px;
+    }
+
+    .btn-carrito{
+        width: 13vw;
+        height: 35px;
+    }
+
+    .btn-carrito img{
+        scale: 1.2;
+    }
+
+    .etiqueta-gratis{
+        width: 15vw;
+    }
+
+    .header-carrusel {
+        align-items: center;
+        padding: 0px 8px;
+    }
+
+    .carruseles-juegos{
+        margin-left: 0;
+    }
+
+    /* ********************* */
+
+    #pantalla-carga{
+        margin-left: 0;
+    }
+
+
+    footer{
+        margin-left: 0;
+    }
+
+    .menu-toggle{
         margin-right: 10px;
     }
 
-    .circulo {
-        width: 15px;
-        height: 15px;
-        font-size: 12px;
-        right: 10px;
+    .nav{
+        opacity: 0;
+        transition: opacity 0.5 ease;
     }
 
-    .menu-toggle {
-        display: none;
+    .navExtendido{
+        opacity: 1;
+        transition: opacity 0.5 ease-out;
     }
-
-    .logo {
-        margin: 0;
-    }
-
-    .logo img {
-        width: 100px;
-    }
-
-    .nav img {
-        width: 20px;
-    }
-
-    .categoria {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        padding: 15px 0 15px 0;
-    }
+    
 }

@@ -127,11 +127,15 @@
                                 <input type="button" class="btn" value="Jugar">
                             </div>
                         </div>
+
                     </div>
                     <div class="tarjeta-juego">
                         <div class="header-juego">
                             <img src="./images/jetpack.png" alt="Juego Jetpack">
                             <p class="etiqueta-precio">$30</p>
+                            <div class="overlay-carrito">
+                                <img src="./images/Carrito-icon.png" alt="añadido al carrito">
+                            </div>
                         </div>
                         <div class="footer-juego">
                             <p>Jetpack Joyride</p>
@@ -601,8 +605,8 @@
 
         </div>
     </main>
-<!-- Formulario de registro -->
-<form class="form-container">
+    <!-- Formulario de registro -->
+    <form class="form-container">
         <div class="form-imagen">
             <div id="overlay"></div>
             <div id="black-overlay"></div>
@@ -611,8 +615,10 @@
         </div>
         <div class="login-container">
             <div class="sesion-redes">
-                <button id="login-google" type="submit"><img src="./images/google.png" alt="Google">Iniciar sesión con Google</button>
-                <button id="login-facebook" type="submit"><img src="./images/facebook.png" alt="Facebook">Iniciar sesión con Facebook</button>
+                <button id="login-google" type="submit"><img src="./images/google.png" alt="Google">Iniciar sesión con
+                    Google</button>
+                <button id="login-facebook" type="submit"><img src="./images/facebook.png" alt="Facebook">Iniciar sesión
+                    con Facebook</button>
             </div>
             <div class="separador"></div>
             <div class="iniciar-sesion">
@@ -642,8 +648,8 @@
                         <img class="eye" src="./images/hide-svgrepo-com.svg" alt="">
                     </div>
                     <p id="password-help">Usa al menos 6 caracteres. Incluye <br>
-                                        al menos una letra y un número o un <br>
-                                        caracter especial.</p>
+                        al menos una letra y un número o un <br>
+                        caracter especial.</p>
                     <img src="./images/captcha.png" alt="" id="captcha">
                 </div>
                 <div class="registro-der">
@@ -657,7 +663,7 @@
                     </div>
                     <label for="password">Confirmar contraseña</label>
                     <div class="pass">
-                        <input type="password" placeholder="Escriba su contraseña">
+                        <input type="password" class="password" placeholder="Escriba su contraseña">
                         <img class="eye" src="./images/hide-svgrepo-com.svg" alt="">
                     </div>
                 </div>
@@ -727,8 +733,10 @@
     <script src="./js/carrusel.js"></script>
     <script src="./js/btn-hamburguesa.js"></script>
     <script src="./js/nav.js"></script>
-    <script src="./js/pantallaCarga.js"></script>F
+    <script src="./js/pantallaCarga.js"></script>
     <script src="./js/form.js"></script>
+    <script src="./js/tarjetasMobile.js"></script>
+    <script src="./js/agregar-al-carrito.js"></script>
 </body>
 
 </html>
