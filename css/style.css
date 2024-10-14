@@ -764,11 +764,9 @@ main {
     margin: 30px;
     display: none;
     width: 80vw;
-    /* Cambiado a vw */
     max-width: 982px;
     /* Añadido un max-width para limitar el tamaño en pantallas grandes */
     height: 90vh;
-    /* Cambiado a vh */
     max-height: 572px;
     /* Añadido un max-height para limitar el tamaño en pantallas grandes */
     position: fixed;
@@ -873,6 +871,10 @@ main {
 
 }
 
+#login-google:hover {
+    background-color: #e9e9e9;
+}
+
 #login-facebook {
     color: #FFFFFF;
     background-color: #3B579D;
@@ -887,6 +889,10 @@ main {
 /* Efecto hover */
 #login-google:hover {
     transform: translateY(-5px); /* Mover hacia arriba */
+}
+
+#login-facebook:hover{
+    background-color: rgb(19, 74, 146);
 }
 
 .separador {
@@ -961,12 +967,20 @@ main {
     transform: translateY(-5px); /* Mover hacia arriba */
 }
 
+.btn-iniciarsesion:hover{
+    background-color: #007E45;
+}
+
 .registrate {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 58px;
+}
+
+.btn-registrarse:hover {
+    background-color: #19082F;
 }
 
 .registrate p {
@@ -980,6 +994,8 @@ main {
 
 
 .registro-container {
+    position: relative;
+    z-index: 1;
     background-color: white;
     width: 50%;
     height: 100%;
@@ -1001,6 +1017,14 @@ main {
 
 .registro {
     width: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datos-registro{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
 }
@@ -1102,6 +1126,50 @@ main {
     margin-top: 10px;
     width: 107px;
     height: 33px;
+}
+
+.success{
+    position: absolute;
+    right: 0%;
+    z-index: 2;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    color: #999;
+    font-family: "Inter", sans-serif;
+    animation: aparece 0.5s;
+}
+
+
+@keyframes aparece{
+    0%{transform:scale(.0)} 100%{transform:scale(1)} }
+
+
+.success img{
+    width: 80px;
+    padding-bottom: 20px;
+}
+
+.success h1{
+    font-weight: 700;
+    font-size: 30px;
+    padding-bottom: 8px;
+}
+
+.success h3{
+    max-width: 400px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.success button{
+    transform: translateY(130px);
 }
 
 /**************  PAG JUEGO  **************/
