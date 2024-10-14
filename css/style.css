@@ -557,13 +557,15 @@ main {
 .tarjetas {
     display: flex;
     padding-top: 14px;
+    padding-bottom: 5px;
     width: 100%;
-
+    overflow: auto;
 }
 
 
 .tarjeta-juego {
     margin: auto;
+    padding: 5px;
 }
 
 .header-juego::after {
@@ -583,8 +585,9 @@ main {
 
 
 .header-juego {
-    height: 110px;
-    width: 163px;
+    height: 16vh;
+    width: 12vw;
+    min-width: 150px;
     position: relative;
     border-radius: 15px;
 }
