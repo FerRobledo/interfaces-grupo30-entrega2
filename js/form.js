@@ -98,3 +98,16 @@ sendRegister.addEventListener("submit", e=>{
     success.style.display = "flex"
 })
 
+
+function updatePlaceholders() {
+    if (window.innerWidth <= 480) {
+        pass.placeholder = 'Su contraseña';
+        confirmPass.placeholder = 'Su contraseña';
+    } else {
+        pass.placeholder = 'Escriba su contraseña';
+        confirmPass.placeholder = 'Escriba su contraseña';
+    }
+}
+
+window.addEventListener('load', updatePlaceholders);
+window.addEventListener('resize', updatePlaceholders);
