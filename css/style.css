@@ -1919,11 +1919,32 @@ footer {
 /**************  Responsive  **************/
 
 
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 1024px) {
     .footerFooter {
         align-items: center;
         display: flex;
         flex-direction: column;
+    }
+
+    .etiqueta-gratis{
+        width: 8vw;
+        font-size: 1.2em;
+    }
+
+    .carrusel{
+        padding: 20px 10px 20px 10px;
+        overflow: hidden;
+    }
+
+    .tarjetas {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; 
+        padding-right: 30px; 
+        justify-content: start;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
     }
 
     .NavFooter {
@@ -1931,6 +1952,11 @@ footer {
         width: 200px;
         margin: 20px;
     }
+
+    .form-container{
+        height: 95vh;
+    }
+    
 }
 
 @media only screen and (max-width: 768px) {
@@ -1995,6 +2021,24 @@ footer {
     .footerDer {
         margin-top: 50px;
     }
+
+    .form-imagen{
+        display: none;
+    }
+
+    .form-container{
+        justify-content: center;
+    }
+
+    .registro-container{
+        border-radius: 16px;
+        width: 80%;
+    }
+
+    .login-container{
+        border-radius: 16px;
+        width: 80%;
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -2014,21 +2058,7 @@ footer {
     }
     /* CARRUSEL JUEGO */
     
-    .carrusel{
-        padding: 20px 10px 20px 10px;
-        overflow: hidden;
-    }
-
-    .tarjetas {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch; 
-        padding-right: 30px; 
-        justify-content: start;
-        scrollbar-width: none;
-        scroll-behavior: smooth;
-    }
+    
     
     .header-juego{
         width: 40vw;
@@ -2067,6 +2097,7 @@ footer {
     .form-container{
         position: fixed;
         left: 50%;
+        top: 50%;
         margin: 0;
         border-radius: 16px;
     }
