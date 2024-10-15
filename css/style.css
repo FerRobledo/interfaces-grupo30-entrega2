@@ -882,10 +882,14 @@ main {
 
 #login-facebook {
     color: #FFFFFF;
-    background-color: #3B579D;
+    background-color: #1877f2;
     transition: transform 0.3s ease;
 }
 
+#login-facebook i {
+    font-size: 20px;
+    padding-right: 10px;
+}
 
 #login-facebook:hover {
     transform: translateY(-5px); /* Mover hacia arriba */
@@ -897,8 +901,10 @@ main {
 }
 
 #login-facebook:hover{
-    background-color: rgb(19, 74, 146);
+    background-color: #145DB1;
 }
+
+
 
 .separador {
     width: 343px;
@@ -1842,11 +1848,11 @@ footer {
 }
 
 .facebook {
-    background-color: rgba(24, 119, 242, 1);
+    background-color: #1877f2;
 }
 
 .instagram {
-    background-color: rgba(228, 64, 95, 1);
+    background-color: #e4405f;
 }
 
 .twitter {
@@ -1854,16 +1860,18 @@ footer {
 }
 
 .facebook:hover {
-    background-color: rgb(19, 74, 146);
+    background-color: #145DB1;
 }
 
 .instagram:hover {
-    background-color: rgb(141, 24, 45);
+    background-color: #CC3852;
 }
 
 .twitter:hover {
-    background-color: rgb(10, 10, 10);
+    background-color: #D3D3D3;
+    color: #000000;
 }
+
 
 .footerDER {
     display: flex;
