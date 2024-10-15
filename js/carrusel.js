@@ -2,44 +2,55 @@ document.addEventListener('DOMContentLoaded', function () {
     const carouselContent = document.getElementById('carousel-content');
     const step = 120;
     let angle = 0;
+    let currentIndex = 0;
+    const totalSlides = 3; 
     let btn1 = document.getElementById('btn1');
     let btn2 = document.getElementById('btn2');
     let btn3 = document.getElementById('btn3');
-    const buttons = [btn1, btn2, btn3];  // Agrupamos los botones en un array
+    const buttons = [btn1, btn2, btn3];
 
     function goToSlide(slideIndex) {
-        angle = -slideIndex * step;
+        currentIndex = slideIndex;
+        angle = -currentIndex * step;
         updateCarousel();
-        updateActiveButton(slideIndex);  // Actualiza los botones activos
+        updateActiveButton(currentIndex);
     }
 
     function updateCarousel() {
         carouselContent.style.transform = `translateZ(-35vw) rotateY(${angle}deg)`;
     }
 
-    // Función para actualizar qué botón tiene la clase 'carousel-press'
     function updateActiveButton(activeIndex) {
-        // Remueve la clase 'carousel-press' de todos los botones
         buttons.forEach((btn, index) => {
             if (index === activeIndex) {
-                btn.classList.add('carousel-press');  // Añade la clase al botón activo
+                btn.classList.add('carousel-press');
             } else {
-                btn.classList.remove('carousel-press');  // Remueve la clase de los demás
+                btn.classList.remove('carousel-press'); 
             }
         });
     }
 
-    // Eventos para los botones
+
     btn1.addEventListener('click', function () {
-        goToSlide(0);  // Primer slide (índice 0)
+        goToSlide(0);  
     });
 
     btn2.addEventListener('click', function () {
-        goToSlide(1);  // Segundo slide (índice 1)
+        goToSlide(1); 
     });
 
     btn3.addEventListener('click', function () {
-        goToSlide(2);  // Tercer slide (índice 2)
+        goToSlide(2); 
+    });
+
+    // Navegación con flechas
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        goToSlide(newIndex);
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        const newIndex = (currentIndex + 1) % totalSlides;
+        goToSlide(newIndex);
     });
 });
-

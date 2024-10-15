@@ -494,7 +494,8 @@
 
         </section>
     </div>
-    <form class="form-container">
+    <!-- Formulario de registro -->
+    <div class="form-container">
         <div class="form-imagen">
             <div id="overlay"></div>
             <div id="black-overlay"></div>
@@ -503,68 +504,74 @@
         </div>
         <div class="login-container">
             <div class="sesion-redes">
-                <button id="login-google" type="submit"><img src="./images/google.png" alt="Google">Iniciar sesión
-                    con
+                <button id="login-google" type="submit"><img src="./images/google.png" alt="Google">Iniciar sesión con
                     Google</button>
-                <button id="login-facebook" type="submit"><img src="./images/facebook.png" alt="Facebook">Iniciar
-                    sesión
+                <button id="login-facebook" type="submit"><img src="./images/facebook.png" alt="Facebook">Iniciar sesión
                     con Facebook</button>
             </div>
             <div class="separador"></div>
-            <div class="iniciar-sesion">
+            <form class="iniciar-sesion">
                 <input type="text" id="usuario" placeholder="Usuario">
                 <input type="password" id="contraseña" placeholder="Contraseña">
                 <a href="#">¿Olvidaste tu contraseña?</a>
-                <button class="btn-form" id="btn-iniciarsesion" type="submit">Iniciar Sesión</button>
-            </div>
+                <button class="btn-iniciarsesion" id="btn-iniciarsesion" type="submit">Iniciar Sesión</button>
+            </form>
             <div class="registrate">
                 <p>¿Aún no tienes cuenta?</p>
-                <button class="btn-form" id="btn-registrarse" type="submit">Crear cuenta</button>
+                <button class="btn-registrar" id="btn-registrarse" type="submit">Crear cuenta</button>
             </div>
         </div>
         <div class="registro-container">
             <h2>Regístrate</h2>
-            <div class="registro">
-                <div class="registro-izq">
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" placeholder="Nombre completo">
-                    <label for="username">Nombre de usuario</label>
-                    <input type="text" id="username" placeholder="Escriba su usuario">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Dirección email">
-                    <label for="password">Contraseña</label>
-                    <div class="pass">
-                        <input type="password" class="password" placeholder="Escriba su contraseña">
-                        <img class="eye" src="./images/hide-svgrepo-com.svg" alt="">
+            <form class="registro">
+                <div class="datos-registro">
+                    <div class="registro-izq">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" placeholder="Nombre completo" required>
+                        <label for="username">Nombre de usuario</label>
+                        <input type="text" id="username" placeholder="Escriba su usuario" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Dirección email" required>
+                        <label for="password">Contraseña</label>
+                        <div class="pass">
+                            <input type="password" class="password" placeholder="Escriba su contraseña" required>
+                            <img class="eye" src="./images/hide-svgrepo-com.svg" alt="">
+                        </div>
+                        <p id="password-help">Usa al menos 6 caracteres. Incluye <br>
+                            al menos una letra y un número o un <br>
+                            caracter especial.</p>
+                        <img src="./images/captcha.png" alt="" id="captcha">
                     </div>
-                    <p id="password-help">Usa al menos 6 caracteres. Incluye <br>
-                        al menos una letra y un número o un <br>
-                        caracter especial.</p>
-                    <img src="./images/captcha.png" alt="" id="captcha">
+                    <div class="registro-der">
+                        <label for="lastname">Apellido</label>
+                        <input type="text" id="lastname" placeholder="Escriba su apellido" required>
+                        <label for="fecha nacimiento">Fecha de nacimiento</label>
+                        <div class="fecha-nac">
+                            <input type="number" class="day-input" placeholder="Día" required>
+                            <input type="number" class="month-input" placeholder="Mes" required>
+                            <input type="number" class="year-input" placeholder="Año" required>
+                        </div>
+                        <label for="password">Confirmar contraseña</label>
+                        <div class="pass">
+                            <input type="password" class="password" placeholder="Escriba su contraseña" required>
+                            <img class="eye" src="./images/hide-svgrepo-com.svg" alt="">
+                        </div>
+                    </div>
                 </div>
-                <div class="registro-der">
-                    <label for="lastname">Apellido</label>
-                    <input type="text" id="lastname" placeholder="Escriba su apellido">
-                    <label for="fecha nacimiento">Fecha de nacimiento</label>
-                    <div class="fecha-nac">
-                        <input type="number" class="day-input" placeholder="Día">
-                        <input type="number" class="month-input" placeholder="Mes">
-                        <input type="number" class="year-input" placeholder="Año">
-                    </div>
-                    <label for="password">Confirmar contraseña</label>
-                    <div class="pass">
-                        <input type="password" class="password" placeholder="Escriba su contraseña">
-                        <img class="eye" src="./images/hide-svgrepo-com.svg" alt="">
-                    </div>
+                <div class="botonera">
+                    <button id="enviar-registro" class="btn-registrar" type="submit">Registrarse</button>
+                    <div class="separador"></div>
+                    <button class="btn-iniciarsesion" type="button">Iniciar Sesión</button>
                 </div>
-            </div>
-            <div class="botonera">
-                <button class="btn-form" id="btn-registrarse" type="submit">Registrarse</button>
-                <div class="separador"></div>
-                <button class="btn-form" id="btn-iniciarsesion" type="submit">Iniciar sesión</button>
-            </div>
+            </form>
         </div>
-    </form>
+        <div class="success">
+            <img src="./images/checked.png" alt="Check">
+            <h1>Registro Exitoso</h1>
+            <h3>Se ha registrado correctamente. Proceda a iniciar sesión.</h3>
+            <button class="btn-iniciarsesion" id="volverinicio" type="submit">Iniciar Sesión</button>
+        </div>
+    </div>
     <footer>
         <div class="headerFooter">
             <div class="footerIZQ">
