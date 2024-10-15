@@ -12,10 +12,12 @@ var openForm = document.querySelector(".perfil"),
     monthInput = document.querySelector('.month-input'),
     yearInput = document.querySelector('.year-input'),
     email = document.getElementById("email"),
-    eyes = document.querySelectorAll(".eye"),
-    pass = document.querySelectorAll(".password"),
+    passEye = document.getElementById('password-eye'),
+    pass = document.getElementById("password"),
+    confirmEye = document.getElementById("confirm-pass-eye"),
+    confirmPass = document.getElementById("confirm-password"),
     success = document.querySelector(".success"),
-    sendRegister = document.querySelector(".registro")
+    sendRegister = document.querySelector(".registro");
 
 
 openForm.addEventListener("click", e =>{
@@ -69,20 +71,26 @@ yearInput.addEventListener('input', ()=> {
 
 /** Show password */
 
-eyes.forEach(eye => {
-    eye.addEventListener("click", ()=> {
-        pass.forEach(p => {
-            if(p.type === "password"){
-                p.type = "text"
-                eye.src = './images/show-svgrepo-com.svg'
-            }
-            else{
-                p.type = "password"
-                eye.src = './images/hide-svgrepo-com.svg'
-            }  
-        })
-        
-    })
+passEye.addEventListener("click", e =>{
+    if(pass.type === "password"){
+        pass.type = "text"
+        passEye.src = './images/show-svgrepo-com.svg'
+    } else{
+        pass.type = "password"
+        passEye.src = './images/hide-svgrepo-com.svg'
+    }
+    
+})
+
+confirmEye.addEventListener("click", e =>{
+    if(confirmPass.type === "password"){
+        confirmPass.type = "text"
+        confirmEye.src = './images/show-svgrepo-com.svg'
+    } 
+    else{
+        confirmPass.type = "password"
+        confirmEye.src = './images/hide-svgrepo-com.svg'
+    }
 })
 
 sendRegister.addEventListener("submit", e=>{
