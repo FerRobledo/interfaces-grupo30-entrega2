@@ -6,15 +6,15 @@ btnCarrito.forEach(btnCarro => {
         let tarjeta = btnCarro.closest('.tarjeta-juego');
         let overlay = tarjeta.querySelector('.overlay-carrito');
         console.log(overlay);
-        let imagenBoton = btnCarro.querySelector('img');
+        let imagenBoton = btnCarro.querySelector('#carritoIcon');
 
 
         overlay.classList.toggle('show');
 
         if (overlay.classList.contains('show')) {
-            imagenBoton.src = './images/Botones-tarjeta-1.png';
+            imagenBoton.src = './images/xIcon.svg';
         } else {
-            imagenBoton.src = './images/Botones-tarjeta.png';
+            imagenBoton.src = './images/plusIcon.svg';
         }
     })
 });

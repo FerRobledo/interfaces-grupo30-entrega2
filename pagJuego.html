@@ -15,6 +15,8 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/3f0864db6c.js" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
 
 </head>
 
@@ -37,7 +39,12 @@
         </div>
         <div class="header-right">
             <button class="carrito">
-                <img src="./images/carrito.svg" alt="">
+                <svg width="45" height="45" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="carrito-path"
+                        d="M2 2H10L15.36 28.78C15.5429 29.7008 16.0438 30.5279 16.7751 31.1166C17.5064 31.7053 18.4214 32.018 19.36 32H38.8C39.7386 32.018 40.6536 31.7053 41.3849 31.1166C42.1162 30.5279 42.6171 29.7008 42.8 28.78L46 12H12M20 42C20 43.1046 19.1046 44 18 44C16.8954 44 16 43.1046 16 42C16 40.8954 16.8954 40 18 40C19.1046 40 20 40.8954 20 42ZM42 42C42 43.1046 41.1046 44 40 44C38.8954 44 38 43.1046 38 42C38 40.8954 38.8954 40 40 40C41.1046 40 42 40.8954 42 42Z"
+                        stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
                 <div class="circulo">0</div>
             </button>
             <button class="perfil">
@@ -71,7 +78,7 @@
         <!-- Seccion superior-->
         <section class="seccionSuperior">
             <div class="breadCrumb">
-                <p>Juegos</p>
+                <a href="index.html"><p>Juegos</p></a>
                 <span>/</span>
                 <p>Juegos de Estrategia</p>
                 <span>/</span>
@@ -506,7 +513,7 @@
             <div class="sesion-redes">
                 <button id="login-google" type="submit"><img src="./images/google.png" alt="Google">Iniciar sesión con
                     Google</button>
-                    <button id="login-facebook" type="submit"><i class="fa-brands fa-facebook-f"></i>Iniciar sesión
+                <button id="login-facebook" type="submit"><i class="fa-brands fa-facebook-f"></i>Iniciar sesión
                     con Facebook</button>
             </div>
             <div class="separador"></div>
@@ -540,7 +547,7 @@
                         <p id="password-help">Usa al menos 6 caracteres. Incluye <br>
                             al menos una letra y un número o un <br>
                             caracter especial.</p>
-                        <img src="./images/captcha.png" alt="" id="captcha">
+                            <div class="g-recaptcha" data-sitekey="6LeiOGkqAAAAAOAR-E2pbKF7ygMv1mWkyvUGtOGw"></div>
                     </div>
                     <div class="registro-der">
                         <label for="lastname">Apellido</label>
@@ -571,6 +578,7 @@
             <h3>Se ha registrado correctamente. Proceda a iniciar sesión.</h3>
             <button class="btn-iniciarsesion" id="volverinicio" type="submit">Iniciar Sesión</button>
         </div>
+        <img src="./images/closeIcon.svg" alt="" id="closeIcon">
     </div>
     <footer>
         <div class="headerFooter">

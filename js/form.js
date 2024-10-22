@@ -17,7 +17,8 @@ var openForm = document.querySelector(".perfil"),
     confirmEye = document.getElementById("confirm-pass-eye"),
     confirmPass = document.getElementById("confirm-password"),
     success = document.querySelector(".success"),
-    sendRegister = document.querySelector(".registro");
+    sendRegister = document.querySelector(".registro"),
+    closeIcon = document.querySelector("#closeIcon");
 
 
 openForm.addEventListener("click", e =>{
@@ -26,6 +27,12 @@ openForm.addEventListener("click", e =>{
 })
 
 closeForm.addEventListener("click", e =>{
+    document.body.style.overflow = "auto"
+    form.style.display = "none"
+    closeForm.style.display = "none"
+})
+
+closeIcon.addEventListener("click", e =>{
     document.body.style.overflow = "auto"
     form.style.display = "none"
     closeForm.style.display = "none"
