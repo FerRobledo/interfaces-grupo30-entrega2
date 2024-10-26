@@ -13,7 +13,6 @@ export class Circulo {
         this.context.beginPath();
         this.context.arc(this.posX, this.posY, this.radio, 0, 2 * Math.PI);
         this.context.fill();
-        this.context.closePath();
 
         // Dibujar la imagen de borde si existe
         if (this.image) {
@@ -23,6 +22,8 @@ export class Circulo {
             this.context.drawImage(this.image, this.posX - this.radio, this.posY - this.radio, this.radio * 2, this.radio * 2);
             this.context.restore();
         }
+        this.context.closePath();
+
     }
 
     setFill(fill) {
@@ -31,6 +32,11 @@ export class Circulo {
 
     setImage(image) {
         this.image = image; // Método para establecer la imagen
+    }
+
+    setPosition(posX, posY) {
+        this.posX = posX;
+        this.posY = posY;
     }
 
     getPosition() {
