@@ -9,10 +9,11 @@ let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext('2d');
 let arrFichas = [];
 let espacios = [];
+let ocupados = [0, 0, 0, 0, 0, 0, 0];
 let arrastre = false;
 let ultimaFiguraClickeada = null;
 let fondoJuego = new Image();
-fondoJuego.src = "./images/juegowallpaper.jpg";
+fondoJuego.src = "./images/fondo-juego.jpg";
 
 // Función principal para iniciar el juego
 function iniciarJuego() {
@@ -53,7 +54,6 @@ function crearTablero() {
         }
         espacios.push(rowCircles); // Añadir cada fila de círculos al tablero
     }
-
 }
 
 // Función para cargar las fichas
@@ -81,13 +81,22 @@ function fichas(ctx, arrFichas, n, img) {
     let margin = 10;
     let startX = n === 0 ? 10 : 800; // Posición inicial para Morty y Rick
     let startY = 20;
+    let rows = 7; // Número de filas
+    let cols = 2; // Número de columnas
 
     
-    // Crear ficha y agregar al arreglo
-    let circle = new Circulo(startX + cellSize / 2, startY + cellSize / 2, cellSize / 2, '#fff', ctx);
-    circle.setImage(img);
-    arrFichas.push(circle);
-    circle.draw(); // Dibuja la ficha
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            let posX = startX + col * (cellSize + margin) + cellSize / 2;
+            let posY = startY + row * (cellSize + margin) + cellSize / 2;
+            let circle = new Circulo(posX, posY, cellSize / 2, '#fff', ctx); // Crear fichas
+            circle.setImage(img);
+            arrFichas.push(circle);
+            circle.draw(); // Dibuja cada círculo
+            arrFichas.push(circle); // Añadir fila al tablero
+        }
+    }
+
 }
 
 // Función para limpiar el canvas si es necesario
@@ -130,6 +139,7 @@ function detenerArrastre() {
 function arrastreActivo(e) {
     if (arrastre && ultimaFiguraClickeada != null) {
         ultimaFiguraClickeada.setPosition(e.offsetX, e.offsetY);
+        comprobarUbicacion(ultimaFiguraClickeada.posX);
         drawFigure(); // Redibuja después de mover la figura
     }
 }
@@ -145,12 +155,23 @@ function cambiarCursor(e) {
 
 function findClickedFigure(x, y) {
     for (let i = 0; i < arrFichas.length; i++) {
-        const element = arrFichas[i];
+        let element = arrFichas[i];
         if (element.isPointInside(x, y)) {
             return element; // Devuelve la figura clickeada
         }
     }
     return null; // Si no se encuentra, devuelve null
+}
+
+function comprobarUbicacion(pos){
+    for(let i = 0; i<7; i++){
+        if(espacios[ocupados[i]][i].comprobarAltura(pos)){
+            espacios[7-ocupados[i]][i].setFill('#aaa');
+            espacios[7-ocupados[i]][i].draw();
+            console.log(espacios[7-ocupados[i]][i]);
+        }
+        drawFigure(); // Redibuja después de mover la figura
+    }
 }
 
 /* FIN DE FICHAS Y MOUSE*/

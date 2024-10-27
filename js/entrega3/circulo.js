@@ -71,4 +71,9 @@ export class Circulo {
     calcularArea() {
         return Math.PI * Math.pow(this.radio, 2);
     }
+
+    comprobarAltura(x){
+        let _x = this.posX - x;
+        return Math.sqrt(_x * _x) < this.radio;
+    }
 }
