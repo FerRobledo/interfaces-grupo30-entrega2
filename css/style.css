@@ -1289,7 +1289,9 @@ main {
     grid-area: contenedorJuego;
     border-radius: 16px;
     margin-bottom: 30px;
+    overflow: hidden;
 }
+
 
 #icono-fulscreen {
     width: 40px;
