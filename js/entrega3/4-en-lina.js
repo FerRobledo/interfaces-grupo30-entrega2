@@ -1,59 +1,33 @@
-// Importa la clase Circulo
+// Importa las clases Circulo y Tablero
 import { Circulo } from './circulo.js';
+import { Tablero } from './tablero.js';
 
 // Inicia el juego cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', iniciarJuego);
+
 let contenedor = document.querySelector(".contenedorJuego");
 contenedor.innerHTML = '<canvas id="canvas" width="940" height="800"></canvas>';
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext('2d');
 let arrFichas = [];
-let espacios = [];
-let ocupados = [0, 0, 0, 0, 0, 0, 0];
 let arrastre = false;
 let ultimaFiguraClickeada = null;
 let fondoJuego = new Image();
 fondoJuego.src = "./images/fondo-juego.jpg";
+let tablero;
 
 // Función principal para iniciar el juego
 function iniciarJuego() {
-
-
     fondoJuego.onload = () => {
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
-
         setTimeout(() => {
-            crearTablero(canvas, ctx, espacios);
+            tablero = new Tablero(ctx, 6, 7, canvas);
+            tablero.crearTablero();
         }, 100);
-
         setTimeout(() => {
-            cargarFichas(canvas, ctx, arrFichas);
+            cargarFichas();
         }, 200);
     };
-}
-
-// Función para crear el tablero
-function crearTablero() {
-
-    let canvasWidth = canvas.width;
-    let rows = 6;
-    let cols = 7;
-    let cellSize = 60;
-    let margin = 10;
-    let startX = (canvasWidth - (cols * (cellSize + margin))) / 2;
-    let startY = 170;
-
-    for (let row = 0; row < rows; row++) {
-        let rowCircles = [];
-        for (let col = 0; col < cols; col++) {
-            let posX = startX + col * (cellSize + margin) + cellSize / 2;
-            let posY = startY + row * (cellSize + margin) + cellSize / 2;
-            let circle = new Circulo(posX, posY, cellSize / 2, '#fff', ctx);
-            rowCircles.push(circle);
-            circle.draw(); // Dibuja cada círculo en el tablero
-        }
-        espacios.push(rowCircles); // Añadir cada fila de círculos al tablero
-    }
 }
 
 // Función para cargar las fichas
@@ -63,7 +37,6 @@ function cargarFichas() {
     fichasImg[1].src = "./images/rick.jpeg";
 
     let loadedCount = 0;
-
     fichasImg.forEach((img, index) => {
         img.onload = function () {
             loadedCount++;
@@ -84,7 +57,6 @@ function fichas(ctx, arrFichas, n, img) {
     let rows = 7; // Número de filas
     let cols = 2; // Número de columnas
 
-    
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
             let posX = startX + col * (cellSize + margin) + cellSize / 2;
@@ -93,10 +65,8 @@ function fichas(ctx, arrFichas, n, img) {
             circle.setImage(img);
             arrFichas.push(circle);
             circle.draw(); // Dibuja cada círculo
-            arrFichas.push(circle); // Añadir fila al tablero
         }
     }
-
 }
 
 // Función para limpiar el canvas si es necesario
@@ -106,17 +76,13 @@ function clearCanvas() {
 
 // Redibuja el tablero y las fichas
 function drawFigure() {
-
     clearCanvas(); // Limpia el canvas antes de redibujar
-    ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height); //Dibuja el fondo
-    crearTablero(); //Dibuja el tablero
+    ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height); // Dibuja el fondo
+    tablero.crearTablero(); // Dibuja el tablero
     arrFichas.forEach(ficha => ficha.draw()); // Dibuja las fichas
 }
 
-
-
-
-/* MANEJO DE FICHAS Y MOUSE*/
+/* MANEJO DE FICHAS Y MOUSE */
 canvas.addEventListener("mousedown", iniciarArrastre, false);
 canvas.addEventListener("mouseup", detenerArrastre, false);
 canvas.addEventListener("mousemove", arrastreActivo, false);
@@ -127,7 +93,6 @@ function iniciarArrastre(e) {
     if (figuraClickeada != null) {
         arrastre = true;
         ultimaFiguraClickeada = figuraClickeada;
-
     }
 }
 
@@ -139,7 +104,6 @@ function detenerArrastre() {
 function arrastreActivo(e) {
     if (arrastre && ultimaFiguraClickeada != null) {
         ultimaFiguraClickeada.setPosition(e.offsetX, e.offsetY);
-        comprobarUbicacion(ultimaFiguraClickeada.posX);
         drawFigure(); // Redibuja después de mover la figura
     }
 }
@@ -162,16 +126,3 @@ function findClickedFigure(x, y) {
     }
     return null; // Si no se encuentra, devuelve null
 }
-
-function comprobarUbicacion(pos){
-    for(let i = 0; i<7; i++){
-        if(espacios[ocupados[i]][i].comprobarAltura(pos)){
-            espacios[7-ocupados[i]][i].setFill('#aaa');
-            espacios[7-ocupados[i]][i].draw();
-            console.log(espacios[7-ocupados[i]][i]);
-        }
-        drawFigure(); // Redibuja después de mover la figura
-    }
-}
-
-/* FIN DE FICHAS Y MOUSE*/
