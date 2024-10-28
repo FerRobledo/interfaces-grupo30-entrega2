@@ -4,7 +4,7 @@ import { Tablero } from './tablero.js';
 
 // Inicia el juego cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', iniciarJuego);
-document.getElementById("btn-play-juego").addEventListener("click", iniciarJuego);
+document.getElementById("btn-play-juego").addEventListener("click", reiniciar);
 
 let contenedor = document.querySelector(".contenedorJuego");
 contenedor.innerHTML = '<canvas id="canvas" width="940" height="800"></canvas>';
@@ -31,6 +31,22 @@ function iniciarJuego() {
             cargarFichas();
         }, 200);
     };
+}
+
+function reiniciar() {
+    turno = 0;
+    arrFichas = [];
+    ultimaFiguraClickeada = null;
+    arrastre = false;
+    sePuedeSoltar = false;
+
+    clearCanvas(); // Limpiar el canvas
+    ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
+
+    tablero.reiniciarTablero();
+    tablero.crearTablero();
+
+    cargarFichas();
 }
 
 // Función para cargar las fichas
@@ -120,7 +136,7 @@ function detenerArrastre() {
 function arrastreActivo(e) {
     if (arrastre && ultimaFiguraClickeada != null) {
         ultimaFiguraClickeada.setPosition(e.offsetX, e.offsetY);
-        if (tablero.buscarColumna(e.offsetX, e.offsetY)) {
+        if (tablero.buscarColumna(e.offsetX, e.offsetY + 15)) {
             sePuedeSoltar = true;
         } else {
             sePuedeSoltar = false;
