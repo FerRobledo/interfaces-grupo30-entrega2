@@ -24,7 +24,7 @@ export class Tablero {
                 for (let row = 0; row < this.rows; row++) {
                     let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2;
                     let posY = this.startY + row * (this.cellSize + this.margin) + this.cellSize / 2;
-                    let circle = new Circulo(posX, posY, this.cellSize / 2, '#fff', this.ctx);
+                    let circle = new Circulo(posX, posY, posX, posY, this.cellSize / 2, '#fff', this.ctx);
                     colCircles.push(circle);
                     circle.draw(); // Dibuja cada círculo en el tablero
                 }
@@ -35,6 +35,7 @@ export class Tablero {
             this.dibujarTablero();
         }
     }
+    
 
     reiniciarTablero() {
         this.ocupados.fill(0); //Se llena todo el arreglo de ocupados con 0

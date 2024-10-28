@@ -82,7 +82,7 @@ function fichas(ctx, arrFichas, n, img) {
         for (let row = 0; row < rows; row++) {
             let posX = startX + col * (cellSize + margin) + cellSize / 2;
             let posY = startY + row * (cellSize + margin) + cellSize / 2;
-            let circle = new Circulo(posX, posY, cellSize / 2, '#fff', ctx, n); // Crear fichas
+            let circle = new Circulo(posX, posY, posX, posY, cellSize / 2, '#fff', ctx, n); // Crear fichas
             circle.setImage(img);
             arrFichas.push(circle);
             circle.draw(); // Dibuja cada círculo
@@ -129,9 +129,15 @@ function detenerArrastre() {
                 turno = 0;
             else
                 turno = 1;
+
+            drawFigure();
+            ultimaFiguraClickeada = null; // Limpiamos la referencia
+        }else{
+            ultimaFiguraClickeada.setPosition(ultimaFiguraClickeada.posXinicial, ultimaFiguraClickeada.posYinicial);
+            ultimaFiguraClickeada = null;
+            drawFigure();
+
         }
-        drawFigure();
-        ultimaFiguraClickeada = null; // Limpiamos la referencia
     }
 }
 
@@ -169,9 +175,11 @@ function findClickedFigure(x, y) {
 function soltarFicha(ficha) {
     const velocidad = 10;
     const posX = tablero.ultimoPintado.getPosX();
-    const posFinal = tablero.ultimoPintado.getPosY();
+    let posFinal = tablero.ultimoPintado.getPosY();
     let posInicial = ficha.getPosY();
     fichaEnGravedad = true;
+    let rebote = 0;
+    let reboteMaximo = 20; 
 
     const animarCaida = () => {
         // Verifica si la ficha ha alcanzado la posición final
@@ -186,6 +194,7 @@ function soltarFicha(ficha) {
         } else {
             // Una vez que alcanza la posición final
             ficha.setPosition(posX, posFinal);
+
             ficha.ocupar();
             tablero.ultimoPintado.ocupar(ficha.getEquipo());
             tablero.actualizarColumna(); // Indicar que cayó una ficha

@@ -1,7 +1,9 @@
 export class Circulo {
-    constructor(posX, posY, radio, fill, context, equipo = null) {
+    constructor(posX, posY, posXinicial, posYinicial, radio, fill, context, equipo = null) {
         this.posX = posX;
         this.posY = posY;
+        this.posXinicial = posXinicial;
+        this.posYinicial = posYinicial;
         this.radio = radio;
         this.fill = fill;
         this.context = context;
