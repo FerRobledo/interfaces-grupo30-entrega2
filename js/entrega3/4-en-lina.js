@@ -18,6 +18,7 @@ fondoJuego.src = "./images/fondo-juego.jpg";
 let tablero;
 let sePuedeSoltar = false;
 let turno = 0;
+let fichaEnGravedad = false;
 
 // Función principal para iniciar el juego
 function iniciarJuego() {
@@ -39,6 +40,7 @@ function reiniciar() {
     ultimaFiguraClickeada = null;
     arrastre = false;
     sePuedeSoltar = false;
+    fichaEnGravedad = false;
 
     clearCanvas(); // Limpiar el canvas
     ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
@@ -110,7 +112,7 @@ canvas.addEventListener("mousemove", cambiarCursor, false);
 function iniciarArrastre(e) {
     let figuraClickeada = findClickedFigure(e.offsetX, e.offsetY);
     if (figuraClickeada != null) {
-        if(figuraClickeada.getEquipo() == turno && !figuraClickeada.estaOcupada()){ // Comprobar que no este ubicada y que sea del equipo correcto
+        if (figuraClickeada.getEquipo() == turno && !figuraClickeada.estaOcupada() && fichaEnGravedad == false) { // Comprobar que no este ubicada y que sea del equipo correcto
             arrastre = true;
             ultimaFiguraClickeada = figuraClickeada;
         }
@@ -118,12 +120,12 @@ function iniciarArrastre(e) {
 }
 
 function detenerArrastre() {
-    if(arrastre){
+    if (arrastre) {
 
         arrastre = false;
         if (sePuedeSoltar) {
-            tablero.soltarFicha(ultimaFiguraClickeada);
-            if(turno == 1)
+            soltarFicha(ultimaFiguraClickeada);
+            if (turno == 1)
                 turno = 0;
             else
                 turno = 1;
@@ -162,4 +164,38 @@ function findClickedFigure(x, y) {
         }
     }
     return null; // Si no se encuentra, devuelve null
+}
+
+function soltarFicha(ficha) {
+    const velocidad = 10;
+    const posX = tablero.ultimoPintado.getPosX();
+    const posFinal = tablero.ultimoPintado.getPosY();
+    let posInicial = ficha.getPosY();
+    fichaEnGravedad = true;
+
+    const animarCaida = () => {
+        // Verifica si la ficha ha alcanzado la posición final
+        if (posInicial < posFinal) {
+            // Actualiza la posición de la ficha
+            posInicial += velocidad;
+            ficha.setPosition(posX, posInicial);
+            drawFigure();
+
+            // Continúa la animación
+            requestAnimationFrame(animarCaida);
+        } else {
+            // Una vez que alcanza la posición final
+            ficha.setPosition(posX, posFinal);
+            ficha.ocupar();
+            tablero.ultimoPintado.ocupar(ficha.getEquipo());
+            tablero.actualizarColumna(); // Indicar que cayó una ficha
+            drawFigure();
+
+            fichaEnGravedad = false;
+
+        }
+    };
+
+    // Iniciar la animación
+    animarCaida();
 }

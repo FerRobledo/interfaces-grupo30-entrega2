@@ -89,7 +89,7 @@ export class Tablero {
 
     // Comprueba que la ficha este por encima del tablero
     estaEnPosicion(circle, pos) {
-        if (circle.getPosY() > pos) {
+        if (circle.getPosY() > pos && circle.getPosY() < pos + 50) {
             return true;
         }
 
@@ -116,18 +116,15 @@ export class Tablero {
         this.espacios[col][filaDisponible].draw();
         this.ultimoPintado = this.espacios[col][filaDisponible];
     }
-
-    soltarFicha(ficha) {
-
-        ficha.setPosition(this.ultimoPintado.getPosX(), this.ultimoPintado.getPosY());
-        ficha.ocupar();
-        this.ultimoPintado.ocupar(ficha.getEquipo());
-        this.actualizarColumna(); // Indicar que cayo una ficha
-        ficha.draw();
-    }
-
+    
     actualizarColumna() {
         this.ocupados[this.columnaPintada]++;
     }
 
+    getUltimoPintado(){
+        return this.ultimoPintado;
+    }
+
+
+    
 }
