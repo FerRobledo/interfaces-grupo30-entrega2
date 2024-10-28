@@ -57,8 +57,8 @@ function fichas(ctx, arrFichas, n, img) {
     let rows = 7; // Número de filas
     let cols = 2; // Número de columnas
 
-    for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
+    for (let col = 0; col < cols; col++) {
+        for (let row = 0; row < rows; row++) {
             let posX = startX + col * (cellSize + margin) + cellSize / 2;
             let posY = startY + row * (cellSize + margin) + cellSize / 2;
             let circle = new Circulo(posX, posY, cellSize / 2, '#fff', ctx); // Crear fichas
@@ -104,6 +104,7 @@ function detenerArrastre() {
 function arrastreActivo(e) {
     if (arrastre && ultimaFiguraClickeada != null) {
         ultimaFiguraClickeada.setPosition(e.offsetX, e.offsetY);
+        tablero.buscarColumna(e.offsetX);
         drawFigure(); // Redibuja después de mover la figura
     }
 }

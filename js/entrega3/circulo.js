@@ -6,6 +6,7 @@ export class Circulo {
         this.fill = fill;
         this.context = context;
         this.image = null; // Nuevo atributo para almacenar la imagen
+        this.ocupada = false;
     }
 
     draw() {
@@ -56,6 +57,14 @@ export class Circulo {
 
     getRadio() {
         return this.radio;
+    }
+
+    estaOcupada(){
+        return this.ocupada;
+    }
+
+    ocupar(){
+        this.ocupada = true;
     }
 
     getFill() {
