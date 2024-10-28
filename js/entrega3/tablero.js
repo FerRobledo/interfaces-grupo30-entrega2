@@ -12,6 +12,7 @@ export class Tablero {
         this.espacios = [];  // Agrega esta línea para inicializar los espacios
         this.ocupados = [];
         this.ultimoPintado = null;
+        this.columnaPintada = null;
     }
 
     crearTablero() {
@@ -59,21 +60,65 @@ export class Tablero {
     }
 
 
-    buscarColumna(posX){ 
+    buscarColumna(posX, posY){
+        let encontrada = false;
         for(let col = 0; col < this.cols ; col++){ //Recorre todas las columnas del tablero
-            console.log(this.espacios[col][0].comprobarAltura(posX));
-           if(this.espacios[col][0].comprobarAltura(posX)){ // Comprueba si la posicion del mouse en X coincide con la posicion en X de la columna
-                
-                if(this.ultimoPintado != null) 
-                    this.ultimoPintado.setFill("#fff"); // Pintar de blanco cuando el mouse sale de la columna
-                
-                let filaDisponible = this.encontrarUltimaFilaDisponible(col);
-                this.espacios[col][filaDisponible].setFill("#aaa"); // Pintar de gris para indicar donde caeria la ficha
-                this.espacios[col][filaDisponible].draw();
-                this.ultimoPintado = this.espacios[col][filaDisponible];
-            
+            let circle = this.espacios[col][0];
+           if(circle.comprobarColumna(posX) && this.estaEnPosicion(circle, posY)){ // Comprueba si la posicion del mouse en X coincide con la posicion en X de la columna
+                encontrada = true;
+                this.indicarDondeCae(col); // Pintar de gris el espacio en donde cae
+                this.columnaPintada = col;
             }
         }
+
+        if(!encontrada){ // Si no encuentra ninguna ficha despintar
+            this.despintarUltimoPintado();
+        };
+
+        return encontrada;
+    }
+    
+    // Comprueba que la ficha este por encima del tablero
+    estaEnPosicion(circle, pos){
+        if(circle.getPosY() > pos){
+            return true;
+        }
+        
+        return false;
+    }
+    
+    despintarUltimoPintado(){
+        if(this.ultimoPintado != null){
+
+            this.ultimoPintado.setFill("#fff");
+            this.ultimoPintado = null;
+        
+        }
+
+        this.columnaPintada = null;
     }
 
+    indicarDondeCae(col){
+        if(this.ultimoPintado != null) 
+            this.ultimoPintado.setFill("#fff"); // Pintar de blanco cuando el mouse sale de la columna
+        
+        let filaDisponible = this.encontrarUltimaFilaDisponible(col);
+        this.espacios[col][filaDisponible].setFill("#aaa"); // Pintar de gris para indicar donde caeria la ficha
+        this.espacios[col][filaDisponible].draw();
+        this.ultimoPintado = this.espacios[col][filaDisponible];
+    }
+
+    soltarFicha(ficha){
+        
+        ficha.setPosition(this.ultimoPintado.getPosX(), this.ultimoPintado.getPosY());
+        ficha.ocupar();
+        this.ultimoPintado.ocupar(ficha.getEquipo());
+        this.actualizarColumna(); // Indicar que cayo una ficha
+        ficha.draw();
+    }
+
+    actualizarColumna(){
+        this.ocupados[this.columnaPintada] ++;
+    }
+ 
 }

@@ -394,12 +394,12 @@ main {
     color: rgba(48, 192, 127, 1);
 }
 
-.btn-3:active{
+.btn-3:active {
     background: rgba(48, 192, 127, 0);
     color: rgba(48, 192, 127, 1);
 }
 
-.btn-3:focus{
+.btn-3:focus {
     background: rgba(48, 192, 127, 0);
     color: rgba(48, 192, 127, 1);
 }
@@ -579,7 +579,7 @@ main {
     align-items: stretch;
 }
 
-.tarjetas.jugados-recientemente .header-juego{
+.tarjetas.jugados-recientemente .header-juego {
     height: 22vh;
 }
 
@@ -982,10 +982,11 @@ main {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    
+
 }
 
-.btn-iniciarsesion::after, .btn-registrar::after{
+.btn-iniciarsesion::after,
+.btn-registrar::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -994,13 +995,14 @@ main {
     height: 60px;
     background-color: rgba(255, 255, 255, 0);
     transition: left 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    z-index: -1; 
+    z-index: -1;
     transform: rotate(-10deg);
     opacity: 0.5;
     cursor: default;
 }
 
-.btn-iniciarsesion:hover::after, .btn-registrar:hover::after {
+.btn-iniciarsesion:hover::after,
+.btn-registrar:hover::after {
     background-color: rgba(255, 255, 255, 0.3);
     left: 100%;
     transform: translateY(0px) !important;
@@ -1253,6 +1255,185 @@ main {
     background-color: #F5F5DC;
 }
 
+.areaJuego {
+    height: 612px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.reloj{
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 300px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* CSS */
+.button-77 {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: initial;
+    background-image: none;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    justify-content: center;
+    line-height: 24px;
+    margin: 0;
+    height: 50px;
+    outline: none;
+    overflow: visible;
+    padding: 19px 26px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    word-break: keep-all;
+    z-index: 0;
+}
+
+#timer{
+    align-items: center;
+    background-clip: padding-box;
+    background-color: initial;
+    background-image: none;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    justify-content: center;
+    line-height: 24px;
+    margin: 0;
+    height: 50px;
+    outline: none;
+    overflow: visible;
+    padding: 19px 26px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    word-break: keep-all;
+    z-index: 0;
+}
+
+#timer:before{
+    background-color: #007e45a3;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -2;
+}
+
+#timer:before,
+#timer:after {
+    border-radius: 80px;
+}
+
+.button-77:before,
+.button-77:after {
+    border-radius: 80px;
+}
+
+.button-77:before {
+    background-color: #007e45a3;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -2;
+}
+
+#timer:after {
+    background-color: initial;
+    background-image: linear-gradient(90deg, rgba(98,217,163,1) 0%, rgba(6,172,97,1) 100%);
+    bottom: 4px;
+    content: "";
+    display: block;
+    left: 4px;
+    overflow: hidden;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    transition: all 100ms ease-out;
+    z-index: -1;
+}
+
+.button-77:after {
+    background-color: initial;
+    background-image: linear-gradient(90deg, rgba(98,217,163,1) 0%, rgba(6,172,97,1) 100%);
+    bottom: 4px;
+    content: "";
+    display: block;
+    left: 4px;
+    overflow: hidden;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    transition: all 100ms ease-out;
+    z-index: -1;
+}
+
+.button-77:hover:not(:disabled):after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition-timing-function: ease-in;
+}
+
+.button-77:active:not(:disabled) {
+    color: #ccc;
+}
+
+.button-77:active:not(:disabled):after {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(90deg, rgba(98,217,163,1) 0%, rgba(6,172,97,1) 100%);
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+}
+
+.button-77:disabled {
+    cursor: default;
+    opacity: .24;
+}
+
 /**************  Sección superior  **************/
 
 .seccionSuperior {
@@ -1280,7 +1461,6 @@ main {
 }
 
 .contenedorJuego {
-    position: relative;
     height: 612px;
     display: flex;
     flex-direction: column;
@@ -1358,6 +1538,7 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .contenedorDER {
@@ -2126,7 +2307,7 @@ footer {
 
     /* CARRUSEL JUEGO */
 
-    .tarjetas.jugados-recientemente .header-juego{
+    .tarjetas.jugados-recientemente .header-juego {
         height: 19vh;
     }
 

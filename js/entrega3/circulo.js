@@ -1,5 +1,5 @@
 export class Circulo {
-    constructor(posX, posY, radio, fill, context) {
+    constructor(posX, posY, radio, fill, context, equipo = null) {
         this.posX = posX;
         this.posY = posY;
         this.radio = radio;
@@ -7,6 +7,7 @@ export class Circulo {
         this.context = context;
         this.image = null; // Nuevo atributo para almacenar la imagen
         this.ocupada = false;
+        this.equipo = equipo;
     }
 
     draw() {
@@ -51,6 +52,10 @@ export class Circulo {
         return this.posX;
     }
 
+    getEquipo(){
+        return this.equipo;
+    }
+
     getPosY() {
         return this.posY;
     }
@@ -63,12 +68,17 @@ export class Circulo {
         return this.ocupada;
     }
 
-    ocupar(){
+    ocupar(equipo){
         this.ocupada = true;
+        this.equipo = equipo;
     }
 
     getFill() {
         return this.fill;
+    }
+
+    getImage(){
+        return this.image;
     }
 
     isPointInside(x, y) {
@@ -81,7 +91,7 @@ export class Circulo {
         return Math.PI * Math.pow(this.radio, 2);
     }
 
-    comprobarAltura(x){
+    comprobarColumna(x){
         let _x = this.posX - x;
         return Math.sqrt(_x * _x) < this.radio;
     }

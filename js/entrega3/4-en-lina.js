@@ -4,6 +4,7 @@ import { Tablero } from './tablero.js';
 
 // Inicia el juego cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', iniciarJuego);
+document.getElementById("btn-play-juego").addEventListener("click", iniciarJuego);
 
 let contenedor = document.querySelector(".contenedorJuego");
 contenedor.innerHTML = '<canvas id="canvas" width="940" height="800"></canvas>';
@@ -15,6 +16,8 @@ let ultimaFiguraClickeada = null;
 let fondoJuego = new Image();
 fondoJuego.src = "./images/fondo-juego.jpg";
 let tablero;
+let sePuedeSoltar = false;
+let turno = 0;
 
 // Función principal para iniciar el juego
 function iniciarJuego() {
@@ -61,7 +64,7 @@ function fichas(ctx, arrFichas, n, img) {
         for (let row = 0; row < rows; row++) {
             let posX = startX + col * (cellSize + margin) + cellSize / 2;
             let posY = startY + row * (cellSize + margin) + cellSize / 2;
-            let circle = new Circulo(posX, posY, cellSize / 2, '#fff', ctx); // Crear fichas
+            let circle = new Circulo(posX, posY, cellSize / 2, '#fff', ctx, n); // Crear fichas
             circle.setImage(img);
             arrFichas.push(circle);
             circle.draw(); // Dibuja cada círculo
@@ -91,20 +94,37 @@ canvas.addEventListener("mousemove", cambiarCursor, false);
 function iniciarArrastre(e) {
     let figuraClickeada = findClickedFigure(e.offsetX, e.offsetY);
     if (figuraClickeada != null) {
-        arrastre = true;
-        ultimaFiguraClickeada = figuraClickeada;
+        if(figuraClickeada.getEquipo() == turno && !figuraClickeada.estaOcupada()){ // Comprobar que no este ubicada y que sea del equipo correcto
+            arrastre = true;
+            ultimaFiguraClickeada = figuraClickeada;
+        }
     }
 }
 
 function detenerArrastre() {
-    arrastre = false;
-    ultimaFiguraClickeada = null; // Limpiamos la referencia
+    if(arrastre){
+
+        arrastre = false;
+        if (sePuedeSoltar) {
+            tablero.soltarFicha(ultimaFiguraClickeada);
+            if(turno == 1)
+                turno = 0;
+            else
+                turno = 1;
+        }
+        drawFigure();
+        ultimaFiguraClickeada = null; // Limpiamos la referencia
+    }
 }
 
 function arrastreActivo(e) {
     if (arrastre && ultimaFiguraClickeada != null) {
         ultimaFiguraClickeada.setPosition(e.offsetX, e.offsetY);
-        tablero.buscarColumna(e.offsetX);
+        if (tablero.buscarColumna(e.offsetX, e.offsetY)) {
+            sePuedeSoltar = true;
+        } else {
+            sePuedeSoltar = false;
+        }
         drawFigure(); // Redibuja después de mover la figura
     }
 }
