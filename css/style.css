@@ -1269,7 +1269,8 @@ main {
     right: 50%;
     transform: translateX(50%);
     width: 300px;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
     align-items: center;
 }
 

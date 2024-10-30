@@ -8,7 +8,7 @@ export class Tablero {
         this.cellSize = cellSize;
         this.margin = 10;
         this.startX = (canvas.width - (cols * (this.cellSize + this.margin))) / 2;
-        this.startY = 170;
+        this.startY = (canvas.height - (rows * (this.cellSize + this.margin))) / 2 + 50;
         this.espacios = [];  // Agrega esta línea para inicializar los espacios
         this.ocupados = [];
         this.ultimoPintado = null;

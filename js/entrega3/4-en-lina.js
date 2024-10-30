@@ -8,21 +8,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const reloj = document.querySelector(".reloj");
     const btnReset = document.getElementById("btn-reiniciar");
     const contenedorBotonesJuego = document.querySelector(".contenedorBotonesJuego");
-    const btn4linea = document.getElementById("btn-4linea");
-    const btn5linea = document.getElementById("btn-5linea");
-    const btn6linea = document.getElementById("btn-6linea");
+
     const btnVolverAtras = document.getElementById("volver-a-jugar");
     const showWinner = document.querySelector(".show-winner");
-    
+    const btnMenu = document.getElementById("btn-gomenu");
+
+
     reloj.style.display = "none";
 
-    btn4linea.addEventListener("click", () => iniciarJuego(6, 7, 60, 4));
-    btn5linea.addEventListener("click", () => iniciarJuego(7, 9, 50, 5));
-    btn6linea.addEventListener("click", () => iniciarJuego(8, 10, 40, 6));
+
     btnReset.addEventListener("click", () => reiniciar());
+    btnMenu.addEventListener("click", () => menu());
     btnVolverAtras.addEventListener("click", () => volverAjugar());
 
+    // Función para añadir event listeners a los botones
+    function agregarEventListenersBotones() {
+        const btn4linea = document.getElementById("btn-4linea");
+        const btn5linea = document.getElementById("btn-5linea");
+        const btn6linea = document.getElementById("btn-6linea");
+
+        btn4linea.addEventListener("click", () => iniciarJuego(6, 7, 60, 4));
+        btn5linea.addEventListener("click", () => iniciarJuego(7, 9, 55, 5));
+        btn6linea.addEventListener("click", () => iniciarJuego(8, 10, 50, 6));
+
+    }
+    agregarEventListenersBotones();
+
     let contenedor = document.querySelector(".contenedorJuego");
+    const contenedorOriginal = contenedor.innerHTML;
     let canvas = document.createElement("canvas");
     canvas.id = "canvas";
     canvas.width = contenedor.clientWidth;
@@ -46,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         contenedor.innerHTML = "";
         contenedorBotonesJuego.style.display = "none";
         contenedor.appendChild(canvas);
-        reloj.style.display = "block";
+        reloj.style.display = "flex";
 
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
         setTimeout(() => {
@@ -56,6 +69,22 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             cargarFichas();
         }, 200);
+    }
+
+    function menu() {
+        turno = 0;
+        arrFichas = [];
+        ultimaFiguraClickeada = null;
+        arrastre = false;
+        sePuedeSoltar = false;
+        fichaEnGravedad = false;
+        clearCanvas();
+        tablero.reiniciarTablero();
+        contenedor.innerHTML = contenedorOriginal;
+        contenedorBotonesJuego.style.display = "flex";
+        reloj.style.display = "none";
+        agregarEventListenersBotones();
+
     }
 
     function reiniciar() {
@@ -246,19 +275,19 @@ document.addEventListener("DOMContentLoaded", () => {
         animarCaida();
     }
 
-// MUESTRO EL GANADOR EN PANTALLA
-   
-    function mostrarGanador(ultimaFicha){
+    // MUESTRO EL GANADOR EN PANTALLA
+
+    function mostrarGanador(ultimaFicha) {
         let equipo = ultimaFicha.getEquipo();
         let image = document.getElementById("winner-image");
         let text = document.getElementById("winner-text");
 
-        if(equipo == 0){
+        if (equipo == 0) {
             reloj.style.display = "none";
             canvas.style.zIndex = "none";
             contenedor.style.display = "none";
             showWinner.style.display = "flex";
-            image.src = '/images/mortywins.gif'; 
+            image.src = '/images/mortywins.gif';
             text.textContent = 'Morty Wins';
         } else if (equipo == 1) {
             reloj.style.display = "none";
@@ -270,15 +299,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function volverAjugar(){
+    function volverAjugar() {
         reiniciar();
         showWinner.style.display = "none";
-        if (contenedor.contains(canvas)) {
-            contenedor.removeChild(canvas);
-            contenedor.appendChild(contenedorBotonesJuego);
-        }
+
         contenedor.style.display = "flex";
-        contenedorBotonesJuego.style.display = "flex";
+        reloj.style.display = "flex";
     }
 
 })

@@ -1,15 +1,21 @@
 let timerInterval;
-let timeElapsed = 0; // tiempo en segundos
+let timeElapsed = 500; // tiempo en segundos
 
 document.addEventListener('DOMContentLoaded', startTimer);
 document.getElementById("btn-reiniciar").addEventListener("click", startTimer);
 
 function startTimer() {
     clearInterval(timerInterval); // Detiene el temporizador si ya está corriendo
-    timeElapsed = 0; // Reinicia el tiempo
+    timeElapsed = 500; // Reinicia el tiempo
 
     timerInterval = setInterval(() => {
-        timeElapsed++; // Incrementa el tiempo en 1 segundo
+        if (timeElapsed <= 0) {
+            clearInterval(timerInterval); // Detiene el temporizador si llega a 0
+            document.getElementById("timer").textContent = "00:00"; // Muestra 00:00 al final
+            return;
+        }
+
+        timeElapsed--; // Decrementa el tiempo en 1 segundo
 
         const minutes = Math.floor(timeElapsed / 60);
         const seconds = timeElapsed % 60;
