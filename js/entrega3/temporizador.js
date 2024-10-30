@@ -1,12 +1,12 @@
 let timerInterval;
-let timeElapsed = 500; // tiempo en segundos
+let timeElapsed = 120; // tiempo en segundos
 
 document.addEventListener('DOMContentLoaded', startTimer);
 document.getElementById("btn-reiniciar").addEventListener("click", startTimer);
 
 function startTimer() {
     clearInterval(timerInterval); // Detiene el temporizador si ya está corriendo
-    timeElapsed = 500; // Reinicia el tiempo
+    timeElapsed = 120; // Reinicia el tiempo
 
     timerInterval = setInterval(() => {
         if (timeElapsed <= 0) {
