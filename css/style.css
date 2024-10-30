@@ -1470,6 +1470,15 @@ main {
     border-radius: 16px;
     margin-bottom: 30px;
     overflow: hidden;
+    
+}
+
+.contenedorBotonesJuego{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 100px;
+    gap: 20px;
 }
 
 
@@ -1492,7 +1501,6 @@ main {
 
 
 .btn-10 {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1508,6 +1516,8 @@ main {
     z-index: 2;
     transition: all 0.3s ease;
     overflow: hidden;
+    position: relative;
+    cursor: pointer;
 }
 
 .btn-10:after {

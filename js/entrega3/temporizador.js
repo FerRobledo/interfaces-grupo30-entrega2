@@ -2,7 +2,7 @@ let timerInterval;
 let timeElapsed = 0; // tiempo en segundos
 
 document.addEventListener('DOMContentLoaded', startTimer);
-document.getElementById("btn-play-juego").addEventListener("click", startTimer);
+document.getElementById("btn-reiniciar").addEventListener("click", startTimer);
 
 function startTimer() {
     clearInterval(timerInterval); // Detiene el temporizador si ya está corriendo
