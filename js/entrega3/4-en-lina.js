@@ -7,16 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Inicia el juego cuando el DOM esté completamente cargado
     const reloj = document.querySelector(".reloj");
     const btnReset = document.getElementById("btn-reiniciar");
+    const contenedorBotonesJuego = document.querySelector(".contenedorBotonesJuego");
     const btn4linea = document.getElementById("btn-4linea");
     const btn5linea = document.getElementById("btn-5linea");
     const btn6linea = document.getElementById("btn-6linea");
-
+    const btnVolverAtras = document.getElementById("volver-a-jugar");
+    const showWinner = document.querySelector(".show-winner");
+    
     reloj.style.display = "none";
 
-    btn4linea.addEventListener("click", () => iniciarJuego(6, 7, 60));
-    btn5linea.addEventListener("click", () => iniciarJuego(7, 9, 50));
-    btn6linea.addEventListener("click", () => iniciarJuego(8, 10, 40));
+    btn4linea.addEventListener("click", () => iniciarJuego(6, 7, 60, 4));
+    btn5linea.addEventListener("click", () => iniciarJuego(7, 9, 50, 5));
+    btn6linea.addEventListener("click", () => iniciarJuego(8, 10, 40, 6));
     btnReset.addEventListener("click", () => reiniciar());
+    btnVolverAtras.addEventListener("click", () => volverAjugar());
 
     let contenedor = document.querySelector(".contenedorJuego");
     let canvas = document.createElement("canvas");
@@ -36,20 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let cellSize = null;
 
     // Función principal para iniciar el juego
-    function iniciarJuego(filas, columnas, tamanio) {
-        console.log("hola");
+    function iniciarJuego(filas, columnas, tamanio, condVictoria) {
         cellSize = tamanio;
 
         contenedor.innerHTML = "";
+        contenedorBotonesJuego.style.display = "none";
         contenedor.appendChild(canvas);
-
-
-
         reloj.style.display = "block";
 
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
         setTimeout(() => {
-            tablero = new Tablero(ctx, filas, columnas, cellSize, canvas);
+            tablero = new Tablero(ctx, filas, columnas, cellSize, canvas, condVictoria);
             tablero.crearTablero();
         }, 100);
         setTimeout(() => {
@@ -68,14 +69,16 @@ document.addEventListener("DOMContentLoaded", () => {
         clearCanvas(); // Limpiar el canvas
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
 
-        tablero.reiniciarTablero();
-        tablero.crearTablero();
-
+        if (tablero) {
+            tablero.reiniciarTablero(); // Asegúrate de que esta función reinicie todo en el Tablero
+            tablero.crearTablero(); // Redibuja el tablero
+        }
         cargarFichas();
     }
 
     // Función para cargar las fichas
     function cargarFichas() {
+        arrFichas = [];
         let fichasImg = [new Image(), new Image()];
         fichasImg[0].src = "./images/morty.jpeg";
         fichasImg[1].src = "./images/rick.jpeg";
@@ -148,8 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
             arrastre = false;
             if (sePuedeSoltar) {
                 soltarFicha(ultimaFiguraClickeada);
-                if (tablero.alineoCuatro(ultimaFiguraClickeada)) {
+                if (tablero.hayGanador(ultimaFiguraClickeada)) {
                     console.log("Ganador equipo: " + turno);
+                    mostrarGanador(ultimaFiguraClickeada);
                 }
                 if (turno == 1)
                     turno = 0;
@@ -242,4 +246,39 @@ document.addEventListener("DOMContentLoaded", () => {
         animarCaida();
     }
 
-});
+// MUESTRO EL GANADOR EN PANTALLA
+   
+    function mostrarGanador(ultimaFicha){
+        let equipo = ultimaFicha.getEquipo();
+        let image = document.getElementById("winner-image");
+        let text = document.getElementById("winner-text");
+
+        if(equipo == 0){
+            reloj.style.display = "none";
+            canvas.style.zIndex = "none";
+            contenedor.style.display = "none";
+            showWinner.style.display = "flex";
+            image.src = '/images/mortywins.gif'; 
+            text.textContent = 'Morty Wins';
+        } else if (equipo == 1) {
+            reloj.style.display = "none";
+            canvas.style.display = "none";
+            contenedor.style.display = "none";
+            showWinner.style.display = "flex";
+            image.src = '/images/rickwins.gif';  // Reemplaza con la ruta de la imagen del jugador 2
+            text.textContent = 'Rick Wins';
+        }
+    }
+
+    function volverAjugar(){
+        reiniciar();
+        showWinner.style.display = "none";
+        if (contenedor.contains(canvas)) {
+            contenedor.removeChild(canvas);
+            contenedor.appendChild(contenedorBotonesJuego);
+        }
+        contenedor.style.display = "flex";
+        contenedorBotonesJuego.style.display = "flex";
+    }
+
+})

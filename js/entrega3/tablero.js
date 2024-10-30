@@ -1,7 +1,7 @@
 import { Circulo } from './circulo.js';
 
 export class Tablero {
-    constructor(ctx, rows, cols, cellSize, canvas) {
+    constructor(ctx, rows, cols, cellSize, canvas, condVictoria) {
         this.ctx = ctx;
         this.rows = rows;
         this.cols = cols;
@@ -13,7 +13,7 @@ export class Tablero {
         this.ocupados = [];
         this.ultimoPintado = null;
         this.columnaPintada = null;
-        this.condVictoria = 4;
+        this.condVictoria = condVictoria;
     }
 
     setCtx(ctx) {
@@ -135,9 +135,7 @@ export class Tablero {
         return this.ultimoPintado;
     }
 
-
-
-    alineoCuatro(ultimaFicha) {
+    hayGanador(ultimaFicha) {
         
         let jugadorActual = ultimaFicha.getEquipo();
         let columna = this.columnaPintada;
@@ -147,7 +145,7 @@ export class Tablero {
         for (let c = 0; c < this.cols; c++) {
             if (this.espacios[c][fila].getEquipo() === jugadorActual) {
                 count++;
-                if (count >= this.condVictoria) { 
+                if (count >= this.condVictoria) {
                     return true;
                 }
             } else {
@@ -202,6 +200,5 @@ export class Tablero {
 
         return false;
     }
-
 
 }
