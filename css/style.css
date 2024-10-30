@@ -1440,8 +1440,8 @@ main {
     display: grid;
     grid-template-areas:
         "breadCrumb ."
-        "contenedorIZQ contenedorDER"
-        "contenedorIZQ ."
+        "contenedorIZQ contenedorIZQ"
+        "contenedorDER ."
     ;
     grid-template-columns: 7fr 3fr;
     gap: 30px;

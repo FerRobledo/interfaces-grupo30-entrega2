@@ -1,11 +1,11 @@
 import { Circulo } from './circulo.js';
 
 export class Tablero {
-    constructor(ctx, rows, cols, canvas) {
+    constructor(ctx, rows, cols, cellSize, canvas) {
         this.ctx = ctx;
         this.rows = rows;
         this.cols = cols;
-        this.cellSize = 60;
+        this.cellSize = cellSize;
         this.margin = 10;
         this.startX = (canvas.width - (cols * (this.cellSize + this.margin))) / 2;
         this.startY = 170;
@@ -13,6 +13,15 @@ export class Tablero {
         this.ocupados = [];
         this.ultimoPintado = null;
         this.columnaPintada = null;
+        this.condVictoria = 4;
+    }
+
+    setCtx(ctx) {
+        this.ctx = ctx;
+    }
+
+    setCanvas(canvas) {
+        this.canvas = canvas;
     }
 
     crearTablero() {
@@ -35,7 +44,7 @@ export class Tablero {
             this.dibujarTablero();
         }
     }
-    
+
 
     reiniciarTablero() {
         this.ocupados.fill(0); //Se llena todo el arreglo de ocupados con 0
@@ -117,15 +126,82 @@ export class Tablero {
         this.espacios[col][filaDisponible].draw();
         this.ultimoPintado = this.espacios[col][filaDisponible];
     }
-    
+
     actualizarColumna() {
         this.ocupados[this.columnaPintada]++;
     }
 
-    getUltimoPintado(){
+    getUltimoPintado() {
         return this.ultimoPintado;
     }
 
 
-    
+
+    alineoCuatro(ultimaFicha) {
+        
+        let jugadorActual = ultimaFicha.getEquipo();
+        let columna = this.columnaPintada;
+        let fila = this.encontrarUltimaFilaDisponible(this.columnaPintada);
+
+        let count = 1;
+        for (let c = 0; c < this.cols; c++) {
+            if (this.espacios[c][fila].getEquipo() === jugadorActual) {
+                count++;
+                if (count >= this.condVictoria) { 
+                    return true;
+                }
+            } else {
+                count = 1;
+            }
+        }
+
+        for (let f = 0; f < this.rows; f++) {
+            if (this.espacios[columna][f].getEquipo() === jugadorActual) {
+                count++;
+                if (count >= this.condVictoria) {
+                    return true;
+                }
+            } else {
+                count = 1;
+            }
+        }
+
+        for (let i = -(this.condVictoria - 1); i <= this.condVictoria - 1; i++) {
+            if (
+                fila + i >= 0 &&
+                fila + i < this.rows &&
+                columna + i >= 0 &&
+                columna + i < this.cols &&
+                this.espacios[columna + i][fila + i].getEquipo() === jugadorActual
+            ) {
+                count++;
+                if (count >= this.condVictoria) {
+                    return true;
+                }
+            } else {
+                count = 1;
+            }
+        }
+
+        for (let i = -(this.condVictoria - 1); i <= this.condVictoria - 1; i++) {
+            if (
+                fila - i >= 0 &&
+                fila - i < this.rows &&
+                columna + i >= 0 &&
+                columna + i < this.cols &&
+                this.espacios[columna + i][fila - i].getEquipo() === jugadorActual
+            ) {
+                count++;
+                if (count >= this.condVictoria) {
+                    return true;
+                }
+            } else {
+                count = 1;
+            }
+        }
+
+        return false;
+    }
+
+
 }

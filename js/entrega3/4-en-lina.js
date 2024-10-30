@@ -6,8 +6,9 @@ import { Tablero } from './tablero.js';
 document.addEventListener('DOMContentLoaded', iniciarJuego);
 document.getElementById("btn-play-juego").addEventListener("click", reiniciar);
 
+
 let contenedor = document.querySelector(".contenedorJuego");
-contenedor.innerHTML = '<canvas id="canvas" width="940" height="800"></canvas>';
+contenedor.innerHTML = `<canvas id="canvas" width="${contenedor.clientWidth}" height="${contenedor.clientHeight}"></canvas>`;
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext('2d');
 let arrFichas = [];
@@ -19,13 +20,14 @@ let tablero;
 let sePuedeSoltar = false;
 let turno = 0;
 let fichaEnGravedad = false;
+let cellSize = 60;
 
 // Función principal para iniciar el juego
 function iniciarJuego() {
     fondoJuego.onload = () => {
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
         setTimeout(() => {
-            tablero = new Tablero(ctx, 6, 7, canvas);
+            tablero = new Tablero(ctx, 6, 7, cellSize, canvas);
             tablero.crearTablero();
         }, 100);
         setTimeout(() => {
@@ -71,9 +73,8 @@ function cargarFichas() {
 
 // Función para crear las fichas en el canvas
 function fichas(ctx, arrFichas, n, img) {
-    let cellSize = 60;
     let margin = 10;
-    let startX = n === 0 ? 10 : 800; // Posición inicial para Morty y Rick
+    let startX = n === 0 ? 10 : canvas.width - 140; // Posición inicial para Morty y Rick
     let startY = 20;
     let rows = 7; // Número de filas
     let cols = 2; // Número de columnas
@@ -111,6 +112,7 @@ canvas.addEventListener("mousemove", cambiarCursor, false);
 
 function iniciarArrastre(e) {
     let figuraClickeada = findClickedFigure(e.offsetX, e.offsetY);
+    sePuedeSoltar = false;
     if (figuraClickeada != null) {
         if (figuraClickeada.getEquipo() == turno && !figuraClickeada.estaOcupada() && fichaEnGravedad == false) { // Comprobar que no este ubicada y que sea del equipo correcto
             arrastre = true;
@@ -125,6 +127,9 @@ function detenerArrastre() {
         arrastre = false;
         if (sePuedeSoltar) {
             soltarFicha(ultimaFiguraClickeada);
+            if(tablero.alineoCuatro(ultimaFiguraClickeada)){
+                console.log("Ganador equipo: " + turno);
+            }
             if (turno == 1)
                 turno = 0;
             else
@@ -173,13 +178,14 @@ function findClickedFigure(x, y) {
 }
 
 function soltarFicha(ficha) {
-    const velocidad = 10;
+    let velocidad = 10;
     const posX = tablero.ultimoPintado.getPosX();
-    let posFinal = tablero.ultimoPintado.getPosY();
+    let posFinal = tablero.ultimoPintado.getPosY()-15;
+    let posRebote = posFinal - 30; // Altura del rebote
     let posInicial = ficha.getPosY();
     fichaEnGravedad = true;
     let rebote = 0;
-    let reboteMaximo = 20; 
+    let reboteMaximo = 3; // Cantidad de rebotes
 
     const animarCaida = () => {
         // Verifica si la ficha ha alcanzado la posición final
@@ -191,17 +197,23 @@ function soltarFicha(ficha) {
 
             // Continúa la animación
             requestAnimationFrame(animarCaida);
-        } else {
-            // Una vez que alcanza la posición final
-            ficha.setPosition(posX, posFinal);
+        } else if (rebote < reboteMaximo) {
+            // Genera un efecto de rebote
+            rebote++;
+            posInicial = posRebote; // Lleva la ficha a la posición de rebote
+            posFinal += 5; // Ajusta el final para que rebote ligeramente menos en cada ciclo
+            posRebote += 10; // Ajusta el rebote para disminuir cada vez
 
-            ficha.ocupar();
+            requestAnimationFrame(animarCaida);
+        } else {
+            // Una vez que termina el último rebote
+            ficha.setPosition(posX, posFinal);
+            ficha.ocupar(ficha.getEquipo());
             tablero.ultimoPintado.ocupar(ficha.getEquipo());
             tablero.actualizarColumna(); // Indicar que cayó una ficha
             drawFigure();
 
             fichaEnGravedad = false;
-
         }
     };
 

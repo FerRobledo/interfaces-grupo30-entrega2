@@ -25,6 +25,10 @@ export class Circulo {
             this.context.clip(); // Recortar la imagen en forma de círculo
             this.context.drawImage(this.image, this.posX - this.radio, this.posY - this.radio, this.radio * 2, this.radio * 2);
             this.context.restore();
+        } else{
+            this.fillStyle = "red";
+            this.context.fillRect(this.posX - 10, this.posY - 10, this.radio - 20, this.radio - 20);
+            this.context.fill();
         }
         this.context.closePath();
 
