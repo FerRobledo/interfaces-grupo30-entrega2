@@ -127,10 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para crear las fichas en el canvas
     function fichas(ctx, arrFichas, n, img) {
         let margin = 10;
-        let startX = n === 0 ? 10 : canvas.width - 140; // Posición inicial para Morty y Rick
+        let startX = n === 0 ? 10 : canvas.width - 210; // Posición inicial para Morty y Rick
         let startY = 20;
         let rows = 7; // Número de filas
-        let cols = 2; // Número de columnas
+        let cols = 3; // Número de columnas
 
         for (let col = 0; col < cols; col++) {
             for (let row = 0; row < rows; row++) {
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
             text.textContent = 'Morty Wins';
         } else if (equipo == 1) {
             reloj.style.display = "none";
-            canvas.style.display = "none";
+            canvas.style.zIndex = "none";
             contenedor.style.display = "none";
             showWinner.style.display = "flex";
             image.src = '/images/rickwins.gif';  // Reemplaza con la ruta de la imagen del jugador 2
