@@ -1,7 +1,7 @@
 import { Circulo } from './circulo.js';
 
 export class Tablero {
-    constructor(ctx, rows, cols, cellSize, canvas, condVictoria) {
+    constructor(ctx, rows, cols, cellSize, canvas, condVictoria, arrowContainer) {
         this.ctx = ctx;
         this.rows = rows;
         this.cols = cols;
@@ -14,6 +14,7 @@ export class Tablero {
         this.ultimoPintado = null;
         this.columnaPintada = null;
         this.condVictoria = condVictoria;
+        this.arrowContainer = arrowContainer;
     }
 
     setCtx(ctx) {
@@ -67,6 +68,31 @@ export class Tablero {
                 this.espacios[col][row].draw();
             }
         }
+    }
+
+    dibujarFlechas() {
+        this.arrowContainer.innerHTML = ""; // Limpiar cualquier flecha anterior
+    
+        for (let col = 0; col < this.cols; col++) {
+            const arrow = document.createElement("img");
+            arrow.src = "./images/arrow.gif"; // Ruta de la imagen de la flecha
+            arrow.style.position = "absolute";
+            arrow.style.width = "50px"; // Ajustar según sea necesario
+            arrow.style.height = "50px"; // Ajustar según sea necesario
+            // Calcular la posición de la flecha
+            let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2 - 25;
+            let posY = this.startY - 55; // Ajustar la posición Y para que esté justo encima del tablero
+    
+            arrow.style.left = `${posX}px`;
+            arrow.style.top = `${posY}px`;
+    
+            // Agregar la flecha al contenedor
+            this.arrowContainer.appendChild(arrow);
+        }
+    }
+
+    esconderFlechas() {
+        this.arrowContainer.innerHTML = "";
     }
     
     reiniciarTablero() {
@@ -193,5 +219,6 @@ export class Tablero {
                 break; // Salimos si encontramos un espacio vacío
             }
         }
+
 }
 }

@@ -1263,7 +1263,7 @@ main {
 }
 
 .reloj{
-    display: flex;
+    display: none;
     position: absolute;
     top: 20px;
     right: 50%;
@@ -1272,6 +1272,15 @@ main {
     justify-content: center;
     gap: 20px;
     align-items: center;
+}
+
+#arrow-container{
+    display: flex;
+    flex-direction: row;
+    position: none;
+    opacity: 40%;
+    pointer-events: none;
+    user-select: none;
 }
 
 /* CSS */

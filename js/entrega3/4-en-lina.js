@@ -8,13 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const reloj = document.querySelector(".reloj");
     const btnReset = document.getElementById("btn-reiniciar");
     const contenedorBotonesJuego = document.querySelector(".contenedorBotonesJuego");
-
+    const arrowContainer = document.getElementById("arrow-container");
     const btnVolverAtras = document.getElementById("volver-a-jugar");
     const showWinner = document.querySelector(".show-winner");
     const btnMenu = document.getElementById("btn-gomenu");
 
-
-    reloj.style.display = "none";
 
 
     btnReset.addEventListener("click", () => reiniciar());
@@ -55,15 +53,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función principal para iniciar el juego
     function iniciarJuego(filas, columnas, tamanio, condVictoria) {
         cellSize = tamanio;
-    
+        
         contenedor.innerHTML = "";
         contenedorBotonesJuego.style.display = "none";
         contenedor.appendChild(canvas);
         reloj.style.display = "flex";
+        
     
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
         setTimeout(() => {
-            tablero = new Tablero(ctx, filas, columnas, cellSize, canvas, condVictoria);
+            tablero = new Tablero(ctx, filas, columnas, cellSize, canvas, condVictoria, arrowContainer);
             tablero.crearTablero();
             drawFigure(); // Dibuja el tablero después de crearlo
         }, 100);
@@ -147,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
+    
 
     // Función para limpiar el canvas si es necesario
     function clearCanvas() {
@@ -199,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 ultimaFiguraClickeada.setPosition(ultimaFiguraClickeada.posXinicial, ultimaFiguraClickeada.posYinicial);
                 ultimaFiguraClickeada = null;
+                tablero.esconderFlechas()
                 drawFigure();
 
             }
@@ -213,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 sePuedeSoltar = false;
             }
+            tablero.dibujarFlechas();
             drawFigure(); // Redibuja después de mover la figura
         }
     }
@@ -272,10 +274,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 tablero.actualizarColumna(); // Indicar que cayó una ficha
                 drawFigure();
 
-                fichaEnGravedad = false;
+                fichaEnGravedad = false;    
             }
         };
-
+        tablero.esconderFlechas()
         // Iniciar la animación
         animarCaida();
     }
