@@ -1,7 +1,7 @@
 import { Circulo } from './circulo.js';
 
 export class Tablero {
-    constructor(ctx, rows, cols, cellSize, canvas, condVictoria) {
+    constructor(ctx, rows, cols, cellSize, canvas, condVictoria, arrowContainer) {
         this.ctx = ctx;
         this.rows = rows;
         this.cols = cols;
@@ -14,6 +14,7 @@ export class Tablero {
         this.ultimoPintado = null;
         this.columnaPintada = null;
         this.condVictoria = condVictoria;
+        this.arrowContainer = arrowContainer;
     }
 
     setCtx(ctx) {
@@ -33,7 +34,7 @@ export class Tablero {
                 for (let row = 0; row < this.rows; row++) {
                     let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2;
                     let posY = this.startY + row * (this.cellSize + this.margin) + this.cellSize / 2;
-                    let circle = new Circulo(posX, posY, posX, posY, this.cellSize / 2, '#fff', this.ctx);
+                    let circle = new Circulo(posX, posY, posX, posY, this.cellSize / 2, '#fafafa', this.ctx);
                     colCircles.push(circle);
                     circle.draw(); // Dibuja cada círculo en el tablero
                 }
@@ -44,8 +45,56 @@ export class Tablero {
             this.dibujarTablero();
         }
     }
+    
+    dibujarTablero() {
+        // Dibuja los casilleros primero
+        for (let col = 0; col < this.cols; col++) {
+            for (let row = 0; row < this.rows; row++) {
+                let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2;
+                let posY = this.startY + row * (this.cellSize + this.margin) + this.cellSize / 2;
+                this.ctx.fillStyle = '#10adc5'; // Color del casillero
+                this.ctx.fillRect(
+                    posX - this.cellSize / 2 - this.margin / 2,
+                    posY - this.cellSize / 2 - this.margin / 2,
+                    this.cellSize + this.margin,
+                    this.cellSize + this.margin
+                );
+            }
+        }
+        
+        // Luego dibuja los círculos encima de los casilleros
+        for (let col = 0; col < this.cols; col++) {
+            for (let row = 0; row < this.rows; row++) {
+                this.espacios[col][row].draw();
+            }
+        }
+    }
 
+    dibujarFlechas() {
+        this.arrowContainer.innerHTML = ""; // Limpiar cualquier flecha anterior
+    
+        for (let col = 0; col < this.cols; col++) {
+            const arrow = document.createElement("img");
+            arrow.src = "./images/arrow.gif"; // Ruta de la imagen de la flecha
+            arrow.style.position = "absolute";
+            arrow.style.width = "50px"; // Ajustar según sea necesario
+            arrow.style.height = "50px"; // Ajustar según sea necesario
+            // Calcular la posición de la flecha
+            let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2 - 25;
+            let posY = this.startY - 55; // Ajustar la posición Y para que esté justo encima del tablero
+    
+            arrow.style.left = `${posX}px`;
+            arrow.style.top = `${posY}px`;
+    
+            // Agregar la flecha al contenedor
+            this.arrowContainer.appendChild(arrow);
+        }
+    }
 
+    esconderFlechas() {
+        this.arrowContainer.innerHTML = "";
+    }
+    
     reiniciarTablero() {
         this.ocupados.fill(0); //Se llena todo el arreglo de ocupados con 0
         this.espacios = []; //Limpiamos espacios
@@ -58,14 +107,6 @@ export class Tablero {
     instanciarOcupados() {
         for (let i = 0; i < this.espacios.length; i++) {
             this.ocupados[i] = 0;
-        }
-    }
-
-    dibujarTablero() {
-        for (let col = 0; col < this.cols; col++) {
-            for (let row = 0; row < this.rows; row++) {
-                this.espacios[col][row].draw();
-            }
         }
     }
 
@@ -122,7 +163,7 @@ export class Tablero {
             this.ultimoPintado.setFill("#fff"); // Pintar de blanco cuando el mouse sale de la columna
 
         let filaDisponible = this.encontrarUltimaFilaDisponible(col);
-        this.espacios[col][filaDisponible].setFill("#aaa"); // Pintar de gris para indicar donde caeria la ficha
+        this.espacios[col][filaDisponible].setFill("#a6d87c"); // Pintar de gris para indicar donde caeria la ficha
         this.espacios[col][filaDisponible].draw();
         this.ultimoPintado = this.espacios[col][filaDisponible];
     }
@@ -141,64 +182,43 @@ export class Tablero {
         let columna = this.columnaPintada;
         let fila = this.encontrarUltimaFilaDisponible(this.columnaPintada);
 
-        let count = 1;
-        for (let c = 0; c < this.cols; c++) {
+                                                    // Verificación horizontal
+        let count = 1; // Contamos la última ficha
+        // Hacia la izquierda
+        for (let c = columna - 1; c >= 0; c--) {
             if (this.espacios[c][fila].getEquipo() === jugadorActual) {
                 count++;
                 if (count >= this.condVictoria) {
-                    return true;
+                    return true; // Ganador encontrado
                 }
             } else {
-                count = 1;
+                break; // Salimos si encontramos un espacio vacío
+            }
+        }
+        // Hacia la derecha
+        for (let c = columna + 1; c < this.cols; c++) {
+            if (this.espacios[c][fila].getEquipo() === jugadorActual) {
+                count++;
+                if (count >= this.condVictoria) {
+                    return true; // Ganador encontrado
+                }
+            } else {
+                break; // Salimos si encontramos un espacio vacío
             }
         }
 
-        for (let f = 0; f < this.rows; f++) {
+                                                    // Verificación vertical
+        count = 1; // Reiniciamos el conteo
+        for (let f = fila + 1; f < this.rows; f++) {
             if (this.espacios[columna][f].getEquipo() === jugadorActual) {
                 count++;
                 if (count >= this.condVictoria) {
-                    return true;
+                    return true; // Ganador encontrado
                 }
             } else {
-                count = 1;
+                break; // Salimos si encontramos un espacio vacío
             }
         }
 
-        for (let i = -(this.condVictoria - 1); i <= this.condVictoria - 1; i++) {
-            if (
-                fila + i >= 0 &&
-                fila + i < this.rows &&
-                columna + i >= 0 &&
-                columna + i < this.cols &&
-                this.espacios[columna + i][fila + i].getEquipo() === jugadorActual
-            ) {
-                count++;
-                if (count >= this.condVictoria) {
-                    return true;
-                }
-            } else {
-                count = 1;
-            }
-        }
-
-        for (let i = -(this.condVictoria - 1); i <= this.condVictoria - 1; i++) {
-            if (
-                fila - i >= 0 &&
-                fila - i < this.rows &&
-                columna + i >= 0 &&
-                columna + i < this.cols &&
-                this.espacios[columna + i][fila - i].getEquipo() === jugadorActual
-            ) {
-                count++;
-                if (count >= this.condVictoria) {
-                    return true;
-                }
-            } else {
-                count = 1;
-            }
-        }
-
-        return false;
-    }
-
+}
 }
