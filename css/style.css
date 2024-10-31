@@ -250,7 +250,7 @@ input[type=search] {
 }
 
 .categoria p {
-    opacity: 0;
+    display: none;
     transition: opacity 0.2s ease;
 }
 
@@ -260,7 +260,7 @@ input[type=search] {
 }
 
 .nombreExtendido {
-    opacity: 1 !important;
+    display: block !important;
 }
 
 main {

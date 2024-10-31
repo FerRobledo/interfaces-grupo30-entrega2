@@ -4,7 +4,7 @@ import { Tablero } from './tablero.js';
 import { getSeleccion } from './seleccion-jugador.js';
 import { inicializarFichas } from './seleccion-jugador.js';
 import { startTimer } from './temporizador.js';
- 
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -30,9 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const btn6linea = document.getElementById("btn-6linea");
 
 
-        btn4linea.addEventListener("click", () => iniciarJuego(6, 7, 60, 4));
-        btn5linea.addEventListener("click", () => iniciarJuego(7, 9, 55, 5));
-        btn6linea.addEventListener("click", () => iniciarJuego(8, 10, 50, 6));
+        btn4linea.addEventListener("click", () => iniciarJuego(6, 7, 60, 4, 15, 70));
+        btn5linea.addEventListener("click", () => iniciarJuego(7, 9, 55, 5, 15, 60));
+        btn6linea.addEventListener("click", () => iniciarJuego(8, 10, 50, 6, 10, 65));
 
     }
     agregarEventListenersBotones();
@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let ctx = canvas.getContext('2d');
     let tablero;
     let arrFichas = [];
+    let arrFichasColocar = [];
     let arrastre = false;
     let ultimaFiguraClickeada = null;
     let fondoJuego = new Image();
@@ -58,19 +59,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let fichasSeleccionadas = [];
 
     // Función principal para iniciar el juego
-    function iniciarJuego(filas, columnas, tamanio, condVictoria) {
+    function iniciarJuego(filas, columnas, tamanio, condVictoria, margin, distanciaTop) {
         fichasSeleccionadas = getSeleccion(); // Obtengo cuales fichas fueron seleccionadas en el menu (getSeleccion() es un metodo de seleccion-jugador.js)
         cellSize = tamanio;
-        
+
         contenedor.innerHTML = "";
         contenedorBotonesJuego.style.display = "none";
         contenedor.appendChild(canvas);
         reloj.style.display = "flex";
-        
-    
+
+
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
         setTimeout(() => {
-            tablero = new Tablero(ctx, filas, columnas, cellSize, canvas, condVictoria, arrowContainer);
+            tablero = new Tablero(ctx, filas, columnas, cellSize, canvas, condVictoria, arrowContainer, margin, distanciaTop);
             tablero.crearTablero();
             drawFigure(); // Dibuja el tablero después de crearlo
         }, 100);
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         startTimer()
     }
-    
+
 
     function menu() {
         turno = 0;
@@ -107,31 +108,31 @@ document.addEventListener("DOMContentLoaded", () => {
         arrastre = false;
         sePuedeSoltar = false;
         fichaEnGravedad = false;
-    
+
         clearCanvas(); // Limpiar el canvas
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
-    
+
         if (tablero) {
             tablero.reiniciarTablero();
             tablero.crearTablero(); // Redibuja el tablero
         }
         cargarFichas();
         startTimer()
-        drawFigure(); 
+        drawFigure();
     }
 
     // Función para cargar las fichas
     function cargarFichas() {
-        arrFichas = [];
+        arrFichasColocar = [];
         let fichasImg = [new Image(), new Image()];
 
-        if(fichasSeleccionadas[0] === 0){
+        if (fichasSeleccionadas[0] === 0) {
             fichasImg[0].src = "./images/morty.jpeg";
-        } else{
+        } else {
             fichasImg[0].src = "./images/mortyEvil.jpg";
         }
 
-        if(fichasSeleccionadas[1] === 2){
+        if (fichasSeleccionadas[1] === 2) {
             fichasImg[1].src = "./images/rick.jpeg";
         } else {
             fichasImg[1].src = "./images/rickEvil.jpg";
@@ -142,20 +143,21 @@ document.addEventListener("DOMContentLoaded", () => {
             img.onload = function () {
                 loadedCount++;
                 if (loadedCount === fichasImg.length) {
-                    fichas(ctx, arrFichas, 0, fichasImg[0]);
-                    fichas(ctx, arrFichas, 1, fichasImg[1]);
+                    fichas(ctx, arrFichasColocar, 0, fichasImg[0]);
+                    fichas(ctx, arrFichasColocar, 1, fichasImg[1]);
                 }
             };
         });
     }
 
     // Función para crear las fichas en el canvas
-    function fichas(ctx, arrFichas, n, img) {
+    function fichas(ctx, arrFichasColocar, n, img) {
         let margin = 10;
         let startX = n === 0 ? 10 : canvas.width - 210; // Posición inicial para Morty y Rick
         let startY = 20;
         let rows = 7; // Número de filas
         let cols = 3; // Número de columnas
+
 
         for (let col = 0; col < cols; col++) {
             for (let row = 0; row < rows; row++) {
@@ -163,12 +165,44 @@ document.addEventListener("DOMContentLoaded", () => {
                 let posY = startY + row * (cellSize + margin) + cellSize / 2;
                 let circle = new Circulo(posX, posY, posX, posY, cellSize / 2, '#fff', ctx, n); // Crear fichas
                 circle.setImage(img);
+                arrFichasColocar.push(circle);
                 arrFichas.push(circle);
                 circle.draw(); // Dibuja cada círculo
             }
         }
     }
-    
+
+    // Modificación de la función cargarFichas para permitir cargar fichas de un equipo específico
+    function cargarFichasEquipo(equipo) {
+        let img = new Image();
+
+        // Seleccionar imagen según el equipo
+        if (equipo === 0) {
+            img.src = fichasSeleccionadas[0] === 0 ? "./images/morty.jpeg" : "./images/mortyEvil.jpg";
+        } else if (equipo === 1) {
+            img.src = fichasSeleccionadas[1] === 2 ? "./images/rick.jpeg" : "./images/rickEvil.jpg";
+        }
+
+        img.onload = function () {
+            fichas(ctx, arrFichasColocar, equipo, img); // Cargar fichas del equipo especificado
+            drawFigure(); // Redibujar después de cargar nuevas fichas
+        };
+    }
+
+    // Función para verificar y regenerar fichas
+    function verificarYRegenerarFichas() {
+        let fichasEquipo0 = arrFichasColocar.filter(ficha => ficha.getEquipo() === 0);
+        let fichasEquipo1 = arrFichasColocar.filter(ficha => ficha.getEquipo() === 1);
+
+        // Verificar si se han terminado las fichas de cada equipo y recargarlas
+        if (fichasEquipo0.length === 0) {
+            cargarFichasEquipo(0);
+        }
+        if (fichasEquipo1.length === 0) {
+            cargarFichasEquipo(1);
+        }
+    }
+
 
     // Función para limpiar el canvas si es necesario
     function clearCanvas() {
@@ -181,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height); // Dibuja el fondo
         tablero.crearTablero(); // Dibuja el tablero
         arrFichas.forEach(ficha => ficha.draw()); // Dibuja las fichas
+        arrFichasColocar.forEach(ficha => ficha.draw());
     }
 
     /* MANEJO DE FICHAS Y MOUSE */
@@ -206,9 +241,11 @@ document.addEventListener("DOMContentLoaded", () => {
             arrastre = false;
             if (sePuedeSoltar) {
                 soltarFicha(ultimaFiguraClickeada);
+
+
                 if (tablero.comprobarGanador(ultimaFiguraClickeada)) {
                     let ganador = ultimaFiguraClickeada;
-                    setTimeout(function() {mostrarGanador(ganador);}, 1000);
+                    setTimeout(function () { mostrarGanador(ganador); }, 1000);
                 }
                 if (turno == 1)
                     turno = 0;
@@ -216,6 +253,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     turno = 1;
 
                 drawFigure();
+                
+
                 ultimaFiguraClickeada = null;
             } else {
                 ultimaFiguraClickeada.setPosition(ultimaFiguraClickeada.posXinicial, ultimaFiguraClickeada.posYinicial);
@@ -250,8 +289,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function findClickedFigure(x, y) {
-        for (let i = 0; i < arrFichas.length; i++) {
-            let element = arrFichas[i];
+        for (let i = 0; i < arrFichasColocar.length; i++) {
+            let element = arrFichasColocar[i];
             if (element.isPointInside(x, y)) {
                 return element; // Devuelve la figura clickeada
             }
@@ -293,15 +332,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 ficha.ocupar(ficha.getEquipo());
                 tablero.ultimoPintado.ocupar(ficha.getEquipo());
                 tablero.actualizarColumna(); // Indicar que cayó una ficha
-                drawFigure();
 
-                fichaEnGravedad = false;    
+                drawFigure();
+                fichaEnGravedad = false;
+
+                console.log("Fichas antes" + arrFichas);
+                arrFichasColocar = arrFichasColocar.filter(fichaArreglo => fichaArreglo.estaOcupada() !== true); //Filtra por las ocupadas y establece a arrFichasColocar como el nuevo arreglo filtrado. Si no está ocupada (nunca se eligió), se queda.
+                console.log("Fichas despues" + arrFichas);
+                verificarYRegenerarFichas(); // Verificar y regenerar fichas después del turno
+
             }
         };
         tablero.esconderFlechas()
         // Iniciar la animación
         animarCaida();
     }
+
 
     // MUESTRO EL GANADOR EN PANTALLA
 
@@ -335,4 +381,4 @@ document.addEventListener("DOMContentLoaded", () => {
         reloj.style.display = "flex";
     }
 
-})
+});

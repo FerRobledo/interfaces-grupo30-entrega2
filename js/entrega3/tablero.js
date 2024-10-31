@@ -1,14 +1,15 @@
 import { Circulo } from './circulo.js';
 
 export class Tablero {
-    constructor(ctx, rows, cols, cellSize, canvas, condVictoria, arrowContainer) {
+    constructor(ctx, rows, cols, cellSize, canvas, condVictoria, arrowContainer, margin, distanciaTop) {
         this.ctx = ctx;
         this.rows = rows;
         this.cols = cols;
         this.cellSize = cellSize;
-        this.margin = 10;
+        this.margin = margin;
+        this.distanciaTop = distanciaTop;
         this.startX = (canvas.width - (cols * (this.cellSize + this.margin))) / 2;
-        this.startY = (canvas.height - (rows * (this.cellSize + this.margin))) / 2 + 50;
+        this.startY = (canvas.height - (rows * (this.cellSize + this.margin))) / 2 + distanciaTop;
         this.espacios = [];  // Agrega esta línea para inicializar los espacios
         this.ocupados = [];
         this.ultimoPintado = null;
@@ -46,30 +47,43 @@ export class Tablero {
         }
     }
 
-    dibujarTablero() {
-        // Dibuja los casilleros primero
-        for (let col = 0; col < this.cols; col++) {
-            for (let row = 0; row < this.rows; row++) {
-                let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2;
-                let posY = this.startY + row * (this.cellSize + this.margin) + this.cellSize / 2;
-                this.ctx.fillStyle = '#10adc5'; // Color del casillero
-                this.ctx.fillRect(
-                    posX - this.cellSize / 2 - this.margin / 2,
-                    posY - this.cellSize / 2 - this.margin / 2,
-                    this.cellSize + this.margin,
-                    this.cellSize + this.margin
-                );
-            }
-        }
+     dibujarTablero() {
 
-        // Luego dibuja los círculos encima de los casilleros
-        for (let col = 0; col < this.cols; col++) {
-            for (let row = 0; row < this.rows; row++) {
-                this.espacios[col][row].draw();
+        this.imagenFondo = new Image();
+        this.imagenFondo.src = '../images/juegowallpaper.jpg';
+        
+        // Dibujar la imagen una vez que esté cargada
+            // Dibujar los casilleros con porciones de la imagen de fondo
+            for (let col = 0; col < this.cols; col++) {
+                for (let row = 0; row < this.rows; row++) {
+                    let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2;
+                    let posY = this.startY + row * (this.cellSize + this.margin) + this.cellSize / 2;
+    
+                    // Calcula la sección de la imagen correspondiente a este casillero
+                    let sourceX = (col / this.cols) * this.imagenFondo.width;
+                    let sourceY = (row / this.rows) * this.imagenFondo.height;
+                    let sourceWidth = this.imagenFondo.width / this.cols; //esta es la "porción de imágen" asignada a cada casillero (se corta la imagen por columnas)
+                    let sourceHeight = this.imagenFondo.height / this.rows; //esta es la "porción de imágen asignada a cada casillero" (se corta la imagen por filas)
+    
+                    // Dibuja la porción de la imagen en el casillero
+                    this.ctx.drawImage(
+                        this.imagenFondo,
+                        sourceX, sourceY, sourceWidth, sourceHeight,  // Parte de la imagen
+                        posX - this.cellSize / 2 - this.margin / 2, posY - this.cellSize / 2 - this.margin / 2,  // Posición exacta en el canvas
+                        this.cellSize + this.margin, this.cellSize + this.margin  // Tamaño del casillero con margen
+                    );
+                }
             }
-        }
+            
+            // Luego dibuja los círculos o cualquier elemento encima de los casilleros
+            for (let col = 0; col < this.cols; col++) {
+                for (let row = 0; row < this.rows; row++) {
+                    this.espacios[col][row].draw();
+                }
+            }
+
     }
-
+    
     dibujarFlechas() {
         this.arrowContainer.innerHTML = ""; // Limpiar cualquier flecha anterior
 
