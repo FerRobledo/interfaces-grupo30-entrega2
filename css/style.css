@@ -1272,6 +1272,7 @@ main {
     justify-content: center;
     gap: 20px;
     align-items: center;
+    z-index: 1;
 }
 
 #arrow-container{
@@ -1435,6 +1436,62 @@ main {
     gap: 20px;
 }
 
+#equipo-1 .ficha-seleccionada{
+    border: 6px solid greenyellow;
+}
+
+#equipo-2 .ficha-seleccionada{
+    border: 6px solid red;
+}
+
+#p1{
+    color: greenyellow;
+}
+
+#p2{
+    color: red;
+}
+
+#p1, #p2{
+    margin: 10px;
+}
+
+.equipo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 150px;
+}
+
+#equipo-1{
+    top: -250px;
+    left: -200px;
+}
+
+#equipo-2{
+    top: -250px;
+    right: -200px;
+}
+
+.ficha{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.img-ficha{
+    width: 100%;
+    border-radius: 100%;
+
+}
+
+
 .show-winner{
     height: 612px;
     background-color: #000000;
@@ -1485,10 +1542,6 @@ main {
 #icono-fulscreen:hover {
     cursor: pointer;
     scale: 1.1;
-}
-
-.contenedorJuego img {
-    border-radius: 16px;
 }
 
 

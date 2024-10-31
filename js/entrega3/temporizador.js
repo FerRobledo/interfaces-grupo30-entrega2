@@ -1,17 +1,17 @@
 let timerInterval;
 let timeElapsed = 120; // tiempo en segundos
-
-document.addEventListener('DOMContentLoaded', startTimer);
+let timer = document.getElementById("timer");
 document.getElementById("btn-reiniciar").addEventListener("click", startTimer);
 
-function startTimer() {
+export function startTimer() {
     clearInterval(timerInterval); // Detiene el temporizador si ya está corriendo
     timeElapsed = 120; // Reinicia el tiempo
+    timer.textContent = "02:00"; // Muestra 00:00 al final
 
     timerInterval = setInterval(() => {
         if (timeElapsed <= 0) {
             clearInterval(timerInterval); // Detiene el temporizador si llega a 0
-            document.getElementById("timer").textContent = "00:00"; // Muestra 00:00 al final
+            timer.textContent = "00:00"; // Muestra 00:00 al final
             return;
         }
 
@@ -21,7 +21,7 @@ function startTimer() {
         const seconds = timeElapsed % 60;
 
         // Formatea los minutos y segundos
-        document.getElementById("timer").textContent = 
+        timer.textContent = 
             `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }, 1000);
 }

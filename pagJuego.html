@@ -88,7 +88,7 @@
                 <div class="areaJuego">
                     <div class="reloj">
                         <button class="button-77" id="btn-gomenu" role="button">Menu</button>
-                        <div id="timer">00:00</div>
+                        <div id="timer">02:00</div>
                         <button class="button-77" id="btn-reiniciar" role="button">Reiniciar</button>
                     </div>
                     <div id="arrow-container"></div>
@@ -96,8 +96,9 @@
                         <div class="contenedorBotonesJuego">
                             
                             <div class="equipo" id="equipo-1">
-                                <div class="ficha" id="ficha-1"><img src="./images/morty.jpeg" alt="Morty"></div>
-                                <div class="ficha" id="ficha-2"><img src="./images/morty.jpeg" alt="EvilMorty"></div>
+                                <h1 id="p1">Jugador 1</h1>
+                                <div class="ficha ficha-seleccionada" id="ficha-1"><img class="img-ficha" src="./images/morty.jpeg" alt="Morty"></div>
+                                <div class="ficha" id="ficha-2"><img class="img-ficha" src="./images/mortyEvil.jpg" alt="EvilMorty"></div>
                             </div>
 
                             <button class="btn-10" id="btn-4linea">4 en línea</button>
@@ -105,8 +106,9 @@
                             <button class="btn-10" id="btn-6linea">6 en línea</button>
                             
                             <div class="equipo" id="equipo-2">
-                                <div class="ficha" id="ficha-1"><img src="./images/morty.jpeg" alt="Morty"></div>
-                                <div class="ficha" id="ficha-2"><img src="./images/morty.jpeg" alt="EvilMorty"></div>
+                                <h1 id="p2">Jugador 2</h1>
+                                <div class="ficha ficha-seleccionada" id="ficha-3"><img class="img-ficha" src="./images/rick.jpeg" alt="Morty"></div>
+                                <div class="ficha" id="ficha-4"><img class="img-ficha" src="./images/rickEvil.jpg" alt="EvilMorty"></div>
                             </div>     
                         </div>
                     </div>
@@ -675,7 +677,8 @@
     <script src="./js/agregar-al-carrito.js"></script>
     <script src="./js/compartir.js"></script>
     <script src="./js/entrega3/4-en-lina.js" type="module"></script>
-    <script src="./js/entrega3/temporizador.js"></script>
+    <script src="./js/entrega3/temporizador.js" type="module"></script>
+    <script src="./js/entrega3/seleccion-jugador.js" type="module"></script>
 </body>
 
 </html>

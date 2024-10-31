@@ -79,6 +79,7 @@ export class Tablero {
             arrow.style.position = "absolute";
             arrow.style.width = "50px"; // Ajustar según sea necesario
             arrow.style.height = "50px"; // Ajustar según sea necesario
+            arrow.style.zIndex = 1;
             // Calcular la posición de la flecha
             let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2 - 25;
             let posY = this.startY - 55; // Ajustar la posición Y para que esté justo encima del tablero
@@ -140,7 +141,7 @@ export class Tablero {
 
     // Comprueba que la ficha este por encima del tablero
     estaEnPosicion(circle, pos) {
-        if (circle.getPosY() > pos && circle.getPosY() < pos + 50) {
+        if (circle.getPosY() > pos && circle.getPosY() < pos + 100) {
             return true;
         }
 

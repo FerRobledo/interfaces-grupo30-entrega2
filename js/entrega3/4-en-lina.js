@@ -1,6 +1,10 @@
 // Importa las clases Circulo y Tablero
 import { Circulo } from './circulo.js';
 import { Tablero } from './tablero.js';
+import { getSeleccion } from './seleccion-jugador.js';
+import { inicializarFichas } from './seleccion-jugador.js';
+import { startTimer } from './temporizador.js';
+ 
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -25,12 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const btn5linea = document.getElementById("btn-5linea");
         const btn6linea = document.getElementById("btn-6linea");
 
+
         btn4linea.addEventListener("click", () => iniciarJuego(6, 7, 60, 4));
         btn5linea.addEventListener("click", () => iniciarJuego(7, 9, 55, 5));
         btn6linea.addEventListener("click", () => iniciarJuego(8, 10, 50, 6));
 
     }
     agregarEventListenersBotones();
+
 
     let contenedor = document.querySelector(".contenedorJuego");
     const contenedorOriginal = contenedor.innerHTML;
@@ -49,9 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let turno = 0;
     let fichaEnGravedad = false;
     let cellSize = null;
+    let fichasSeleccionadas = [];
 
     // Función principal para iniciar el juego
     function iniciarJuego(filas, columnas, tamanio, condVictoria) {
+        fichasSeleccionadas = getSeleccion(); // Obtengo cuales fichas fueron seleccionadas en el menu (getSeleccion() es un metodo de seleccion-jugador.js)
         cellSize = tamanio;
         
         contenedor.innerHTML = "";
@@ -70,6 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cargarFichas();
             drawFigure(); // Dibuja las fichas después de cargarlas
         }, 200);
+
+        startTimer()
     }
     
 
@@ -86,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         contenedorBotonesJuego.style.display = "flex";
         reloj.style.display = "none";
         agregarEventListenersBotones();
+        inicializarFichas();
 
     }
 
@@ -105,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tablero.crearTablero(); // Redibuja el tablero
         }
         cargarFichas();
+        startTimer()
         drawFigure(); 
     }
 
@@ -112,8 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
     function cargarFichas() {
         arrFichas = [];
         let fichasImg = [new Image(), new Image()];
-        fichasImg[0].src = "./images/morty.jpeg";
-        fichasImg[1].src = "./images/rick.jpeg";
+
+        if(fichasSeleccionadas[0] === 0){
+            fichasImg[0].src = "./images/morty.jpeg";
+        } else{
+            fichasImg[0].src = "./images/mortyEvil.jpg";
+        }
+
+        if(fichasSeleccionadas[1] === 2){
+            fichasImg[1].src = "./images/rick.jpeg";
+        } else {
+            fichasImg[1].src = "./images/rickEvil.jpg";
+        }
 
         let loadedCount = 0;
         fichasImg.forEach((img, index) => {
@@ -187,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (tablero.hayGanador(ultimaFiguraClickeada)) {
                     let ganador = ultimaFiguraClickeada;
                     setTimeout(function() {mostrarGanador(ganador);}, 1000);
-                    console.log("Ganador equipo: " + turno);
                 }
                 if (turno == 1)
                     turno = 0;
