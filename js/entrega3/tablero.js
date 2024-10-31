@@ -177,54 +177,6 @@ export class Tablero {
         return this.ultimoPintado;
     }
 
-    hayGanador(ultimaFicha) {
-
-        let jugadorActual = ultimaFicha.getEquipo();
-        let columna = this.columnaPintada;
-        let fila = this.encontrarUltimaFilaDisponible(this.columnaPintada);
-
-        // Verificación horizontal
-        let count = 1; // Contamos la última ficha
-        // Hacia la izquierda
-        for (let c = columna - 1; c >= 0; c--) {
-            if (this.espacios[c][fila].getEquipo() === jugadorActual) {
-                count++;
-                if (count >= this.condVictoria) {
-                    return true; // Ganador encontrado
-                }
-            } else {
-                break; // Salimos si encontramos un espacio vacío
-            }
-        }
-        // Hacia la derecha
-        for (let c = columna + 1; c < this.cols; c++) {
-            if (this.espacios[c][fila].getEquipo() === jugadorActual) {
-                count++;
-                if (count >= this.condVictoria) {
-                    return true; // Ganador encontrado
-                }
-            } else {
-                break; // Salimos si encontramos un espacio vacío
-            }
-        }
-
-        // Verificación vertical
-        count = 1; // Reiniciamos el conteo
-        for (let f = fila + 1; f < this.rows; f++) {
-            if (this.espacios[columna][f].getEquipo() === jugadorActual) {
-                count++;
-                if (count >= this.condVictoria) {
-                    return true; // Ganador encontrado
-                }
-            } else {
-                break; // Salimos si encontramos un espacio vacío
-            }
-        }
-
-    }
-
-
-
     comprobarGanador(ultimaFicha) {
         let columna = this.columnaPintada;
         let fila = this.encontrarUltimaFilaDisponible(this.columnaPintada);
