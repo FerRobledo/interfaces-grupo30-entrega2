@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 soltarFicha(ultimaFiguraClickeada);
                 if (tablero.hayGanador(ultimaFiguraClickeada)) {
                     let ganador = ultimaFiguraClickeada;
-                    setTimeout(function() {mostrarGanador(ganador);}, 700);
+                    setTimeout(function() {mostrarGanador(ganador);}, 1000);
                     console.log("Ganador equipo: " + turno);
                 }
                 if (turno == 1)

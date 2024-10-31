@@ -156,64 +156,42 @@ export class Tablero {
         let columna = this.columnaPintada;
         let fila = this.encontrarUltimaFilaDisponible(this.columnaPintada);
 
-        let count = 1;
-        for (let c = 0; c < this.cols; c++) {
+                                                    // Verificación horizontal
+        let count = 1; // Contamos la última ficha
+        // Hacia la izquierda
+        for (let c = columna - 1; c >= 0; c--) {
             if (this.espacios[c][fila].getEquipo() === jugadorActual) {
                 count++;
                 if (count >= this.condVictoria) {
-                    return true;
+                    return true; // Ganador encontrado
                 }
             } else {
-                count = 1;
+                break; // Salimos si encontramos un espacio vacío
+            }
+        }
+        // Hacia la derecha
+        for (let c = columna + 1; c < this.cols; c++) {
+            if (this.espacios[c][fila].getEquipo() === jugadorActual) {
+                count++;
+                if (count >= this.condVictoria) {
+                    return true; // Ganador encontrado
+                }
+            } else {
+                break; // Salimos si encontramos un espacio vacío
             }
         }
 
-        for (let f = 0; f < this.rows; f++) {
+                                                    // Verificación vertical
+        count = 1; // Reiniciamos el conteo
+        for (let f = fila + 1; f < this.rows; f++) {
             if (this.espacios[columna][f].getEquipo() === jugadorActual) {
                 count++;
                 if (count >= this.condVictoria) {
-                    return true;
+                    return true; // Ganador encontrado
                 }
             } else {
-                count = 1;
+                break; // Salimos si encontramos un espacio vacío
             }
         }
-
-        for (let i = -(this.condVictoria - 1); i <= this.condVictoria - 1; i++) {
-            if (
-                fila + i >= 0 &&
-                fila + i < this.rows &&
-                columna + i >= 0 &&
-                columna + i < this.cols &&
-                this.espacios[columna + i][fila + i].getEquipo() === jugadorActual
-            ) {
-                count++;
-                if (count >= this.condVictoria) {
-                    return true;
-                }
-            } else {
-                count = 1;
-            }
-        }
-
-        for (let i = -(this.condVictoria - 1); i <= this.condVictoria - 1; i++) {
-            if (
-                fila - i >= 0 &&
-                fila - i < this.rows &&
-                columna + i >= 0 &&
-                columna + i < this.cols &&
-                this.espacios[columna + i][fila - i].getEquipo() === jugadorActual
-            ) {
-                count++;
-                if (count >= this.condVictoria) {
-                    return true;
-                }
-            } else {
-                count = 1;
-            }
-        }
-
-        return false;
-    }
-
+}
 }
