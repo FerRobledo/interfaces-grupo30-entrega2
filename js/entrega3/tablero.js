@@ -45,7 +45,7 @@ export class Tablero {
             this.dibujarTablero();
         }
     }
-    
+
     dibujarTablero() {
         // Dibuja los casilleros primero
         for (let col = 0; col < this.cols; col++) {
@@ -61,7 +61,7 @@ export class Tablero {
                 );
             }
         }
-        
+
         // Luego dibuja los círculos encima de los casilleros
         for (let col = 0; col < this.cols; col++) {
             for (let row = 0; row < this.rows; row++) {
@@ -72,7 +72,7 @@ export class Tablero {
 
     dibujarFlechas() {
         this.arrowContainer.innerHTML = ""; // Limpiar cualquier flecha anterior
-    
+
         for (let col = 0; col < this.cols; col++) {
             const arrow = document.createElement("img");
             arrow.src = "./images/arrow.gif"; // Ruta de la imagen de la flecha
@@ -83,10 +83,10 @@ export class Tablero {
             // Calcular la posición de la flecha
             let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2 - 25;
             let posY = this.startY - 55; // Ajustar la posición Y para que esté justo encima del tablero
-    
+
             arrow.style.left = `${posX}px`;
             arrow.style.top = `${posY}px`;
-    
+
             // Agregar la flecha al contenedor
             this.arrowContainer.appendChild(arrow);
         }
@@ -95,7 +95,7 @@ export class Tablero {
     esconderFlechas() {
         this.arrowContainer.innerHTML = "";
     }
-    
+
     reiniciarTablero() {
         this.ocupados.fill(0); //Se llena todo el arreglo de ocupados con 0
         this.espacios = []; //Limpiamos espacios
@@ -125,7 +125,7 @@ export class Tablero {
         let encontrada = false;
         for (let col = 0; col < this.cols; col++) { //Recorre todas las columnas del tablero
             let circle = this.espacios[col][0];
-            if (circle.comprobarColumna(posX) && this.estaEnPosicion(circle, posY)) { // Comprueba si la posicion del mouse en X coincide con la posicion en X de la columna
+            if (circle.comprobarColumna(posX) && this.estaEnPosicion(circle, posY) && this.encontrarUltimaFilaDisponible(col) != null) { // Comprueba si la posicion del mouse en X coincide con la posicion en X de la columna
                 encontrada = true;
                 this.indicarDondeCae(col); // Pintar de gris el espacio en donde cae
                 this.columnaPintada = col;
@@ -178,12 +178,12 @@ export class Tablero {
     }
 
     hayGanador(ultimaFicha) {
-        
+
         let jugadorActual = ultimaFicha.getEquipo();
         let columna = this.columnaPintada;
         let fila = this.encontrarUltimaFilaDisponible(this.columnaPintada);
 
-                                                    // Verificación horizontal
+        // Verificación horizontal
         let count = 1; // Contamos la última ficha
         // Hacia la izquierda
         for (let c = columna - 1; c >= 0; c--) {
@@ -208,7 +208,7 @@ export class Tablero {
             }
         }
 
-                                                    // Verificación vertical
+        // Verificación vertical
         count = 1; // Reiniciamos el conteo
         for (let f = fila + 1; f < this.rows; f++) {
             if (this.espacios[columna][f].getEquipo() === jugadorActual) {
@@ -221,5 +221,59 @@ export class Tablero {
             }
         }
 
-}
+    }
+
+
+
+    comprobarGanador(ultimaFicha) {
+        let columna = this.columnaPintada;
+        let fila = this.encontrarUltimaFilaDisponible(this.columnaPintada);
+        let jugadorActual = ultimaFicha.getEquipo();
+    
+        // Método para recorrer una dirección específica
+        let recorrer = (c, f, indiceCol, indiceRow) => {
+            let count = 1; // La ficha actual cuenta como la primera
+            for (let i = 1; i < this.condVictoria; i++) {
+                let newCol = c + i * indiceCol;
+                let newRow = f + i * indiceRow;
+    
+                // Verifica que esté dentro del tablero y que sea del mismo equipo
+                if (
+                    newCol < 0 || newCol >= this.cols ||
+                    newRow < 0 || newRow >= this.rows ||
+                    !this.espacios[newCol][newRow].estaOcupada() ||
+                    this.espacios[newCol][newRow].getEquipo() !== jugadorActual
+                ) {
+                    break;
+                }
+                count++;
+            }
+            
+            // Verificar en dirección opuesta
+            for (let i = 1; i < this.condVictoria; i++) {
+                let newCol = c - i * indiceCol;
+                let newRow = f - i * indiceRow;
+    
+                if (
+                    newCol < 0 || newCol >= this.cols ||
+                    newRow < 0 || newRow >= this.rows ||
+                    !this.espacios[newCol][newRow].estaOcupada() ||
+                    this.espacios[newCol][newRow].getEquipo() !== jugadorActual
+                ) {
+                    break;
+                }
+                count++;
+            }
+    
+            return count >= this.condVictoria;
+        };
+    
+        // Verificar todas las direcciones
+        return (
+            recorrer(columna, fila, 1, 0) ||   // Horizontal
+            recorrer(columna, fila, 0, 1) ||   // Vertical
+            recorrer(columna, fila, 1, 1) ||   // Diagonal ↘️
+            recorrer(columna, fila, 1, -1)     // Diagonal ↙️
+        );
+    }
 }

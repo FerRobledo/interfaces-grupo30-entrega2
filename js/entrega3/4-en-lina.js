@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
             arrastre = false;
             if (sePuedeSoltar) {
                 soltarFicha(ultimaFiguraClickeada);
-                if (tablero.hayGanador(ultimaFiguraClickeada)) {
+                if (tablero.comprobarGanador(ultimaFiguraClickeada)) {
                     let ganador = ultimaFiguraClickeada;
                     setTimeout(function() {mostrarGanador(ganador);}, 1000);
                 }
