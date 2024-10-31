@@ -33,7 +33,7 @@ export class Tablero {
                 for (let row = 0; row < this.rows; row++) {
                     let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2;
                     let posY = this.startY + row * (this.cellSize + this.margin) + this.cellSize / 2;
-                    let circle = new Circulo(posX, posY, posX, posY, this.cellSize / 2, '#fff', this.ctx);
+                    let circle = new Circulo(posX, posY, posX, posY, this.cellSize / 2, '#fafafa', this.ctx);
                     colCircles.push(circle);
                     circle.draw(); // Dibuja cada círculo en el tablero
                 }
@@ -44,8 +44,31 @@ export class Tablero {
             this.dibujarTablero();
         }
     }
-
-
+    
+    dibujarTablero() {
+        // Dibuja los casilleros primero
+        for (let col = 0; col < this.cols; col++) {
+            for (let row = 0; row < this.rows; row++) {
+                let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2;
+                let posY = this.startY + row * (this.cellSize + this.margin) + this.cellSize / 2;
+                this.ctx.fillStyle = '#10adc5'; // Color del casillero
+                this.ctx.fillRect(
+                    posX - this.cellSize / 2 - this.margin / 2,
+                    posY - this.cellSize / 2 - this.margin / 2,
+                    this.cellSize + this.margin,
+                    this.cellSize + this.margin
+                );
+            }
+        }
+        
+        // Luego dibuja los círculos encima de los casilleros
+        for (let col = 0; col < this.cols; col++) {
+            for (let row = 0; row < this.rows; row++) {
+                this.espacios[col][row].draw();
+            }
+        }
+    }
+    
     reiniciarTablero() {
         this.ocupados.fill(0); //Se llena todo el arreglo de ocupados con 0
         this.espacios = []; //Limpiamos espacios
@@ -58,14 +81,6 @@ export class Tablero {
     instanciarOcupados() {
         for (let i = 0; i < this.espacios.length; i++) {
             this.ocupados[i] = 0;
-        }
-    }
-
-    dibujarTablero() {
-        for (let col = 0; col < this.cols; col++) {
-            for (let row = 0; row < this.rows; row++) {
-                this.espacios[col][row].draw();
-            }
         }
     }
 
@@ -122,7 +137,7 @@ export class Tablero {
             this.ultimoPintado.setFill("#fff"); // Pintar de blanco cuando el mouse sale de la columna
 
         let filaDisponible = this.encontrarUltimaFilaDisponible(col);
-        this.espacios[col][filaDisponible].setFill("#aaa"); // Pintar de gris para indicar donde caeria la ficha
+        this.espacios[col][filaDisponible].setFill("#a6d87c"); // Pintar de gris para indicar donde caeria la ficha
         this.espacios[col][filaDisponible].draw();
         this.ultimoPintado = this.espacios[col][filaDisponible];
     }

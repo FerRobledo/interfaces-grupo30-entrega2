@@ -1317,9 +1317,9 @@ main {
 
 #timer{
     font-family: 'digital-number';
-    font-weight: 1000;
-    color: #000000;
-    font-size: 20px;
+    font-weight: bolder;
+    color: #ff0000;
+    font-size: 35px;
 }
 
 .button-77:before,
