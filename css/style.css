@@ -1262,7 +1262,7 @@ main {
     margin-bottom: 30px;
 }
 
-.reloj{
+.reloj {
     display: none;
     position: absolute;
     top: 20px;
@@ -1275,7 +1275,92 @@ main {
     z-index: 1;
 }
 
-#arrow-container{
+.fichaTurno img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+.contenedorImg-turno {
+    overflow: hidden;
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.fichaTurno {
+    display: flex;
+    align-items: center;
+    min-width: 80px;
+    max-width: 150px;
+    min-height: 80px;
+    border-radius: 100%;
+    position: relative;
+}
+
+.activo {
+    border: 5px solid rgb(87, 48, 110);
+}
+
+.turnoEtiqueta {
+    height: 50px;
+    color: white;
+    font-size: 1.5em;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    position: absolute;
+    background-color: rgb(87, 48, 110);
+    transition: all 0.3s ease-in;
+}
+
+.turnoEtiqueta p {
+    white-space: nowrap;
+    display: none;
+    font-weight: 500;
+    font-family: Roboto, sans-serif;
+}
+
+.turnoEtiqueta p.extendido {
+    display: block;
+}
+
+#turno0-etiqueta {
+    max-width: 0;
+    left: 10%;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+
+}
+
+#turno1-etiqueta {
+    right: 10%;
+    max-width: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+
+}
+
+#turno0-etiqueta.extendido {
+    max-width: 150px;
+    left: -160%;
+
+}
+
+#turno1-etiqueta.extendido {
+    max-width: 150px;
+    right: -160%;
+}
+
+
+
+#arrow-container {
     display: flex;
     flex-direction: row;
     position: none;
@@ -1325,7 +1410,7 @@ main {
     src: url(/fonts/DigitalNumbers.ttf);
 }
 
-#timer{
+#timer {
     font-family: 'digital-number';
     font-weight: bolder;
     color: #ff0000;
@@ -1352,7 +1437,7 @@ main {
 
 .button-77:after {
     background-color: initial;
-    background-image: linear-gradient(90deg, rgba(98,217,163,1) 0%, rgba(6,172,97,1) 100%);
+    background-image: linear-gradient(90deg, rgba(98, 217, 163, 1) 0%, rgba(6, 172, 97, 1) 100%);
     bottom: 4px;
     content: "";
     display: block;
@@ -1378,7 +1463,7 @@ main {
 }
 
 .button-77:active:not(:disabled):after {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(90deg, rgba(98,217,163,1) 0%, rgba(6,172,97,1) 100%);
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(90deg, rgba(98, 217, 163, 1) 0%, rgba(6, 172, 97, 1) 100%);
     bottom: 4px;
     left: 4px;
     right: 4px;
@@ -1418,7 +1503,8 @@ main {
 
 .contenedorJuego {
     height: 612px;
-     display: flex;  /*cambiar a flex */
+    display: flex;
+    /*cambiar a flex */
     flex-direction: column;
     align-items: center;
     background-image: url(/images/4enlineatitulo.gif);
@@ -1428,7 +1514,7 @@ main {
     overflow: visible;
 }
 
-.contenedorBotonesJuego{
+.contenedorBotonesJuego {
     display: flex;
     align-items: center;
     position: absolute;
@@ -1436,27 +1522,28 @@ main {
     gap: 20px;
 }
 
-#equipo-1 .ficha-seleccionada{
+#equipo-1 .ficha-seleccionada {
     border: 6px solid greenyellow;
 }
 
-#equipo-2 .ficha-seleccionada{
+#equipo-2 .ficha-seleccionada {
     border: 6px solid red;
 }
 
-#p1{
+#p1 {
     color: greenyellow;
 }
 
-#p2{
+#p2 {
     color: red;
 }
 
-#p1, #p2{
+#p1,
+#p2 {
     margin: 10px;
 }
 
-.equipo{
+.equipo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1464,17 +1551,17 @@ main {
     height: 150px;
 }
 
-#equipo-1{
+#equipo-1 {
     top: -250px;
     left: -200px;
 }
 
-#equipo-2{
+#equipo-2 {
     top: -250px;
     right: -200px;
 }
 
-.ficha{
+.ficha {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1485,17 +1572,20 @@ main {
     cursor: pointer;
 }
 
-.img-ficha{
+.img-ficha {
     width: 100%;
     border-radius: 100%;
 
 }
 
 
-.show-winner{
+
+
+.show-winner {
     height: 612px;
     background-color: #000000;
-    display: none;  /*cambiar a none */
+    display: none;
+    /*cambiar a none */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1510,7 +1600,7 @@ main {
     src: url(/fonts/get_schwifty.ttf);
 }
 
-.show-winner h2{
+.show-winner h2 {
     font-family: 'get-schwifty';
     color: #10adc5;
     -webkit-text-stroke: .2px #a6d87c;
@@ -1520,7 +1610,7 @@ main {
     z-index: 2;
 }
 
-.show-winner img{
+.show-winner img {
     width: 300px;
     height: 300px;
 }

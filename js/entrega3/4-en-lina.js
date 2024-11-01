@@ -58,6 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let cellSize = null;
     let fichasSeleccionadas = [];
 
+    let turno0img = document.querySelector('#img-turno0');
+    let turno1img = document.querySelector('#img-turno1');
+    let turno0Div = document.querySelector("#contenedorImg-turno0");
+    let turno1Div = document.querySelector("#contenedorImg-turno1");
+    let turno0Etiqueta = document.querySelector("#turno0-etiqueta");
+    let turno1Etiqueta = document.querySelector("#turno1-etiqueta");
+    let turno0p = document.querySelector("#turno0-etiqueta p");
+    let turno1p = document.querySelector("#turno1-etiqueta p");
+
+
+
     // Función principal para iniciar el juego
     function iniciarJuego(filas, columnas, tamanio, condVictoria, margin, distanciaTop) {
         fichasSeleccionadas = getSeleccion(); // Obtengo cuales fichas fueron seleccionadas en el menu (getSeleccion() es un metodo de seleccion-jugador.js)
@@ -69,15 +80,23 @@ document.addEventListener("DOMContentLoaded", () => {
         reloj.style.display = "flex";
 
 
+
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
         setTimeout(() => {
             tablero = new Tablero(ctx, filas, columnas, cellSize, canvas, condVictoria, arrowContainer, margin, distanciaTop);
             tablero.crearTablero();
             drawFigure(); // Dibuja el tablero después de crearlo
+
+
+
+
         }, 100);
         setTimeout(() => {
             cargarFichas();
             drawFigure(); // Dibuja las fichas después de cargarlas
+            turno0Div.classList.add("activo");
+            turno0Etiqueta.classList.add("extendido");
+            turno0p.classList.add("extendido");
         }, 200);
 
         startTimer()
@@ -92,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sePuedeSoltar = false;
         fichaEnGravedad = false;
         clearCanvas();
+        limpiarIndicadorTurnos();
         tablero.reiniciarTablero();
         contenedor.innerHTML = contenedorOriginal;
         contenedorBotonesJuego.style.display = "flex";
@@ -99,6 +119,16 @@ document.addEventListener("DOMContentLoaded", () => {
         agregarEventListenersBotones();
         inicializarFichas();
 
+    }
+
+    function limpiarIndicadorTurnos() {
+        turno0Div.classList.remove("activo");
+        turno0Etiqueta.classList.remove("extendido");
+        turno0p.classList.remove("extendido");
+
+        turno1Div.classList.remove("activo");
+        turno1Etiqueta.classList.remove("extendido");
+        turno1p.classList.remove("extendido");
     }
 
     function reiniciar() {
@@ -109,6 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
         sePuedeSoltar = false;
         fichaEnGravedad = false;
 
+        //SE LIMPIA EL INDICADOR DE TURNOS
+        limpiarIndicadorTurnos();
+        //
+
         clearCanvas(); // Limpiar el canvas
         ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
 
@@ -116,6 +150,15 @@ document.addEventListener("DOMContentLoaded", () => {
             tablero.reiniciarTablero();
             tablero.crearTablero(); // Redibuja el tablero
         }
+
+        setTimeout(() => {
+
+            turno0Div.classList.add("activo");
+            turno0Etiqueta.classList.add("extendido");
+            turno0p.classList.add("extendido");
+
+        }, 600);
+
         cargarFichas();
         startTimer()
         drawFigure();
@@ -128,14 +171,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (fichasSeleccionadas[0] === 0) {
             fichasImg[0].src = "./images/morty.jpeg";
+            turno0img.src = "./images/morty.jpeg";
         } else {
             fichasImg[0].src = "./images/mortyEvil.jpg";
+            turno0img.src = "./images/mortyEvil.jpg";
         }
 
         if (fichasSeleccionadas[1] === 2) {
             fichasImg[1].src = "./images/rick.jpeg";
+            turno1img.src = "./images/rick.jpeg";
         } else {
             fichasImg[1].src = "./images/rickEvil.jpg";
+            turno1img.src = "./images/rickEvil.jpg";
         }
 
         let loadedCount = 0;
@@ -247,13 +294,31 @@ document.addEventListener("DOMContentLoaded", () => {
                     let ganador = ultimaFiguraClickeada;
                     setTimeout(function () { mostrarGanador(ganador); }, 1000);
                 }
-                if (turno == 1)
+                if (turno == 1) {
                     turno = 0;
-                else
+                    //INDICADOR DE TURNO
+                    turno1Div.classList.remove("activo");
+                    turno0Div.classList.add("activo");
+                    turno1Etiqueta.classList.remove("extendido");
+                    turno0Etiqueta.classList.add("extendido");
+                    turno1p.classList.remove("extendido");
+                    turno0p.classList.add("extendido");
+                }
+                else {
                     turno = 1;
+                    //INDICADOR DE TURNO
+                    turno0Div.classList.remove("activo");
+                    turno1Div.classList.add("activo");
+                    turno0Etiqueta.classList.remove("extendido");
+                    turno1Etiqueta.classList.add("extendido");
+                    turno0p.classList.remove("extendido");
+                    turno1p.classList.add("extendido");
+
+
+                }
 
                 drawFigure();
-                
+
 
                 ultimaFiguraClickeada = null;
             } else {

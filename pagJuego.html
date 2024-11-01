@@ -78,7 +78,9 @@
         <!-- Seccion superior-->
         <section class="seccionSuperior">
             <div class="breadCrumb">
-                <a href="index.html"><p>Juegos</p></a>
+                <a href="index.html">
+                    <p>Juegos</p>
+                </a>
                 <span>/</span>
                 <p>Juegos de Estrategia</p>
                 <span>/</span>
@@ -87,29 +89,46 @@
             <div class="contenedorIZQ">
                 <div class="areaJuego">
                     <div class="reloj">
+                        <div class="fichaTurno" id="ficha-turno0">
+                            <div class="turnoEtiqueta" id="turno0-etiqueta"><p>Tu turno</p></div>
+                            <div class="contenedorImg-turno" id="contenedorImg-turno0">
+                            <img src="" alt="" id="img-turno0">
+                            </div>
+                        </div>
                         <button class="button-77" id="btn-gomenu" role="button">Menu</button>
                         <div id="timer">02:00</div>
                         <button class="button-77" id="btn-reiniciar" role="button">Reiniciar</button>
+                        <div class="fichaTurno" id="ficha-turno1">
+                            <div class="contenedorImg-turno" id="contenedorImg-turno1">
+                                <img src="" alt="" id="img-turno1">
+                            </div>
+                            <div class="turnoEtiqueta" id="turno1-etiqueta"><p>Tu turno</p></div>
+                        </div>
                     </div>
+
                     <div id="arrow-container"></div>
                     <div class="contenedorJuego">
                         <div class="contenedorBotonesJuego">
-                            
+
                             <div class="equipo" id="equipo-1">
                                 <h1 id="p1">Jugador 1</h1>
-                                <div class="ficha ficha-seleccionada" id="ficha-1"><img class="img-ficha" src="./images/morty.jpeg" alt="Morty"></div>
-                                <div class="ficha" id="ficha-2"><img class="img-ficha" src="./images/mortyEvil.jpg" alt="EvilMorty"></div>
+                                <div class="ficha ficha-seleccionada" id="ficha-1"><img class="img-ficha"
+                                        src="./images/morty.jpeg" alt="Morty"></div>
+                                <div class="ficha" id="ficha-2"><img class="img-ficha" src="./images/mortyEvil.jpg"
+                                        alt="EvilMorty"></div>
                             </div>
 
                             <button class="btn-10" id="btn-4linea">4 en línea</button>
                             <button class="btn-10" id="btn-5linea">5 en línea</button>
                             <button class="btn-10" id="btn-6linea">6 en línea</button>
-                            
+
                             <div class="equipo" id="equipo-2">
                                 <h1 id="p2">Jugador 2</h1>
-                                <div class="ficha ficha-seleccionada" id="ficha-3"><img class="img-ficha" src="./images/rick.jpeg" alt="Morty"></div>
-                                <div class="ficha" id="ficha-4"><img class="img-ficha" src="./images/rickEvil.jpg" alt="EvilMorty"></div>
-                            </div>     
+                                <div class="ficha ficha-seleccionada" id="ficha-3"><img class="img-ficha"
+                                        src="./images/rick.jpeg" alt="Morty"></div>
+                                <div class="ficha" id="ficha-4"><img class="img-ficha" src="./images/rickEvil.jpg"
+                                        alt="EvilMorty"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="show-winner">
@@ -119,7 +138,7 @@
                     </div>
                 </div>
                 <div class="contenedorInfoJuego">
-                    
+
                     <div class="headerInfoJuego">
                         <h1>Rick and Morty 4 en línea</h1>
                         <div style="display: flex; flex-direction: column; align-items: start;">
@@ -581,7 +600,7 @@
                         <p id="password-help">Usa al menos 6 caracteres. Incluye <br>
                             al menos una letra y un número o un <br>
                             caracter especial.</p>
-                            <div class="g-recaptcha" data-sitekey="6LeiOGkqAAAAAOAR-E2pbKF7ygMv1mWkyvUGtOGw"></div>
+                        <div class="g-recaptcha" data-sitekey="6LeiOGkqAAAAAOAR-E2pbKF7ygMv1mWkyvUGtOGw"></div>
                     </div>
                     <div class="registro-der">
                         <label for="lastname">Apellido</label>
