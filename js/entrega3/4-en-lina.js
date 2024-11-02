@@ -364,52 +364,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function soltarFicha(ficha) {
-        let velocidad = 10;
+        let velocidad = 0;
+        const gravedad = 1.2; // Aceleración de gravedad
         const posX = tablero.ultimoPintado.getPosX();
         let posFinal = tablero.ultimoPintado.getPosY() - 15;
-        let posRebote = posFinal - 30; // Altura del rebote
+        let posRebote = posFinal - 30;
         let posInicial = ficha.getPosY();
         fichaEnGravedad = true;
         let rebote = 0;
-        let reboteMaximo = 3; // Cantidad de rebotes
-
+        const reboteMaximo = 3;
+        const factorRebote = 0.7; // Factor para reducir la velocidad de rebote en cada ciclo
+    
         const animarCaida = () => {
-            // Verifica si la ficha ha alcanzado la posición final
             if (posInicial < posFinal) {
-                // Actualiza la posición de la ficha
+                // Aumenta la velocidad debido a la gravedad
+                velocidad += gravedad;
                 posInicial += velocidad;
+                
+                if (posInicial > posFinal) posInicial = posFinal; // Limita a la posición final
                 ficha.setPosition(posX, posInicial);
                 drawFigure();
-
-                // Continúa la animación
                 requestAnimationFrame(animarCaida);
             } else if (rebote < reboteMaximo) {
-                // Genera un efecto de rebote
                 rebote++;
-                posInicial = posRebote; // Lleva la ficha a la posición de rebote
-                posFinal += 5; // Ajusta el final para que rebote ligeramente menos en cada ciclo
-                posRebote += 10; // Ajusta el rebote para disminuir cada vez
-
+                velocidad = -velocidad * factorRebote; // Invertir y reducir la velocidad del rebote
+                posFinal += 5;
+                posRebote += 10;
+    
                 requestAnimationFrame(animarCaida);
             } else {
-                // Una vez que termina el último rebote
                 ficha.setPosition(posX, posFinal);
                 ficha.ocupar(ficha.getEquipo());
                 tablero.ultimoPintado.ocupar(ficha.getEquipo());
-                tablero.actualizarColumna(); // Indicar que cayó una ficha
-
+                tablero.actualizarColumna();
                 drawFigure();
                 fichaEnGravedad = false;
-
-                console.log("Fichas antes" + arrFichas);
-                arrFichasColocar = arrFichasColocar.filter(fichaArreglo => fichaArreglo.estaOcupada() !== true); //Filtra por las ocupadas y establece a arrFichasColocar como el nuevo arreglo filtrado. Si no está ocupada (nunca se eligió), se queda.
-                console.log("Fichas despues" + arrFichas);
-                verificarYRegenerarFichas(); // Verificar y regenerar fichas después del turno
-
+    
+                arrFichasColocar = arrFichasColocar.filter(fichaArreglo => fichaArreglo.estaOcupada() !== true);
+                verificarYRegenerarFichas();
             }
         };
-        tablero.esconderFlechas()
-        // Iniciar la animación
+        tablero.esconderFlechas();
         animarCaida();
     }
 
