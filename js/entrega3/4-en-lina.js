@@ -297,22 +297,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (turno == 1) {
                     turno = 0;
                     //INDICADOR DE TURNO
-                    turno1Div.classList.remove("activo");
+                    setTimeout(() =>{
+                        turno1Div.classList.remove("activo");
                     turno0Div.classList.add("activo");
                     turno1Etiqueta.classList.remove("extendido");
                     turno0Etiqueta.classList.add("extendido");
                     turno1p.classList.remove("extendido");
                     turno0p.classList.add("extendido");
+                    }, 2000);
                 }
                 else {
                     turno = 1;
                     //INDICADOR DE TURNO
-                    turno0Div.classList.remove("activo");
+                    setTimeout(() =>{
+                        turno0Div.classList.remove("activo");
                     turno1Div.classList.add("activo");
                     turno0Etiqueta.classList.remove("extendido");
                     turno1Etiqueta.classList.add("extendido");
                     turno0p.classList.remove("extendido");
                     turno1p.classList.add("extendido");
+                    }, 2000);
 
 
                 }
