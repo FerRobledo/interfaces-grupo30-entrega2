@@ -295,28 +295,28 @@ document.addEventListener("DOMContentLoaded", () => {
                     setTimeout(function () { mostrarGanador(ganador); }, 1000);
                 }
                 if (turno == 1) {
-                    turno = 0;
                     //INDICADOR DE TURNO
                     setTimeout(() =>{
+                        turno = 0;
                         turno1Div.classList.remove("activo");
                     turno0Div.classList.add("activo");
                     turno1Etiqueta.classList.remove("extendido");
                     turno0Etiqueta.classList.add("extendido");
                     turno1p.classList.remove("extendido");
                     turno0p.classList.add("extendido");
-                    }, 2000);
+                    }, 1500);
                 }
                 else {
-                    turno = 1;
                     //INDICADOR DE TURNO
                     setTimeout(() =>{
+                        turno = 1;
                         turno0Div.classList.remove("activo");
                     turno1Div.classList.add("activo");
                     turno0Etiqueta.classList.remove("extendido");
                     turno1Etiqueta.classList.add("extendido");
                     turno0p.classList.remove("extendido");
                     turno1p.classList.add("extendido");
-                    }, 2000);
+                    }, 1500);
 
 
                 }
@@ -338,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function arrastreActivo(e) {
         if (arrastre && ultimaFiguraClickeada != null) {
             ultimaFiguraClickeada.setPosition(e.offsetX, e.offsetY);
-            if (tablero.buscarColumna(e.offsetX, e.offsetY + 15)) {
+            if (tablero.buscarColumna(e.offsetX, e.offsetY + 5)) {
                 sePuedeSoltar = true;
             } else {
                 sePuedeSoltar = false;
@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fichaEnGravedad = true;
         let rebote = 0;
         const reboteMaximo = 3;
-        const factorRebote = 0.7; // Factor para reducir la velocidad de rebote en cada ciclo
+        const factorRebote = 0.4; // Factor para reducir la velocidad de rebote en cada ciclo
     
         const animarCaida = () => {
             if (posInicial < posFinal) {

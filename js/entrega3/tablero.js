@@ -96,7 +96,7 @@ export class Tablero {
             arrow.style.zIndex = 1;
             // Calcular la posición de la flecha
             let posX = this.startX + col * (this.cellSize + this.margin) + this.cellSize / 2 - 25;
-            let posY = this.startY - 55; // Ajustar la posición Y para que esté justo encima del tablero
+            let posY = this.startY - 35; // Ajustar la posición Y para que esté justo encima del tablero
 
             arrow.style.left = `${posX}px`;
             arrow.style.top = `${posY}px`;
