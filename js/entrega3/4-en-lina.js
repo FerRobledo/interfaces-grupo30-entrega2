@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         turno0Etiqueta.classList.add("extendido");
                         turno1p.classList.remove("extendido");
                         turno0p.classList.add("extendido");
-                    }, 1500);
+                    }, 0);
                 }
                 else {
                     //INDICADOR DE TURNO
@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         turno1Etiqueta.classList.add("extendido");
                         turno0p.classList.remove("extendido");
                         turno1p.classList.add("extendido");
-                    }, 1500);
+                    }, 0);
 
 
                 }
