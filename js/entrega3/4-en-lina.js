@@ -200,10 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para crear las fichas en el canvas
     function fichas(ctx, arrFichasColocar, n, img) {
         let margin = 10;
-        let startX = n === 0 ? 10 : canvas.width - 210; // Posición inicial para Morty y Rick
         let startY = 20;
         let rows = 7; // Número de filas
         let cols = 3; // Número de columnas
+        let startX = n === 0 ? 10 : canvas.width - cellSize*cols - margin*cols; // Posición inicial para Morty y Rick
 
 
         for (let col = 0; col < cols; col++) {
