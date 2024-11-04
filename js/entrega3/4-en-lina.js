@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Cuando la imagen se haya cargado, establece el fondo
     contenedorImagen.onload = function () {
+        contenedorBotonesJuego.style.display = "flex";
         contenedor.style.backgroundImage = `url('${contenedorImagen.src}')`; // Establece la imagen de fondo
     };
 
@@ -122,7 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
         limpiarIndicadorTurnos();
         tablero.reiniciarTablero();
         contenedor.innerHTML = contenedorOriginal;
-        contenedorBotonesJuego.style.display = "flex";
+        let contenedorBotonesJuego1 = document.querySelector(".contenedorBotonesJuego");
+        contenedorBotonesJuego1.style.display = "flex";
         reloj.style.display = "none";
         agregarEventListenersBotones();
         inicializarFichas();
@@ -433,14 +435,14 @@ document.addEventListener("DOMContentLoaded", () => {
             canvas.style.zIndex = "none";
             contenedor.style.display = "none";
             showWinner.style.display = "flex";
-            image.src = '/images/mortywins.gif';
+            image.src = './images/mortywins.gif';
             text.textContent = 'Morty Wins';
         } else if (equipo == 1) {
             reloj.style.display = "none";
             canvas.style.zIndex = "none";
             contenedor.style.display = "none";
             showWinner.style.display = "flex";
-            image.src = '/images/rickwins.gif';  // Reemplaza con la ruta de la imagen del jugador 2
+            image.src = './images/rickwins.gif';  // Reemplaza con la ruta de la imagen del jugador 2
             text.textContent = 'Rick Wins';
         }
     }

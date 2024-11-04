@@ -1521,7 +1521,7 @@ main {
 }
 
 .contenedorBotonesJuego {
-    display: flex;
+    display: none;
     align-items: center;
     position: absolute;
     bottom: 10px;
