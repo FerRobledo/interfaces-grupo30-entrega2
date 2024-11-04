@@ -39,6 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     let contenedor = document.querySelector(".contenedorJuego");
+    let contenedorImagen = new Image(); // Crea un nuevo objeto de imagen
+    contenedorImagen.src = "./images/4enlineatitulo.gif"; // Asigna la fuente de la imagen
+
+    // Cuando la imagen se haya cargado, establece el fondo
+    contenedorImagen.onload = function () {
+        contenedor.style.backgroundImage = `url('${contenedorImagen.src}')`; // Establece la imagen de fondo
+    };
+
     const contenedorOriginal = contenedor.innerHTML;
     let canvas = document.createElement("canvas");
     canvas.id = "canvas";
@@ -203,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let startY = 20;
         let rows = 7; // Número de filas
         let cols = 3; // Número de columnas
-        let startX = n === 0 ? 10 : canvas.width - cellSize*cols - margin*cols; // Posición inicial para Morty y Rick
+        let startX = n === 0 ? 10 : canvas.width - cellSize * cols - margin * cols; // Posición inicial para Morty y Rick
 
 
         for (let col = 0; col < cols; col++) {
@@ -296,26 +304,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 if (turno == 1) {
                     //INDICADOR DE TURNO
-                    setTimeout(() =>{
+                    setTimeout(() => {
                         turno = 0;
                         turno1Div.classList.remove("activo");
-                    turno0Div.classList.add("activo");
-                    turno1Etiqueta.classList.remove("extendido");
-                    turno0Etiqueta.classList.add("extendido");
-                    turno1p.classList.remove("extendido");
-                    turno0p.classList.add("extendido");
+                        turno0Div.classList.add("activo");
+                        turno1Etiqueta.classList.remove("extendido");
+                        turno0Etiqueta.classList.add("extendido");
+                        turno1p.classList.remove("extendido");
+                        turno0p.classList.add("extendido");
                     }, 1500);
                 }
                 else {
                     //INDICADOR DE TURNO
-                    setTimeout(() =>{
+                    setTimeout(() => {
                         turno = 1;
                         turno0Div.classList.remove("activo");
-                    turno1Div.classList.add("activo");
-                    turno0Etiqueta.classList.remove("extendido");
-                    turno1Etiqueta.classList.add("extendido");
-                    turno0p.classList.remove("extendido");
-                    turno1p.classList.add("extendido");
+                        turno1Div.classList.add("activo");
+                        turno0Etiqueta.classList.remove("extendido");
+                        turno1Etiqueta.classList.add("extendido");
+                        turno0p.classList.remove("extendido");
+                        turno1p.classList.add("extendido");
                     }, 1500);
 
 
@@ -378,13 +386,13 @@ document.addEventListener("DOMContentLoaded", () => {
         let rebote = 0;
         const reboteMaximo = 3;
         const factorRebote = 0.4; // Factor para reducir la velocidad de rebote en cada ciclo
-    
+
         const animarCaida = () => {
             if (posInicial < posFinal) {
                 // Aumenta la velocidad debido a la gravedad
                 velocidad += gravedad;
                 posInicial += velocidad;
-                
+
                 if (posInicial > posFinal) posInicial = posFinal; // Limita a la posición final
                 ficha.setPosition(posX, posInicial);
                 drawFigure();
@@ -394,7 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 velocidad = -velocidad * factorRebote; // Invertir y reducir la velocidad del rebote
                 posFinal += 5;
                 posRebote += 10;
-    
+
                 requestAnimationFrame(animarCaida);
             } else {
                 ficha.setPosition(posX, posFinal);
@@ -403,7 +411,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 tablero.actualizarColumna();
                 drawFigure();
                 fichaEnGravedad = false;
-    
+
                 arrFichasColocar = arrFichasColocar.filter(fichaArreglo => fichaArreglo.estaOcupada() !== true);
                 verificarYRegenerarFichas();
             }
