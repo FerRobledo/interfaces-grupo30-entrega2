@@ -17,7 +17,7 @@ export class Tablero {
         this.condVictoria = condVictoria;
         this.arrowContainer = arrowContainer;
         this.imagenFondo = new Image(); // Define imagenFondo como un atributo
-        this.imagenFondo.src = '.../images/juegowallpaper.jpg'; // Cargar la imagen en el constructor
+        this.imagenFondo.src = '../images/juegowallpaper.jpg'; // Cargar la imagen en el constructor
         this.imagenFondo.onload = () => {
             this.dibujarTablero(); // Dibujar el tablero cuando la imagen se haya cargado
         };
