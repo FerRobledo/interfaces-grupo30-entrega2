@@ -16,6 +16,12 @@ export class Tablero {
         this.columnaPintada = null;
         this.condVictoria = condVictoria;
         this.arrowContainer = arrowContainer;
+        this.imagenFondo = new Image(); // Define imagenFondo como un atributo
+        this.imagenFondo.src = '../images/juegowallpaper.jpg'; // Cargar la imagen en el constructor
+        this.imagenFondo.onload = () => {
+            this.dibujarTablero(); // Dibujar el tablero cuando la imagen se haya cargado
+        };
+
     }
 
     setCtx(ctx) {
@@ -48,9 +54,6 @@ export class Tablero {
     }
 
      dibujarTablero() {
-
-        this.imagenFondo = new Image();
-        this.imagenFondo.src = '../images/juegowallpaper.jpg';
         
         // Dibujar la imagen una vez que esté cargada
             // Dibujar los casilleros con porciones de la imagen de fondo
