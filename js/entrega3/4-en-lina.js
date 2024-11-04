@@ -82,30 +82,30 @@ document.addEventListener("DOMContentLoaded", () => {
         fichasSeleccionadas = getSeleccion(); // Obtengo cuales fichas fueron seleccionadas en el menu (getSeleccion() es un metodo de seleccion-jugador.js)
         cellSize = tamanio;
 
-        contenedor.innerHTML = "";
-        contenedorBotonesJuego.style.display = "none";
-        contenedor.appendChild(canvas);
-        reloj.style.display = "flex";
-
-
-
-        ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
+        
+        setTimeout(() => {
+            
+            ctx.drawImage(fondoJuego, 0, 0, canvas.width, canvas.height);
+            reloj.style.display = "flex";
+            contenedor.innerHTML = "";
+            contenedorBotonesJuego.style.display = "none";
+            contenedor.appendChild(canvas);
+        }, 10);
+        
+        
         setTimeout(() => {
             tablero = new Tablero(ctx, filas, columnas, cellSize, canvas, condVictoria, arrowContainer, margin, distanciaTop);
             tablero.crearTablero();
             drawFigure(); // Dibuja el tablero después de crearlo
 
-
-
-
-        }, 100);
+        }, 20);
         setTimeout(() => {
             cargarFichas();
             drawFigure(); // Dibuja las fichas después de cargarlas
             turno0Div.classList.add("activo");
             turno0Etiqueta.classList.add("extendido");
             turno0p.classList.add("extendido");
-        }, 200);
+        }, 30);
 
         startTimer()
     }
